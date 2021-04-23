@@ -15,7 +15,7 @@ const Home = () => {
                         <img src={mainPic} alt="" />
                     </div>
                     <article className="col-12 col-md-6">
-                        <h3 className="text-center">我是胖虎我是孩子王</h3>
+                        <h3 className="mt-4 mt-md-0 text-center">我是胖虎我是孩子王</h3>
                         <p>
                             度發進有生元後表臺流，海我又產離動備？
                             輪與子成開今這的子工少館沒場示體陽？是業山你選品經應第使正的夫；北斷低？對魚山戰是斷在動。有都育後是。校包養，深式間立房，界入過地養，是夜已？
