@@ -40,12 +40,15 @@ const Home = () => {
                     <img src={section3bcg} alt="" />
                 </div>
             </section>
-            <section>
-                <h3>沒有名字的貓</h3>
-                <p>
-                    我是貓，一隻沒有名字的貓。從來沒有人給過我一個名字。小時候，是隻「小貓」。長大了，就被叫做「貓」而已。街上那些貓，每隻都有名字。「好好喔！我也想要一個名字。」「自己取一個不就好了。找一個自己喜歡的名字啊。只是一隻貓的名字，到處看看，應該找得到的。」廟裡的貓無限壽說。
-                </p>
-                <div className={cx('button')}>我是一顆按鈕</div>
+            <section className="row">
+                <div className="col-12 col-md-6">
+                    <h3>沒有名字的貓</h3>
+                    <p>
+                        我是貓，一隻沒有名字的貓。從來沒有人給過我一個名字。小時候，是隻「小貓」。長大了，就被叫做「貓」而已。街上那些貓，每隻都有名字。「好好喔！我也想要一個名字。」「自己取一個不就好了。找一個自己喜歡的名字啊。只是一隻貓的名字，到處看看，應該找得到的。」廟裡的貓無限壽說。
+                    </p>
+                    <div className={cx('button')}>我是一顆按鈕</div>
+                </div>
+                <div className="col-12 col-md-6"></div>
             </section>
             <section>section5</section>
         </main>
