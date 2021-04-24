@@ -1,6 +1,7 @@
 import React, { useState, useRef, useEffect, Fragment } from 'react';
 
 import mainPic from 'image/home/main.jpg';
+import section3bcg from 'image/home/section_3.jpg';
 import classes from './styles.module.scss';
 import classNames from 'classnames/bind';
 const cx = classNames.bind(classes);
@@ -8,7 +9,12 @@ const cx = classNames.bind(classes);
 const Home = () => {
     return (
         <main>
-            <section>section1</section>
+            <section>
+                <h1>
+                    我<br />是<br />胖<br />虎<br />我<br />是<br />孩<br />子<br />王<br />
+                </h1>
+                {/* <div className={cx('button')}>我是一顆按鈕</div> */}
+            </section>
             <section>
                 <div className="row w-90">
                     <div className="col-12 col-md-6">
@@ -29,8 +35,18 @@ const Home = () => {
                     </article>
                 </div>
             </section>
-            <section>section3</section>
-            <section>section4</section>
+            <section>
+                <div className={cx('imgBox')}>
+                    <img src={section3bcg} alt="" />
+                </div>
+            </section>
+            <section>
+                <h3>沒有名字的貓</h3>
+                <p>
+                    我是貓，一隻沒有名字的貓。從來沒有人給過我一個名字。小時候，是隻「小貓」。長大了，就被叫做「貓」而已。街上那些貓，每隻都有名字。「好好喔！我也想要一個名字。」「自己取一個不就好了。找一個自己喜歡的名字啊。只是一隻貓的名字，到處看看，應該找得到的。」廟裡的貓無限壽說。
+                </p>
+                <div className={cx('button')}>我是一顆按鈕</div>
+            </section>
             <section>section5</section>
         </main>
     );
