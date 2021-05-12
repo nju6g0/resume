@@ -16,7 +16,7 @@ const Home = () => {
     const portfolios = [
         { id: 'messageBoard', title: 'message board', description: '表單處理', image: message_borad },
         { id: 'movies', title: '那些最愛的電影們', description: 'excel檔案讀取', image: movies },
-        { id: 2, title: '還沒想到要做什麼', description: '還沒想到要做什麼', image: null },
+        { id: 'stock', title: '那些我不懂的股票', description: '圖表呈現', image: null },
         { id: 3, title: '還沒想到要做什麼', description: '還沒想到要做什麼', image: null },
     ];
     const [width, setWidth] = useState('0');
@@ -86,14 +86,39 @@ const Home = () => {
                 </div>
             </section>
             <section className="row">
-                <div className="col-12 col-md-6">
-                    <h3>沒有名字的貓</h3>
-                    <p>
-                        我是貓，一隻沒有名字的貓。從來沒有人給過我一個名字。小時候，是隻「小貓」。長大了，就被叫做「貓」而已。街上那些貓，每隻都有名字。「好好喔！我也想要一個名字。」「自己取一個不就好了。找一個自己喜歡的名字啊。只是一隻貓的名字，到處看看，應該找得到的。」廟裡的貓無限壽說。
-                    </p>
-                    <div className={cx('button')}>我是一顆按鈕</div>
+                <div className="col-12 col-md-5">
+                    <h3>使用技術</h3>
+                    <ul>
+                        <li>HTML5</li>
+                        <li>CSS3、SCSS</li>
+                        <li>JAVASCRIPT</li>
+                        <li>JQUERY</li>
+                        <li>REACT(HOOK)</li>
+                    </ul>
                 </div>
-                <div className="col-12 col-md-6"></div>
+                <div className="col-12 col-md-1"></div>
+                <div className="col-12 col-md-6">
+                    <h3>訓練/經歷</h3>
+                    <ul>
+                        <li>和泰聯網股份有限公司，前端工程師，Mar 2021 ~ 迄今(在職中)。</li>
+                        <li>
+                            緯創軟體股份有限公司，前端工程師，Mar 2020 ~ Mar 2021。
+                            <br />
+                            <small>參與Acer 電競社群平台 Planet9網站開發，以 React 撰寫前端頁面。</small>
+                        </li>
+                        <li>
+                            精誠資訊股份有限公司，前端工程師，Jul 2019 ~ Mar 2020。
+                            <br />
+                            <small>以 angular 撰寫臺灣銀行端末系統前端頁面(系統翻新)。</small>
+                        </li>
+                        <li>
+                            財團法人資訊工業策進會辦理之「前端工程師就業養成班」
+                            <br />
+                            <small>(受訓期間：2018年12月27日~2019年6月5日)</small>
+                        </li>
+                        {/* <li>國立臺北大學, 工商管理碩士（MBA）, 企業管理, 2009 ~ 2011</li> */}
+                    </ul>
+                </div>
             </section>
             <section>
                 {' '}

@@ -9,14 +9,20 @@ export const routes = [
         component: Home,
     },
     {
-        key: 'home',
+        key: 'messageBoard',
         path: '/messageBoard',
         exact: false,
         component: Sample,
     },
     {
-        key: 'home',
+        key: 'movies',
         path: '/movies',
+        exact: false,
+        component: Sample,
+    },
+    {
+        key: 'stock',
+        path: '/stock',
         exact: false,
         component: Sample,
     },
