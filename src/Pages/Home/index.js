@@ -36,12 +36,14 @@ const Home = () => {
     }, [widthRef.current?.clientWidth]);
 
     return (
-        <main id="main" ref={widthRef}>
+        <main id="main">
             <section>
-                <h1>
-                    我<br />是<br />胖<br />虎<br />我<br />是<br />孩<br />子<br />王<br />
-                </h1>
-                {/* <div className={cx('button')}>我是一顆按鈕</div> */}
+                <div className="container">
+                    <h1>
+                        我<br />是<br />胖<br />虎<br />我<br />是<br />孩<br />子<br />王<br />
+                    </h1>
+                    {/* <div className={cx('button')}>我是一顆按鈕</div> */}
+                </div>
             </section>
             <section>
                 <div className="row w-90">
@@ -60,29 +62,31 @@ const Home = () => {
                 </div>
             </section>
             <section>
-                <h2 className="text-center">PORTFOLIOS</h2>
-                <div className={`${cx('portfolios')} d-flex flex-wrap`}>
-                    {portfolios.map((portfolio, idx) => (
-                        <Link
-                            to={`/${portfolio.id}`}
-                            key={`portfolios_${portfolio.id}`}
-                            style={{ height: width * 0.5 }}
-                        >
-                            <img
-                                src={portfolio.image || `https://picsum.photos/400/400?random=${idx * 1}`}
-                                alt={portfolio.title}
-                            />
-                            <div className="row">
-                                <div className="col-8">
-                                    <h5>{portfolio.title}</h5>
-                                    <p>{portfolio.description}</p>
+                <div ref={widthRef} className="container">
+                    <h2 className="text-center">PORTFOLIOS</h2>
+                    <div className={`${cx('portfolios')} d-flex flex-wrap`}>
+                        {portfolios.map((portfolio, idx) => (
+                            <Link
+                                to={`/${portfolio.id}`}
+                                key={`portfolios_${portfolio.id}`}
+                                style={{ height: width * 0.5 }}
+                            >
+                                <img
+                                    src={portfolio.image || `https://picsum.photos/400/400?random=${idx * 1}`}
+                                    alt={portfolio.title}
+                                />
+                                <div className="row">
+                                    <div className="col-8">
+                                        <h5>{portfolio.title}</h5>
+                                        <p>{portfolio.description}</p>
+                                    </div>
+                                    <span className="col-4 text-end">
+                                        <BsChatSquareQuote /> go page
+                                    </span>
                                 </div>
-                                <span className="col-4 text-end">
-                                    <BsChatSquareQuote /> go page
-                                </span>
-                            </div>
-                        </Link>
-                    ))}
+                            </Link>
+                        ))}
+                    </div>
                 </div>
             </section>
             <section className="row">

@@ -116,6 +116,9 @@ main {
     section:nth-child(3) {
         padding: 30px 30px 200px 30px;
         min-height: 1px;
+        > div {
+            max-width: 1140px;
+        }
         h2 {
             font-family: 'Bree Serif', serif;
             font-weight: bold;
