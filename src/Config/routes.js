@@ -1,4 +1,5 @@
 import Home from 'Pages/Home';
+import Movies from 'Pages/Movies';
 import Sample from 'Pages/emptyPage';
 
 export const routes = [
@@ -18,7 +19,7 @@ export const routes = [
         key: 'movies',
         path: '/movies',
         exact: false,
-        component: Sample,
+        component: Movies,
     },
     {
         key: 'stock',
