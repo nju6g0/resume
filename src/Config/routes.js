@@ -16,8 +16,8 @@ export const routes = [
         component: Sample,
     },
     {
-        key: 'movies',
-        path: '/movies',
+        key: 'excel',
+        path: '/excel',
         exact: false,
         component: Movies,
     },

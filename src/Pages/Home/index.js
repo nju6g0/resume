@@ -5,6 +5,7 @@ import mainPic from 'image/home/main.jpg';
 import section3bcg from 'image/home/section_3.jpg';
 import message_borad from 'image/home/portfolios/message_board.jpg';
 import movies from 'image/home/portfolios/movies.jpg';
+import form from 'image/home/portfolios/form.jpg';
 
 import { BsChatSquareQuote } from 'react-icons/bs';
 import classes from './styles.module.scss';
@@ -15,7 +16,7 @@ const Home = () => {
     const widthRef = useRef(null);
     const portfolios = [
         { id: 'messageBoard', title: 'message board', description: '表單處理', image: message_borad },
-        { id: 'movies', title: '那些最愛的電影們', description: 'excel檔案讀取', image: movies },
+        { id: 'excel', title: '親愛的，我把excel變table了', description: 'excel檔案讀取/下載', image: form },
         { id: 'stock', title: '那些我不懂的股票', description: '圖表呈現', image: null },
         { id: 3, title: '還沒想到要做什麼', description: '還沒想到要做什麼', image: null },
     ];
