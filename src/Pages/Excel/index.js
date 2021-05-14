@@ -1,7 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import XLSX from 'xlsx';
 
-const Movies = () => {
+const Excel = () => {
     const colums = ['A', 'B', 'C', 'D', 'E', 'F', 'G'];
     const [tableData, setTableData] = useState([]);
 
@@ -126,4 +126,4 @@ const Movies = () => {
     );
 };
 
-export default Movies;
+export default Excel;

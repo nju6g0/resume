@@ -4,7 +4,6 @@ import { withRouter, Link } from 'react-router-dom';
 import mainPic from 'image/home/main.jpg';
 import section3bcg from 'image/home/section_3.jpg';
 import message_borad from 'image/home/portfolios/message_board.jpg';
-import movies from 'image/home/portfolios/movies.jpg';
 import form from 'image/home/portfolios/form.jpg';
 
 import { BsChatSquareQuote } from 'react-icons/bs';

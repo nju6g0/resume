@@ -1,5 +1,5 @@
 import Home from 'Pages/Home';
-import Movies from 'Pages/Movies';
+import Excel from 'Pages/Excel';
 import Sample from 'Pages/emptyPage';
 
 export const routes = [
@@ -19,7 +19,7 @@ export const routes = [
         key: 'excel',
         path: '/excel',
         exact: false,
-        component: Movies,
+        component: Excel,
     },
     {
         key: 'stock',
