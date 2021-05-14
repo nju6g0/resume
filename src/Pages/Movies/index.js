@@ -48,14 +48,52 @@ const Movies = () => {
             }
             console.log(datas);
             setTableData(datas);
+            var container = document.getElementById('tableau');
+            container.innerHTML = XLSX.utils.sheet_to_html(worksheet);
+            const json = XLSX.utils.sheet_to_json(worksheet);
+            console.log(json);
         };
         reader.readAsArrayBuffer(f);
     };
+    const downloadFile = () => {
+        var wb = XLSX.utils.book_new();
+        var ws_name = 'SheetJS';
+        /* make worksheet */
+        var ws_data = [
+            [
+                '部門',
+                '部門額度',
+                '單趟最高額度',
+                '搭乘最高趟次',
+                '一',
+                '二',
+                '三',
+                '四',
+                '五',
+                '六',
+                '日',
+                '起始時間',
+                '結束時間',
+            ],
+            ['專案管理部', 2000, 200, 10, 'V', 'V', 'V', 'V', 'V', '', '', '09:00', '18:00'],
+            ['管理部', '', 200, 12, 'V', 'V', 'V', '', '', '', '', '09:00', '18:00'],
+            ['總務部', 3000, '', 10, '', '', '', 'V', 'V', 'V', '', '09:00', '18:00'],
+        ];
+        var ws = XLSX.utils.aoa_to_sheet(ws_data);
+        /* Add the worksheet to the workbook */
+        XLSX.utils.book_append_sheet(wb, ws, ws_name);
+        XLSX.writeFile(wb, 'sample.xlsx');
+    };
+
     return (
         <div>
             Movies
             <br />
             <input type="file" onChange={readFile} />
+            <button type="button" onClick={downloadFile}>
+                download
+            </button>
+            <div id="tableau"></div>
             <table class="table">
                 <thead>
                     {tableData.slice(0, 1).map((th) => (
