@@ -1,0 +1,20 @@
+.excel {
+    .table {
+        width: 100%;
+        overflow: auto;
+        table {
+            width: 100%;
+            min-width: 800px;
+            border-collapse: collapse;
+            th,
+            td {
+                border-bottom: 1px solid #ddd;
+            }
+            tbody {
+                > tr:first-child {
+                    font-weight: bold;
+                }
+            }
+        }
+    }
+}

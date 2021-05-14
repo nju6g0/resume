@@ -23,7 +23,7 @@ const Home = () => {
 
     const resizeHandler = () => {
         const changeWidth = () => {
-            if (widthRef.current.clientWidth > 768) {
+            if (widthRef.current?.clientWidth > 768) {
                 setWidth(widthRef.current.clientWidth);
             }
         };
@@ -122,6 +122,18 @@ const Home = () => {
                         </li>
                         {/* <li>國立臺北大學, 工商管理碩士（MBA）, 企業管理, 2009 ~ 2011</li> */}
                     </ul>
+                </div>
+            </section>
+            <section className="row">
+                <div className="col-4"></div>
+                <div className={`${cx('sliderBox')} col-8`}>
+                    <div className={`${cx('container')} d-flex`}>
+                        {Array.from({ length: 8 }, (x, idx) => x).map((slide, idx) => (
+                            <div className="flex-shrink-0" key={`slide_${idx}`}>
+                                <img src={`https://picsum.photos/300/300?random=${idx * 1}`} alt="" />
+                            </div>
+                        ))}
+                    </div>
                 </div>
             </section>
             <section>
