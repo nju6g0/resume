@@ -6,7 +6,7 @@ import section3bcg from 'image/home/section_3.jpg';
 import message_borad from 'image/home/portfolios/message_board.jpg';
 import form from 'image/home/portfolios/form.jpg';
 
-import { BsChatSquareQuote } from 'react-icons/bs';
+import { BsChatSquareQuote, BsChevronCompactLeft, BsChevronCompactRight } from 'react-icons/bs';
 import classes from './styles.module.scss';
 import classNames from 'classnames/bind';
 const cx = classNames.bind(classes);
@@ -20,6 +20,10 @@ const Home = () => {
         { id: 3, title: '還沒想到要做什麼', description: '還沒想到要做什麼', image: null },
     ];
     const [width, setWidth] = useState('0');
+    const slideData = Array.from({ length: 8 }, (x, idx) => x);
+    const slideDistance = 300 + 20;
+    const showSlideNum = 3;
+    const [slidePosition, setSlidePosition] = useState(0);
 
     const resizeHandler = () => {
         const changeWidth = () => {
@@ -28,6 +32,12 @@ const Home = () => {
             }
         };
         window.addEventListener('resize', changeWidth);
+    };
+
+    const goSlide = (index) => {
+        const position =
+            index <= 0 ? 0 : index >= slideData.length - showSlideNum ? slideData.length - showSlideNum : index;
+        setSlidePosition(position);
     };
 
     useEffect(() => {
@@ -53,7 +63,7 @@ const Home = () => {
                     <article className="col-12 col-md-6">
                         <h3 className="mt-4 mt-md-0 text-center">我是胖虎我是孩子王</h3>
                         <p>
-                            嗯哼，你沒看錯，左邊那張圖片不是我，是免費資源裡某個天真無邪的小傢伙，我們感謝他。言歸正傳，這是我的自我介紹，非本科系出身，是個從初會唸到高會的標準商學生，畢業後高考錄取成為人人稱羨的公務員。每每講到這裡，十個人裡面有九個都問：你怎麼這麼想不開？（剩下那一個是聽不懂中文）。也沒什麼，就是某天看著隔壁的同事，深深覺得如果到40歲我一定會跟哆啦A夢借時光機敲暈10年前的自己；然後，毅然決然地告別這種「每天起床不是想請假就是想辭職」的日子。就是這麼任性，不要懷疑（在這裡先讓我感謝一下我的父母，感謝他們把自己照顧得很好，才能讓我這樣虎搞瞎搞）。至於為什麼會踏入前端這個坑，那又是另一個故事了。
+                            嗯哼，你沒看錯，左邊那張圖片不是我，是免費資源裡某個天真無邪的小傢伙，我們感謝他。言歸正傳，這是我的自我介紹，非本科系出身，是個從初會唸到高會的標準商學生，畢業後高考錄取成為人人稱羨的公務員。每每講到這裡，十個人裡面有九個都問：你怎麼這麼想不開？（剩下那一個是聽不懂中文）。也沒什麼，就是某天看著隔壁的同事，深深覺得如果到40歲我一定會跟哆啦A夢借時光機敲暈10年前的自己；然後，毅然決然地告別這種「每天起床不是想請假就是想辭職」的日子。沒錯！就是這麼荒唐，不要懷疑（在這裡先讓我感謝一下我的父母，感謝他們把自己照顧得很好，才能讓我這樣虎搞瞎搞）。至於為什麼會踏入前端這個坑，那又是另一個故事了。
                         </p>
                         <p>
                             嗯？你說標題是怎麼回事？喔，就是覺得這句話很威，所以放上去了。「我是胖虎，我是孩子王。」-剛田武；「我是壹ㄙㄤ，我是前端開發者。」-蘇怡姍。
@@ -97,7 +107,7 @@ const Home = () => {
                         <li>CSS3、SCSS</li>
                         <li>JAVASCRIPT</li>
                         <li>JQUERY</li>
-                        <li>REACT(HOOK)</li>
+                        <li>REACT</li>
                     </ul>
                 </div>
                 <div className="col-12 col-md-1"></div>
@@ -126,13 +136,69 @@ const Home = () => {
             </section>
             <section className="row">
                 <div className="col-4"></div>
-                <div className={`${cx('sliderBox')} col-8`}>
-                    <div className={`${cx('container')} d-flex`}>
-                        {Array.from({ length: 8 }, (x, idx) => x).map((slide, idx) => (
-                            <div className="flex-shrink-0" key={`slide_${idx}`}>
-                                <img src={`https://picsum.photos/300/300?random=${idx * 1}`} alt="" />
-                            </div>
-                        ))}
+                <div className="col-md-8">
+                    <h3 className={`${cx('line')} mb-3 pb-2`}>我應該會是一個標題</h3>
+                    <p>
+                        然後這裡會有一些內容
+                        <br />
+                        ／／
+                        <br />
+                        人生漫漫，只要留幾個人、幾件事在心裡惦念足矣。
+                        <br />
+                        因為這些煦煦存在，關關難過才能關關過，
+                        <br />
+                        只要你能不忘這些善意，再偌大的世界，
+                        <br />
+                        你都能找到一處安放破碎的心，輕撫受傷的你。
+                        <br />
+                        ／／
+                        <br />
+                        我們過著不同的人生，找尋的卻是同一種永恆，
+                        <br />
+                        流光裡有人來到，有人走遠，
+                        <br />
+                        不論好壞，我們都將成為新的樣子。
+                        <br />
+                        四個房間，叩問各種人間樣貌，
+                        <br />
+                        書寫關於那些因愛而存在的時態，及光影。
+                    </p>
+                    <div className={`${cx('circles')} d-flex mb-3 mt-5`}>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                    </div>
+                    <div className={`${cx('sliderBox')}`}>
+                        <div
+                            className={cx('arrow', 'prev', slidePosition === 0 ? 'hidden' : '')}
+                            onClick={() => {
+                                goSlide(slidePosition - 1);
+                            }}
+                        >
+                            <BsChevronCompactLeft />
+                        </div>
+                        <div
+                            className={`${cx('container')} d-flex`}
+                            style={{ left: `-${slidePosition * slideDistance}px` }}
+                        >
+                            {slideData.map((slide, idx) => (
+                                <div className="flex-shrink-0" key={`slide_${idx}`}>
+                                    <img src={`https://picsum.photos/300/300?random=${idx * 1}`} alt="" />
+                                </div>
+                            ))}
+                        </div>
+                        <div
+                            className={cx(
+                                'arrow',
+                                'next',
+                                slidePosition >= slideData.length - showSlideNum ? 'hidden' : ''
+                            )}
+                            onClick={() => {
+                                goSlide(slidePosition + 1);
+                            }}
+                        >
+                            <BsChevronCompactRight />
+                        </div>
                     </div>
                 </div>
             </section>
