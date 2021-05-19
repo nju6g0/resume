@@ -4,6 +4,7 @@ import { withRouter, Link } from 'react-router-dom';
 import { withPopWindowConsumer } from 'Context/PopWindow';
 import { portfolios, slideData } from './datas';
 import mainPic from 'image/home/main.jpg';
+import PopContent from './PopContent';
 
 import { BsChatSquareQuote, BsChevronCompactLeft, BsChevronCompactRight } from 'react-icons/bs';
 import classes from './styles.module.scss';
@@ -41,14 +42,14 @@ const Home = ({ popWindowData }) => {
 
     return (
         <main id="main">
-            <section>
+            <section className={cx('main')}>
                 <div className="container">
                     <h1>
                         我<br />是<br />胖<br />虎<br />我<br />是<br />孩<br />子<br />王<br />
                     </h1>
                 </div>
             </section>
-            <section>
+            <section className={cx('introduction')}>
                 <div className="row gx-0">
                     <div className="col-12 col-md-6">
                         <img src={mainPic} alt="" />
@@ -64,7 +65,7 @@ const Home = ({ popWindowData }) => {
                     </article>
                 </div>
             </section>
-            <section>
+            <section className={cx('portfolios')}>
                 <div ref={widthRef} className="container">
                     <h2 className="text-center">PORTFOLIOS</h2>
                     <div className={`${cx('portfolios')} d-flex flex-wrap`}>
@@ -92,7 +93,7 @@ const Home = ({ popWindowData }) => {
                     </div>
                 </div>
             </section>
-            <section className="row gx-0">
+            <section className={`${cx('experience')} row gx-0`}>
                 <div className="col-12 col-md-5">
                     <h3>技能相關</h3>
                     <ul>
@@ -138,7 +139,7 @@ const Home = ({ popWindowData }) => {
                     </div>
                 </div>
             </section>
-            <section className="row gx-0">
+            <section className={`${cx('slider')} row gx-0`}>
                 <div className="col-4"></div>
                 <div className="col-md-8">
                     <h3 className={`${cx('line')} mb-3 pb-2`}>我應該會是一個標題</h3>
@@ -189,7 +190,9 @@ const Home = ({ popWindowData }) => {
                                 <div
                                     className={`${cx('imgBox')} flex-shrink-0`}
                                     key={`slide_${idx}`}
-                                    onClick={openPopWindowFunc}
+                                    onClick={() => {
+                                        openPopWindowFunc({ popContent: <PopContent data={slide} /> });
+                                    }}
                                 >
                                     <div>
                                         <img src={slide.image} alt="" />

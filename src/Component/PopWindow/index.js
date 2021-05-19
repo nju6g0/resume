@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from 'react';
+import Reac from 'react';
 
 import { withPopWindowConsumer } from 'Context/PopWindow';
 
@@ -7,11 +7,7 @@ import classNames from 'classnames/bind';
 const cx = classNames.bind(classes);
 
 const PopWidnow = ({ popWindowData }) => {
-    const { isOpenPopWindow, openPopWindowFunc, closePopWindowFunc, component } = popWindowData;
-
-    useEffect(() => {
-        console.log(popWindowData);
-    }, []);
+    const { isOpenPopWindow, closePopWindowFunc, popContent } = popWindowData;
 
     if (!isOpenPopWindow) return null;
     return (
@@ -23,7 +19,7 @@ const PopWidnow = ({ popWindowData }) => {
                         <span></span>
                     </div>
                 </div>
-                <div className={cx('popContent')}></div>
+                <div>{popContent}</div>
             </div>
         </div>
     );

@@ -8,19 +8,26 @@
     z-index: 9;
     .container {
         background-color: #fff;
-        width: 700px;
-        min-height: 70vh;
+        // width: 700px;
+        // min-height: 70vh;
         max-width: 90vw;
         max-height: 90vh;
         position: absolute;
         top: 50%;
+        // bottom: 0;
         left: 50%;
         transform: translate(-50%, -50%);
-        padding: 20px 16px;
+        // transform: translateX(-50%);
+        // padding: 20px 16px;
         overflow: auto;
+        border: 1px solid #fff;
     }
     .close {
         text-align: right;
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        z-index: 100;
         > div {
             text-align: right;
             cursor: pointer;
@@ -48,7 +55,5 @@
                 transform: rotate(30deg);
             }
         }
-    }
-    .popContent {
     }
 }

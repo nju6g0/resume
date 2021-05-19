@@ -25,7 +25,7 @@ main {
         padding: 8px 12px;
         cursor: pointer;
     }
-    section:first-child {
+    .main {
         color: #fff;
         min-height: 100vh;
         padding-top: 100px;
@@ -75,7 +75,7 @@ main {
             }
         }
     }
-    section:nth-child(2) {
+    .introduction {
         padding: 80px 0 50px 0;
         width: 70%;
         margin: 0 auto;
@@ -113,7 +113,7 @@ main {
             }
         }
     }
-    section:nth-child(3) {
+    .portfolios {
         padding: 30px 30px 200px 30px;
         min-height: 1px;
         > div {
@@ -207,9 +207,7 @@ main {
             }
         }
     }
-    section:nth-child(4) {
-        // color: #fff;
-        // min-height: 100vh;
+    .experience {
         padding: 100px;
         background-image: url('../../image/home/section_41.jpg');
         background-attachment: fixed;
@@ -220,14 +218,13 @@ main {
         > div:nth-child(3) {
             background-color: rgba(255, 255, 255, 0.5);
             padding: 50px 20px 20px 20px;
-            // box-shadow: 0px 0px 10px #fff;
-            // box-shadow: 10px 10px 10px rgba(255, 255, 255, 0.7), -10px -10px 10px rgba(255, 255, 255, 0.7);
             h3 {
                 color: $color_4;
             }
         }
         > div:nth-child(3) {
             position: relative;
+            background: linear-gradient(rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.9));
             &::after {
                 content: '';
                 position: absolute;
@@ -241,9 +238,7 @@ main {
                 position: relative;
                 list-style: none;
                 margin-top: 12px;
-                // font-weight: bold;
                 color: #333;
-                // text-shadow: 1px 1px 2px $color_4;
                 &::after {
                     content: '';
                     position: absolute;
@@ -278,7 +273,6 @@ main {
                     font-weight: 500;
                     background-color: $color_0;
                     transition: 0.3s;
-                    // box-shadow: 0px 0px 10px $color_6;
                     &:hover {
                         background-color: $color_9;
                         color: $color_0;
@@ -286,15 +280,6 @@ main {
                 }
             }
         }
-        // &::before {
-        //     content: '';
-        //     width: 100%;
-        //     height: 100%;
-        //     position: absolute;
-        //     top: 0;
-        //     left: 0;
-        //     background-color: rgba(255, 255, 255, 0.3);
-        // }
         @media screen and (max-width: 768px) {
             padding: 50px 50px;
             > div:nth-child(2) {
@@ -302,7 +287,7 @@ main {
             }
         }
     }
-    section:nth-child(5) {
+    .slider {
         padding: 100px 0;
         .line {
             position: relative;
@@ -412,17 +397,5 @@ main {
         }
     }
     section:last-child {
-        .imgBox {
-            margin: 0 auto 20px auto;
-            width: 60%;
-            > img {
-                width: 100%;
-            }
-        }
-        @media screen and (max-width: 768px) {
-            .imgBox {
-                width: 80%;
-            }
-        }
     }
 }
