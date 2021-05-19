@@ -2,6 +2,8 @@ import React, { Fragment } from 'react';
 import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom';
 
 import { routes } from 'Config/routes';
+import { withPopWindowProvider } from 'Context/PopWindow';
+import PopWidnow from 'Component/PopWindow';
 
 function App() {
     return (
@@ -21,8 +23,9 @@ function App() {
                 </Switch>
             </BrowserRouter>
             <footer>footer</footer>
+            <PopWidnow />
         </Fragment>
     );
 }
 
-export default App;
+export default withPopWindowProvider(App);

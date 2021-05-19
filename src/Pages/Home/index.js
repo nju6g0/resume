@@ -1,26 +1,20 @@
 import React, { useState, useRef, useEffect, Fragment } from 'react';
 import { withRouter, Link } from 'react-router-dom';
 
+import { withPopWindowConsumer } from 'Context/PopWindow';
+import { portfolios, slideData } from './datas';
 import mainPic from 'image/home/main.jpg';
-import section3bcg from 'image/home/section_3.jpg';
-import message_borad from 'image/home/portfolios/message_board.jpg';
-import form from 'image/home/portfolios/form.jpg';
 
 import { BsChatSquareQuote, BsChevronCompactLeft, BsChevronCompactRight } from 'react-icons/bs';
 import classes from './styles.module.scss';
 import classNames from 'classnames/bind';
 const cx = classNames.bind(classes);
 
-const Home = () => {
+const Home = ({ popWindowData }) => {
     const widthRef = useRef(null);
-    const portfolios = [
-        { id: 'messageBoard', title: 'message board', description: '表單處理', image: message_borad },
-        { id: 'excel', title: '親愛的，我把excel變table了', description: 'excel檔案讀取/下載', image: form },
-        { id: 'stock', title: '那些我不懂的股票', description: '圖表呈現', image: null },
-        { id: 3, title: '還沒想到要做什麼', description: '還沒想到要做什麼', image: null },
-    ];
+    const { openPopWindowFunc } = popWindowData;
     const [width, setWidth] = useState('0');
-    const slideData = Array.from({ length: 8 }, (x, idx) => x);
+
     const slideDistance = 300 + 20;
     const showSlideNum = 3;
     const [slidePosition, setSlidePosition] = useState(0);
@@ -52,11 +46,10 @@ const Home = () => {
                     <h1>
                         我<br />是<br />胖<br />虎<br />我<br />是<br />孩<br />子<br />王<br />
                     </h1>
-                    {/* <div className={cx('button')}>我是一顆按鈕</div> */}
                 </div>
             </section>
             <section>
-                <div className="row w-90">
+                <div className="row gx-0">
                     <div className="col-12 col-md-6">
                         <img src={mainPic} alt="" />
                     </div>
@@ -99,14 +92,15 @@ const Home = () => {
                     </div>
                 </div>
             </section>
-            <section className="row">
+            <section className="row gx-0">
                 <div className="col-12 col-md-5">
-                    <h3>使用技術</h3>
+                    <h3>技能相關</h3>
                     <ul>
                         <li>HTML5</li>
                         <li>CSS3、SCSS</li>
                         <li>JAVASCRIPT</li>
                         <li>JQUERY</li>
+                        <li>BOOTSTRAP</li>
                         <li>REACT</li>
                     </ul>
                 </div>
@@ -114,7 +108,11 @@ const Home = () => {
                 <div className="col-12 col-md-6">
                     <h3>訓練/經歷</h3>
                     <ul>
-                        <li>和泰聯網股份有限公司，前端工程師，Mar 2021 ~ 迄今(在職中)。</li>
+                        <li>
+                            和泰聯網股份有限公司，前端工程師，Mar 2021 ~ 迄今(在職中)。
+                            <br />
+                            <small>以 React 撰寫 yoxi 企業簽單後台管理系統。</small>
+                        </li>
                         <li>
                             緯創軟體股份有限公司，前端工程師，Mar 2020 ~ Mar 2021。
                             <br />
@@ -130,11 +128,17 @@ const Home = () => {
                             <br />
                             <small>(受訓期間：2018年12月27日~2019年6月5日)</small>
                         </li>
-                        {/* <li>國立臺北大學, 工商管理碩士（MBA）, 企業管理, 2009 ~ 2011</li> */}
                     </ul>
+                    <div className={cx('goResume')}>
+                        <a href="https://www.cakeresume.com/nicole-su-359cbf" target="_blank" rel="noreferrer">
+                            Cake Resume
+                        </a>
+                        <br />
+                        <small>點選按鈕，前往完整履歷及參與專案介紹</small>
+                    </div>
                 </div>
             </section>
-            <section className="row">
+            <section className="row gx-0">
                 <div className="col-4"></div>
                 <div className="col-md-8">
                     <h3 className={`${cx('line')} mb-3 pb-2`}>我應該會是一個標題</h3>
@@ -182,8 +186,14 @@ const Home = () => {
                             style={{ left: `-${slidePosition * slideDistance}px` }}
                         >
                             {slideData.map((slide, idx) => (
-                                <div className="flex-shrink-0" key={`slide_${idx}`}>
-                                    <img src={`https://picsum.photos/300/300?random=${idx * 1}`} alt="" />
+                                <div
+                                    className={`${cx('imgBox')} flex-shrink-0`}
+                                    key={`slide_${idx}`}
+                                    onClick={openPopWindowFunc}
+                                >
+                                    <div>
+                                        <img src={slide.image} alt="" />
+                                    </div>
                                 </div>
                             ))}
                         </div>
@@ -202,14 +212,9 @@ const Home = () => {
                     </div>
                 </div>
             </section>
-            <section>
-                {' '}
-                <div className={cx('imgBox')}>
-                    <img src={section3bcg} alt="" />
-                </div>
-            </section>
+            <section></section>
         </main>
     );
 };
 
-export default withRouter(Home);
+export default withRouter(withPopWindowConsumer(Home));

@@ -210,10 +210,10 @@ main {
     section:nth-child(4) {
         // color: #fff;
         // min-height: 100vh;
-        padding: 100px 50px 200px 50px;
-        background-image: url('../../image/home/section_4.jpg');
+        padding: 100px;
+        background-image: url('../../image/home/section_41.jpg');
         background-attachment: fixed;
-        background-position: top center;
+        background-position: bottom center;
         background-repeat: no-repeat;
         background-size: cover;
         > div:first-child,
@@ -223,7 +223,7 @@ main {
             // box-shadow: 0px 0px 10px #fff;
             // box-shadow: 10px 10px 10px rgba(255, 255, 255, 0.7), -10px -10px 10px rgba(255, 255, 255, 0.7);
             h3 {
-                color: $color_5;
+                color: $color_4;
             }
         }
         > div:nth-child(3) {
@@ -233,14 +233,17 @@ main {
                 position: absolute;
                 top: 90px;
                 left: 38px;
-                height: 70%;
+                height: 55%;
                 width: 2px;
-                background-color: #333;
+                background-color: $color_6;
             }
             li {
                 position: relative;
                 list-style: none;
                 margin-top: 12px;
+                // font-weight: bold;
+                color: #333;
+                // text-shadow: 1px 1px 2px $color_4;
                 &::after {
                     content: '';
                     position: absolute;
@@ -250,24 +253,48 @@ main {
                     width: 10px;
                     height: 10px;
                     border-radius: 50%;
-                    background-color: #333;
+                    background-color: $color_6;
                 }
                 small {
                     color: $color_6;
                     font-size: 12px;
+                    font-weight: bolder;
+                }
+            }
+            .goResume {
+                margin-top: 80px;
+                margin-left: 34px;
+                small {
+                    color: $color_7;
                     font-weight: bold;
+                    line-height: 50px;
+                }
+                a {
+                    display: inline-block;
+                    border: 2px solid $color_9;
+                    color: $color_9;
+                    text-decoration: none;
+                    padding: 5px 20px;
+                    font-weight: 500;
+                    background-color: $color_0;
+                    transition: 0.3s;
+                    // box-shadow: 0px 0px 10px $color_6;
+                    &:hover {
+                        background-color: $color_9;
+                        color: $color_0;
+                    }
                 }
             }
         }
-        &::before {
-            content: '';
-            width: 100%;
-            height: 100%;
-            position: absolute;
-            top: 0;
-            left: 0;
-            background-color: rgba(0, 0, 0, 0.3);
-        }
+        // &::before {
+        //     content: '';
+        //     width: 100%;
+        //     height: 100%;
+        //     position: absolute;
+        //     top: 0;
+        //     left: 0;
+        //     background-color: rgba(255, 255, 255, 0.3);
+        // }
         @media screen and (max-width: 768px) {
             padding: 50px 50px;
             > div:nth-child(2) {
@@ -317,17 +344,15 @@ main {
                 position: absolute;
                 top: 0;
                 width: 30px;
-                // height: 100%;
-                height: 300px;
+                height: 250px;
                 line-height: 300px;
                 background-color: rgba(255, 255, 255, 0.3);
                 transition: 0.3s;
                 cursor: pointer;
-                color: #fff;
+                color: $color_6;
                 z-index: 1;
                 &:hover {
                     background-color: rgba(255, 255, 255, 0.7);
-                    color: $color_6;
                 }
                 svg {
                     width: 30px;
@@ -351,22 +376,30 @@ main {
                 top: 0;
                 left: 0;
                 transition: 0.5s;
-                > div {
+                .imgBox {
                     box-sizing: border-box;
                     width: 300px;
-                    height: 300px;
-                    padding: 10px 10px 30px 10px;
+                    height: 250px;
+                    padding: 10px 10px 50px 10px;
                     border: 1px solid #ccc;
                     box-shadow: 5px 10px 10px #ccc;
-                    transition: 0.3s;
+                    transition: 0.5s;
                     cursor: pointer;
-                    > img {
+                    > div {
                         width: 100%;
-                        height: 100%;
-                        object-fit: cover;
+                        height: 180px;
+                        overflow: hidden;
+                        > img {
+                            width: 100%;
+                            height: 100%;
+                            object-fit: cover;
+                            transition: 0.5s;
+                        }
                     }
                     &:hover {
-                        transform: scale(1.05);
+                        img {
+                            transform: scale(1.1);
+                        }
                     }
                 }
                 > div + div {
