@@ -9,20 +9,24 @@ function App() {
     return (
         <Fragment>
             <header>header</header>
-            <BrowserRouter>
-                <Switch>
-                    {routes.map((route) => (
-                        <Route
-                            key={`route_${route.key}`}
-                            path={route.path}
-                            exact={route.exact}
-                            render={(routeProps) => <route.component />}
-                        />
-                    ))}
-                    <Route render={() => <Redirect to="/home" />} />
-                </Switch>
-            </BrowserRouter>
-            <footer>footer</footer>
+            <main>
+                <BrowserRouter>
+                    <Switch>
+                        {routes.map((route) => (
+                            <Route
+                                key={`route_${route.key}`}
+                                path={route.path}
+                                exact={route.exact}
+                                render={(routeProps) => <route.component />}
+                            />
+                        ))}
+                        <Route render={() => <Redirect to="/home" />} />
+                    </Switch>
+                </BrowserRouter>
+            </main>
+            <footer style={{ textAlign: 'center' }}>
+                © 2021 Arvana.gr All Rights Reserved. by creativelab, developed by eight
+            </footer>
             <PopWidnow />
         </Fragment>
     );

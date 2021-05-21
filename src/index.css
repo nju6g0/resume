@@ -10,7 +10,15 @@ code {
     font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
 }
 
-header {
+header,
+footer {
     /* position: absolute; */
-    height: 80px;
+    height: 50px;
+    background-color: #ccc;
+}
+footer {
+    line-height: 50px;
+}
+main {
+    min-height: calc(100vh - 100px);
 }

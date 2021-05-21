@@ -41,7 +41,7 @@ const Home = ({ popWindowData }) => {
     }, [widthRef.current?.clientWidth]);
 
     return (
-        <main id="main">
+        <Fragment>
             <section className={cx('main')}>
                 <div className="container">
                     <h1>
@@ -142,13 +142,13 @@ const Home = ({ popWindowData }) => {
             <section className={`${cx('slider')} row gx-0`}>
                 <div className="col-4"></div>
                 <div className="col-md-8">
-                    <h3 className={`${cx('line')} mb-3 pb-2`}>我應該會是一個標題</h3>
+                    <h3 className={`${cx('line')} mb-3 pb-2`}>那些你不知道的龍貓</h3>
                     <p>
-                        然後這裡會有一些內容
+                        每個人心中都有一隻大龍貓(となりのトトロ)
                         <br />
                         ／／
                         <br />
-                        人生漫漫，只要留幾個人、幾件事在心裡惦念足矣。
+                        1988年，大家耳熟能詳的鄰居--龍貓，誕生於日本大螢幕，
                         <br />
                         因為這些煦煦存在，關關難過才能關關過，
                         <br />
@@ -158,15 +158,15 @@ const Home = ({ popWindowData }) => {
                         <br />
                         ／／
                         <br />
-                        我們過著不同的人生，找尋的卻是同一種永恆，
+                        小月、小梅兩姊妹跟著爸爸一起搬到郊外居住，準備迎接即將出院的母親，
                         <br />
-                        流光裡有人來到，有人走遠，
+                        那個被戲稱「鬼屋」的新家發生許多神奇的事，
+                        <br />
+                        包含會突然四散逃走的灰塵精靈，以及神祕的龍貓與貓巴士。
                         <br />
                         不論好壞，我們都將成為新的樣子。
                         <br />
-                        四個房間，叩問各種人間樣貌，
-                        <br />
-                        書寫關於那些因愛而存在的時態，及光影。
+                        有一天，小梅在與姊姊小月吵架後失蹤了，小月只能尋求龍貓的幫助，展開一場尋找妹妹的奇幻冒險…
                     </p>
                     <div className={`${cx('circles')} d-flex mb-3 mt-5`}>
                         <div></div>
@@ -215,8 +215,11 @@ const Home = ({ popWindowData }) => {
                     </div>
                 </div>
             </section>
-            <section></section>
-        </main>
+            <section>
+                <div></div>
+                <div></div>
+            </section>
+        </Fragment>
     );
 };
 

@@ -1,6 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import XLSX from 'xlsx';
 
+import GoHome from 'Component/GoHome';
 import classes from './styles.module.scss';
 import classNames from 'classnames/bind';
 const cx = classNames.bind(classes);
@@ -88,7 +89,7 @@ const Excel = () => {
     };
 
     return (
-        <div className={cx('excel')}>
+        <div className={`${cx('excel')} container`}>
             Movies
             <br />
             <input
@@ -128,6 +129,7 @@ const Excel = () => {
                     ))}
                 </tbody>
             </table>
+            <GoHome />
         </div>
     );
 };
