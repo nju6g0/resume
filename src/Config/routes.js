@@ -1,5 +1,6 @@
 import Home from 'Pages/Home';
 import Excel from 'Pages/Excel';
+import DrinkOrder from 'Pages/DrinkOrder';
 import Sample from 'Pages/emptyPage';
 
 export const routes = [
@@ -10,10 +11,10 @@ export const routes = [
         component: Home,
     },
     {
-        key: 'messageBoard',
-        path: '/messageBoard',
+        key: 'drinkorder',
+        path: '/drinkorder',
         exact: false,
-        component: Sample,
+        component: DrinkOrder,
     },
     {
         key: 'excel',

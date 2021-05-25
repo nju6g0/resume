@@ -1,29 +1,54 @@
 .excel {
+    background-image: url('/image/home/excel_1.jpg');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: right;
+    height: calc(100vh - 50px);
+    overflow: auto;
     .table {
-        width: 100%;
+        width: 70%;
+        max-height: calc(100vh - 100px);
         overflow: auto;
+        background-color: #fff;
         table {
             width: 100%;
-            min-width: 800px;
-            border-collapse: collapse;
-            overflow: auto;
             th,
             td {
                 border-bottom: 1px solid #ccc;
             }
-            tbody {
-                > tr {
-                    line-height: 38px;
-                    > td:first-child {
-                        font-weight: bold;
-                    }
-                }
-                > tr:first-child {
-                    font-weight: bold;
-                    background-color: #333;
-                    color: #fff;
-                }
+            tr:first-child {
+                font-weight: bold;
+                background-color: #333;
+                line-height: 40px;
+                color: #fff;
             }
         }
     }
+    // .table {
+    //     width: 100%;
+    //     overflow: auto;
+    //     table {
+    //         width: 100%;
+    //         min-width: 800px;
+    //         border-collapse: collapse;
+    //         overflow: auto;
+    //         th,
+    //         td {
+    //             border-bottom: 1px solid #ccc;
+    //         }
+    //         tbody {
+    //             > tr {
+    //                 line-height: 38px;
+    //                 > td:first-child {
+    //                     font-weight: bold;
+    //                 }
+    //             }
+    //             > tr:first-child {
+    //                 font-weight: bold;
+    //                 background-color: #333;
+    //                 color: #fff;
+    //             }
+    //         }
+    //     }
+    // }
 }

@@ -89,19 +89,20 @@ const Excel = () => {
     };
 
     return (
-        <div className={`${cx('excel')} container`}>
-            Movies
-            <br />
-            <input
-                type="file"
-                accept=".csv, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel"
-                onChange={readFile}
-            />
-            <button type="button" onClick={downloadFile}>
-                download
-            </button>
-            <div className={cx('table')} id="tableau"></div>
-            <table className="table">
+        <div className={cx('excel')}>
+            <div className="container">
+                <div style={{ height: '50px' }}>
+                    <input
+                        type="file"
+                        accept=".csv, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel"
+                        onChange={readFile}
+                    />
+                    <button type="button" onClick={downloadFile}>
+                        download
+                    </button>
+                </div>
+                <div className={cx('table')} id="tableau"></div>
+                {/* <table className="table">
                 <thead>
                     {tableData.slice(0, 1).map((th) => (
                         <tr>
@@ -128,7 +129,8 @@ const Excel = () => {
                         </tr>
                     ))}
                 </tbody>
-            </table>
+            </table> */}
+            </div>
             <GoHome />
         </div>
     );

@@ -9,9 +9,9 @@ import totoro_bus from 'image/home/ghibli/totoro_bus.jpg';
 
 export const portfolios = [
     {
-        id: 'messageBoard',
-        title: '夥伴們，一起來留言吧！',
-        description: '表單處理(message board)',
+        id: 'drinkorder',
+        title: '夥伴們，飲料訂起來！',
+        description: '表單處理',
         image: message_borad,
     },
     { id: 'excel', title: '親愛的，我把excel變table了', description: 'excel檔案讀取/下載', image: form },

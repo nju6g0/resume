@@ -8,7 +8,7 @@ import PopWidnow from 'Component/PopWindow';
 function App() {
     return (
         <Fragment>
-            <header>header</header>
+            {/* <header>header</header> */}
             <main>
                 <BrowserRouter>
                     <Switch>

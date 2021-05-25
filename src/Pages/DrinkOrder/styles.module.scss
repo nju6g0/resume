@@ -1,0 +1,77 @@
+.drinkorder {
+    background-image: url('/image/drinkorder/background_add.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed;
+    height: calc(100vh - 50px);
+    position: relative;
+    select,
+    input[type='text'],
+    input[type='number'] {
+        border: 1px solid #a297a8;
+        width: 100%;
+        padding: 10px;
+        border-radius: 5px;
+        margin-bottom: 10px;
+    }
+    input[type='text'],
+    input[type='number'] {
+        padding: 5px 10px;
+    }
+    .container {
+        min-width: 30%;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        > div {
+            box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.7);
+            padding: 20px;
+        }
+        .button {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            color: #000;
+            background-color: rgba(255, 255, 255, 0.7);
+            cursor: pointer;
+            transition: 0.3s;
+
+            svg {
+                height: 22px;
+                width: 22px;
+            }
+            &:hover {
+                color: #fff;
+                background-color: rgba(0, 0, 0, 0.7);
+                font-weight: bold;
+            }
+        }
+        .content {
+            height: 70vh;
+            max-width: 100%;
+            overflow: auto;
+            background-color: rgba(255, 255, 255, 0.7);
+            &::-webkit-scrollbar {
+                width: 6px;
+                height: 7px;
+            }
+            &::-webkit-scrollbar-track {
+                background-color: #fff; //a297a8
+            }
+
+            &::-webkit-scrollbar-thumb {
+                background-color: #a297a8; //7c789d
+            }
+            .list {
+                width: 100%;
+                min-width: 600px;
+                min-height: 100%;
+            }
+            .add {
+            }
+        }
+    }
+}
