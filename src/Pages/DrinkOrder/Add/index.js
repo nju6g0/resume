@@ -10,6 +10,52 @@ const cx = classNames.bind(classes);
 const Add = () => {
     const { listData } = useContext(OrderContext);
     const [nowShowId, setNowShowId] = useState(listData[0].id);
+    const [formContent, setFormContent] = useState({
+        // member: '',
+        memberName: '',
+        item: menu[listData.find((el) => el.id === nowShowId).key].menu[0].key,
+        price: menu[listData.find((el) => el.id === nowShowId).key].menu[0].price,
+        unit: 1,
+        ice: 0,
+        sugar: 0,
+        other: [],
+    });
+    const [errMessage, setErrMessage] = useState({
+        memberName: '',
+    });
+
+    const getMenuList = () => {
+        return menu[listData.find((el) => el.id === nowShowId).key].menu;
+    };
+
+    const saveValue = (key, obj) => {
+        setFormContent((prevState) => ({
+            ...prevState,
+            [key]: obj.value,
+        }));
+        setErrMessage((prevState) => ({
+            ...prevState,
+            [key]: obj.value.length > 0 ? '' : '請填寫這個欄位',
+        }));
+    };
+
+    const sendForm = () => {
+        const results = [];
+        Object.keys(formContent).forEach((key) => {
+            const isInValid = key !== 'other' && formContent[key].toString().length === 0;
+            if (isInValid) {
+                setErrMessage((prevState) => ({
+                    ...prevState,
+                    [key]: '請填寫這個欄位',
+                }));
+            }
+            results.push(isInValid);
+        });
+        if (!results.some((result) => result)) {
+            console.log('send form');
+            console.table(formContent);
+        }
+    };
 
     return (
         <div className={cx('add')}>
@@ -17,6 +63,12 @@ const Add = () => {
                 <select
                     onChange={(e) => {
                         setNowShowId(e.target.value);
+                        setFormContent((prevState) => ({
+                            ...prevState,
+                            item: menu[listData.find((el) => el.id === e.target.value).key].menu[0].key,
+                            price: menu[listData.find((el) => el.id === e.target.value).key].menu[0].price,
+                            unit: 1,
+                        }));
                     }}
                 >
                     {listData.map((order) => (
@@ -24,29 +76,57 @@ const Add = () => {
                     ))}
                 </select>
                 <div>
-                    <label>姓名：</label>
-                    <input type="text" />
+                    <label>
+                        姓名：<span>*</span>
+                    </label>
+                    <input
+                        type="text"
+                        value={formContent.memberName}
+                        onChange={(e) => {
+                            saveValue('memberName', e.target);
+                        }}
+                    />
+                    <small className={cx('errMsg')}>{errMessage.memberName}</small>
                 </div>
                 <div>
-                    <label>品項：</label>
+                    <label>
+                        品項：<span>*</span>
+                    </label>
                     <select
                         onChange={(e) => {
-                            console.log(e.target.value);
+                            saveValue('item', { value: e.target.value });
+                            saveValue('unit', { value: 1 });
+                            saveValue('price', {
+                                value: getMenuList().find((el) => el.key === e.target.value).price * 1,
+                            });
                         }}
+                        value={getMenuList().find((el) => el.key === formContent.item).key}
                     >
-                        {menu[listData.find((el) => el.id === nowShowId).key].menu.map((order) => (
+                        {getMenuList().map((order) => (
                             <option id={order.key} value={order.key}>{`${order.itemName} ($ ${order.price})`}</option>
                         ))}
                     </select>
                 </div>
                 <div className="d-flex">
                     <div className="me-1">
-                        <label>數量：</label>
-                        <input type="number" />
+                        <label>
+                            數量：<span>*</span>
+                        </label>
+                        <input
+                            type="number"
+                            value={formContent.unit}
+                            onChange={(e) => {
+                                saveValue('unit', { value: +e.target.value });
+                                saveValue('price', {
+                                    value:
+                                        getMenuList().find((el) => el.key === formContent.item).price * e.target.value,
+                                });
+                            }}
+                        />
                     </div>
                     <div className="ms-1">
                         <label>金額：</label>
-                        <input type="number" disabled />
+                        <input type="number" disabled value={formContent.price} />
                     </div>
                 </div>
                 <div className="mb-2">
@@ -60,6 +140,11 @@ const Add = () => {
                                     type="radio"
                                     name="iceRadio"
                                     id={`radio_ice_${ice.key}`}
+                                    value={ice.key}
+                                    onChange={() => {
+                                        saveValue('ice', { value: ice.key });
+                                    }}
+                                    checked={ice.key === formContent.ice}
                                 />
                                 <label className="form-check-label" for={`radio_ice_${ice.key}`}>
                                     {ice.text}
@@ -79,6 +164,11 @@ const Add = () => {
                                     type="radio"
                                     name="sugarRadio"
                                     id={`radio_sugar_${sugar.key}`}
+                                    value={sugar.key}
+                                    onChange={() => {
+                                        saveValue('sugar', { value: sugar.key });
+                                    }}
+                                    checked={sugar.key === formContent.sugar}
                                 />
                                 <label className="form-check-label" for={`radio_sugar_${sugar.key}`}>
                                     {sugar.text}
@@ -86,6 +176,39 @@ const Add = () => {
                             </div>
                         ))}
                     </div>
+                </div>
+                <div className="mb-2">
+                    其它：
+                    <br />
+                    <div className="d-flex">
+                        {otherOptions.map((checkbox) => (
+                            <div key={`checkbox_${checkbox.key}`} className="form-check me-3">
+                                <input
+                                    className="form-check-input"
+                                    type="checkbox"
+                                    value={checkbox.key}
+                                    id={`checkbox_${checkbox.key}`}
+                                    onChange={(e) => {
+                                        let arr = formContent.other;
+                                        if (e.target.checked) {
+                                            arr.push(e.target.value);
+                                        } else {
+                                            arr = arr.filter((item) => item === e.target.value);
+                                        }
+                                        saveValue('other', { value: [...arr] });
+                                    }}
+                                />
+                                <label className="form-check-label" for={`checkbox_${checkbox.key}`}>
+                                    {checkbox.text}
+                                </label>
+                            </div>
+                        ))}
+                    </div>
+                </div>
+                <div className="mt-3 d-flex justify-content-end">
+                    <button type="button" class="btn btn-dark" onClick={sendForm}>
+                        送出
+                    </button>
                 </div>
             </form>
         </div>

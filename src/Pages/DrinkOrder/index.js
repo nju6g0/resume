@@ -51,7 +51,7 @@ const DrinkOrder = () => {
         addListFunc: (obj) => {
             setListData((prevState) => [...prevState, obj]);
         },
-        updateListFunc: (obj) => {
+        updateListFunc: (key, obj) => {
             console.log(obj);
         },
     };
@@ -64,7 +64,8 @@ const DrinkOrder = () => {
                 //     backgroundImage: `url(${routes.find((el) => el.key === mode).bcgImg})`,
                 // }}
             >
-                <div className={cx('container')} style={{ width: mode === 'list' ? '50%' : '30%' }}>
+                <div className={cx('container')}>
+                    {/* style={{ width: mode === 'list' ? '50%' : '30%' }} */}
                     <div
                         className={cx('button')}
                         onClick={() => {
