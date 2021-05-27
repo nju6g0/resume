@@ -1,17 +1,16 @@
-import React, { useState, useRef, useEffect, useContext } from 'react';
+import React, { useState, useContext } from 'react';
 
 import { OrderContext } from '../index';
-import { memberList, menu, iceOptions, sugarOptions, otherOptions } from '../datas';
+import { menu, iceOptions, sugarOptions, otherOptions } from '../datas';
 
 import classes from '../styles.module.scss';
 import classNames from 'classnames/bind';
 const cx = classNames.bind(classes);
 
 const Add = () => {
-    const { listData } = useContext(OrderContext);
+    const { listData, updateListFunc } = useContext(OrderContext);
     const [nowShowId, setNowShowId] = useState(listData[0].id);
     const [formContent, setFormContent] = useState({
-        // member: '',
         memberName: '',
         item: menu[listData.find((el) => el.id === nowShowId).key].menu[0].key,
         price: menu[listData.find((el) => el.id === nowShowId).key].menu[0].price,
@@ -23,15 +22,25 @@ const Add = () => {
     const [errMessage, setErrMessage] = useState({
         memberName: '',
     });
+    const [isLoading, setIsLoading] = useState(false);
+    const [feedback, setFeedback] = useState({
+        isShow: false,
+        info: '訂單完成。到時一手交錢，一手交飲料！',
+    });
 
     const getMenuList = () => {
         return menu[listData.find((el) => el.id === nowShowId).key].menu;
     };
 
     const saveValue = (key, obj) => {
+        const { value } = obj;
+        setFeedback((prevState) => ({
+            ...prevState,
+            isShow: false,
+        }));
         setFormContent((prevState) => ({
             ...prevState,
-            [key]: obj.value,
+            [key]: value,
         }));
         setErrMessage((prevState) => ({
             ...prevState,
@@ -52,13 +61,21 @@ const Add = () => {
             results.push(isInValid);
         });
         if (!results.some((result) => result)) {
-            console.log('send form');
-            console.table(formContent);
+            setIsLoading(true);
+            updateListFunc(nowShowId, formContent);
+            window.setTimeout(() => {
+                setFeedback((prevState) => ({
+                    ...prevState,
+                    isShow: true,
+                }));
+                setIsLoading(false);
+            }, 2 * 1000);
         }
     };
 
     return (
         <div className={cx('add')}>
+            {feedback.isShow && <div className={cx('feedback')}>{feedback.info}</div>}
             <form>
                 <select
                     onChange={(e) => {
@@ -68,6 +85,10 @@ const Add = () => {
                             item: menu[listData.find((el) => el.id === e.target.value).key].menu[0].key,
                             price: menu[listData.find((el) => el.id === e.target.value).key].menu[0].price,
                             unit: 1,
+                        }));
+                        setFeedback((prevState) => ({
+                            ...prevState,
+                            isShow: false,
                         }));
                     }}
                 >
@@ -116,10 +137,10 @@ const Add = () => {
                             type="number"
                             value={formContent.unit}
                             onChange={(e) => {
-                                saveValue('unit', { value: +e.target.value });
+                                const value = +e.target.value <= 0 ? 1 : +e.target.value;
+                                saveValue('unit', { value: value });
                                 saveValue('price', {
-                                    value:
-                                        getMenuList().find((el) => el.key === formContent.item).price * e.target.value,
+                                    value: getMenuList().find((el) => el.key === formContent.item).price * value,
                                 });
                             }}
                         />
@@ -206,9 +227,15 @@ const Add = () => {
                     </div>
                 </div>
                 <div className="mt-3 d-flex justify-content-end">
-                    <button type="button" class="btn btn-dark" onClick={sendForm}>
-                        送出
-                    </button>
+                    {isLoading ? (
+                        <div className="spinner-border text-dark" role="status">
+                            <span className="visually-hidden">Loading...</span>
+                        </div>
+                    ) : (
+                        <button type="button" className="btn btn-dark" onClick={sendForm}>
+                            送出
+                        </button>
+                    )}
                 </div>
             </form>
         </div>

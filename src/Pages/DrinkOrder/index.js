@@ -52,7 +52,10 @@ const DrinkOrder = () => {
             setListData((prevState) => [...prevState, obj]);
         },
         updateListFunc: (key, obj) => {
-            console.log(obj);
+            console.log(key, obj);
+            listData.find((order) => order.id === key).list.push(obj);
+            setListData(listData);
+            console.log(key, obj);
         },
     };
 

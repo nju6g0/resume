@@ -11,9 +11,9 @@ const List = () => {
     const { listData } = useContext(OrderContext);
     const [nowShowId, setNowShowId] = useState(listData[0].id);
 
-    useEffect(() => {
-        console.log(listData);
-    }, []);
+    // useEffect(() => {
+    //     console.log(listData);
+    // }, []);
     return (
         <div className={cx('list')}>
             <select
