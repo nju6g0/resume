@@ -1,0 +1,12 @@
+.emptyPage {
+    background-image: url('../../image/commingsoon.jpg');
+    background-attachment: fixed;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: calc(100vh - 50px);
+    a {
+        color: #fff;
+        border-color: #fff;
+    }
+}

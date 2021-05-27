@@ -396,15 +396,15 @@ main {
             padding: 50px 20px;
         }
     }
-    section:last-child {
-        > div {
-            height: 300px;
-        }
-        > div:first-child {
-            background-color: $color_5;
-        }
-        > div:nth-child(2) {
-            background-color: $color_4;
-        }
-    }
+    // section:last-child {
+    //     > div {
+    //         height: 300px;
+    //     }
+    //     > div:first-child {
+    //         background-color: $color_5;
+    //     }
+    //     > div:nth-child(2) {
+    //         background-color: $color_4;
+    //     }
+    // }
 }

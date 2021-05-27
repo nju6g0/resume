@@ -215,10 +215,17 @@ const Home = ({ popWindowData }) => {
                     </div>
                 </div>
             </section>
-            <section>
+            {/* <section>
+                <div>
+                    <p>此網站圖片資源來自：</p>
+                    <div className="row">
+                        <p className="col-4">freepik (https://www.freepik.com/)</p>
+                        <p className="col-4">Unsplash (https://unsplash.com/)</p>
+                        <p className="col-4">STUDIO GHIBLI (https://www.ghibli.jp/info/013344/)</p>
+                    </div>
+                </div>
                 <div></div>
-                <div></div>
-            </section>
+            </section> */}
         </Fragment>
     );
 };
