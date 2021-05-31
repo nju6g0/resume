@@ -24,6 +24,24 @@ main {
         padding: 8px 12px;
         cursor: pointer;
     }
+    h2 {
+        font-family: 'Bree Serif', serif;
+        font-weight: bold;
+        font-size: 40px;
+        color: rgb(101, 87, 112);
+        position: relative;
+        margin-bottom: 100px;
+        &::after {
+            content: '';
+            width: 150px;
+            height: 5px;
+            background-color: rgb(170, 127, 157);
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+    }
     .main {
         color: #fff;
         min-height: 100vh;
@@ -76,10 +94,16 @@ main {
         }
     }
     .introduction {
-        padding: 80px 0 50px 0;
-        width: 70%;
+        padding: 80px 30px 50px 30px;
+        // width: 70%;
         margin: 0 auto;
         min-height: 80vh;
+        h2 {
+            margin-bottom: 50px;
+            &::after {
+                width: 50px;
+            }
+        }
         div {
             > img {
                 width: 180%;
@@ -87,29 +111,19 @@ main {
                 object-fit: contain;
             }
         }
-        h3 {
-            font-weight: bold;
-            padding-top: 80px;
-            margin-bottom: 80px;
-            color: rgb(101, 87, 112);
-        }
         p {
             color: rgb(64, 50, 73);
             background-color: rgba(255, 255, 255, 0.5);
             padding: 1rem 1rem 1rem 2rem;
         }
-        @media screen and (max-width: 992px) {
-            width: 80%;
-        }
-        @media screen and (max-width: 768px) {
+        // @media screen and (max-width: 992px) {
+        //     width: 80%;
+        // }
+        @media screen and (max-width: 767px) {
             div {
                 > img {
                     width: 100%;
                 }
-            }
-            h3 {
-                padding-top: 40px;
-                margin-bottom: 0px;
             }
         }
     }
@@ -119,25 +133,7 @@ main {
         > div {
             max-width: 1140px;
         }
-        h2 {
-            font-family: 'Bree Serif', serif;
-            font-weight: bold;
-            font-size: 40px;
-            color: rgb(101, 87, 112);
-            position: relative;
-            margin-bottom: 100px;
-            &::after {
-                content: '';
-                width: 150px;
-                height: 3px;
-                background-color: rgb(170, 127, 157);
-                position: absolute;
-                bottom: -20px;
-                left: 50%;
-                transform: translateX(-50%);
-            }
-        }
-        .portfolios {
+        .content {
             > a {
                 display: block;
                 text-decoration: none;
@@ -198,6 +194,10 @@ main {
                     width: 100% !important;
                     height: 300px !important;
                     margin: 10px 0 0 0 !important;
+                    > div {
+                        background-color: rgba(0, 0, 0, 0.3);
+                        bottom: 0;
+                    }
                 }
             }
             @media screen and (max-width: 576px) {
@@ -288,7 +288,7 @@ main {
         }
     }
     .slider {
-        padding: 100px 0;
+        padding: 100px 30px;
         .line {
             position: relative;
             &::after {
@@ -407,4 +407,9 @@ main {
     //         background-color: $color_4;
     //     }
     // }
+    @media screen and (max-width: 768px) {
+        h2 {
+            margin-bottom: 0px;
+        }
+    }
 }

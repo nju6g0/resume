@@ -5,6 +5,7 @@ $color_totoro_3: rgb(159, 172, 129);
 
 .popContent {
     width: 900px;
+    max-width: 100%;
     height: 60vh;
     overflow: auto;
     .imgBox {
@@ -15,15 +16,6 @@ $color_totoro_3: rgb(159, 172, 129);
             width: 100%;
             height: 100%;
             object-fit: cover;
-        }
-        &::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            // background-color: rgba(255, 255, 255, 0.3);
         }
     }
     .describe {
@@ -50,6 +42,18 @@ $color_totoro_3: rgb(159, 172, 129);
             color: $color_totoro_2;
             font-weight: bold;
             background-color: rgba(255, 255, 255, 0.6);
+        }
+    }
+    @media screen and (max-width: 768px) {
+        .describe {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            background-color: rgba(255, 255, 255, 0.5);
+            transform: translate(-50%, -50%);
+            width: 80%;
+            height: 80%;
+            overflow: auto;
         }
     }
 }

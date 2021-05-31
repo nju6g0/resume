@@ -24,9 +24,7 @@ function App() {
                     </Switch>
                 </BrowserRouter>
             </main>
-            <footer style={{ textAlign: 'center' }}>
-                © 2021 Arvana.gr All Rights Reserved. by creativelab, developed by eight
-            </footer>
+            <footer style={{ textAlign: 'center' }}>◎ 2021 YiShan, Su / Thank you for coming.</footer>
             <PopWidnow />
         </Fragment>
     );
