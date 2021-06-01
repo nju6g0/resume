@@ -2,16 +2,49 @@
     background-image: url('/image/home/excel_1.jpg');
     background-size: contain;
     background-repeat: no-repeat;
-    background-position: right;
+    background-position: right bottom;
     height: calc(100vh - 50px);
     overflow: auto;
+    padding-top: 20px;
+    input[type='file'] {
+        display: none;
+    }
+    button {
+        border: 2px solid #000;
+        padding: 6px 20px;
+        background-color: #000;
+        border-radius: 20px;
+        box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);
+        color: #fff;
+        font-weight: bold;
+        transition: 0.3s;
+        &:hover {
+            border: 2px solid #666;
+            background-color: #fff;
+            color: #666;
+        }
+    }
+    span + button {
+        margin-left: 20px;
+    }
+    button + button {
+        margin-left: 10px;
+        border: 2px solid #666;
+        background-color: #fff;
+        color: #666;
+        &:hover {
+            border: 2px solid #000;
+            background-color: #000;
+            color: #fff;
+        }
+    }
     .table {
         width: 70%;
         max-height: calc(100vh - 100px);
         overflow: auto;
         background-color: #fff;
         table {
-            width: 100%;
+            min-width: 800px;
             th,
             td {
                 border-bottom: 1px solid #ccc;
@@ -24,31 +57,90 @@
             }
         }
     }
-    // .table {
-    //     width: 100%;
-    //     overflow: auto;
-    //     table {
-    //         width: 100%;
-    //         min-width: 800px;
-    //         border-collapse: collapse;
-    //         overflow: auto;
-    //         th,
-    //         td {
-    //             border-bottom: 1px solid #ccc;
-    //         }
-    //         tbody {
-    //             > tr {
-    //                 line-height: 38px;
-    //                 > td:first-child {
-    //                     font-weight: bold;
-    //                 }
-    //             }
-    //             > tr:first-child {
-    //                 font-weight: bold;
-    //                 background-color: #333;
-    //                 color: #fff;
-    //             }
-    //         }
-    //     }
-    // }
+    .fakeTable {
+        width: 1000px;
+        background-color: rgba(255, 255, 255, 0.7);
+        .tHead {
+            border-bottom: 1px solid #333;
+            font-weight: bold;
+            background-color: rgba(0, 0, 0, 0.9);
+            color: #fff;
+        }
+        .tBody {
+            border-bottom: 1px solid #ccc;
+        }
+        .tHead,
+        .tBody {
+            display: flex;
+            align-items: center;
+            padding-top: 10px;
+            padding-bottom: 10px;
+            > span {
+                display: block;
+                word-wrap: break-word;
+            }
+            > span + span {
+                padding-left: 16px;
+            }
+            > span:first-child {
+                width: 150px;
+            }
+            > span:nth-child(2) {
+                width: 100px;
+            }
+            > span:nth-child(3) {
+                width: 100px;
+            }
+            > span:nth-child(4) {
+                width: 100px;
+            }
+            > span:nth-child(5) {
+                width: 550px;
+            }
+        }
+        @media screen and (max-width: 1000px) {
+            width: 100%;
+            .tHead,
+            .tBody {
+                display: block;
+                > span:first-child,
+                > span:nth-child(2),
+                > span:nth-child(3),
+                > span:nth-child(4) {
+                    display: inline-block;
+                    width: 50%;
+                }
+                > span:nth-child(5) {
+                    width: 100%;
+                }
+                > span {
+                    padding: 8px;
+                    padding-left: 16px;
+                }
+                > span:first-child {
+                    font-weight: bolder;
+                }
+            }
+        }
+    }
+    @media screen and (max-width: 768px) {
+        .table {
+            width: 100%;
+        }
+    }
+}
+
+.nauthty {
+    padding: 20px;
+    padding-top: 120px;
+    background-image: url('../../image/excel/naughty.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: top center;
+    background-color: #040b12;
+    width: 300px;
+    max-width: 100%;
+    height: 200px;
+    text-align: center;
+    color: #fff;
 }

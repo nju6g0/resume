@@ -14,7 +14,7 @@ export const portfolios = [
         description: '表單處理',
         image: message_borad,
     },
-    { id: 'excel', title: '親愛的，我把excel變table了', description: 'excel檔案讀取/下載', image: form },
+    { id: 'excel', title: '親愛的，show出你的口袋書單吧！', description: 'excel檔案讀取/下載', image: form },
     { id: 'stock', title: '那些我不懂的股票', description: '圖表呈現', image: null },
     { id: 3, title: '還沒想到要做什麼', description: '還沒想到要做什麼', image: null },
 ];
