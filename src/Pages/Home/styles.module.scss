@@ -130,6 +130,9 @@ main {
                     width: 100%;
                 }
             }
+            p {
+                padding: 0;
+            }
         }
     }
     .portfolios {
@@ -210,6 +213,10 @@ main {
                     height: 200px !important;
                 }
             }
+        }
+        @media screen and (max-width: 768px) {
+            padding-left: 16px;
+            padding-right: 16px;
         }
     }
     .experience {
