@@ -61,7 +61,7 @@ main {
         }
         h1 {
             font-weight: bolder;
-            font-size: 50px;
+            font-size: 3rem;
             text-align: center;
             width: 10%;
             // border: 5px solid #fff;
@@ -262,7 +262,7 @@ main {
                 small {
                     color: $color_7;
                     font-weight: bold;
-                    line-height: 50px;
+                    // line-height: 50px;
                 }
                 a {
                     display: inline-block;

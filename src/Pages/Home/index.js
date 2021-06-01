@@ -141,6 +141,7 @@ const Home = ({ popWindowData }) => {
                             Cake Resume
                         </a>
                         <br />
+                        <br />
                         <small>點選按鈕，前往完整履歷及參與專案介紹</small>
                     </div>
                 </div>
