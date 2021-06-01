@@ -40,7 +40,7 @@ const Excel = ({ popWindowData }) => {
                 /* Get the value */
                 if (worksheet['!ref']) {
                     var desired_value = desired_cell ? desired_cell.v : undefined;
-                    console.log(worksheet['!ref']);
+                    // console.log(worksheet['!ref']);
                     const index = worksheet['!ref'].indexOf(':');
                     const numArr = worksheet['!ref'].substring(index + 1).split('');
                     const numIndex = numArr.findIndex((el) => !isNaN(el));
