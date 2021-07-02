@@ -1,22 +1,10 @@
 .garellyList {
     .imgs {
         display: flex;
-        // flex-wrap: wrap;
+        flex-wrap: nowrap;
         max-width: 960px;
+        min-height: calc(100vh - 155px);
         margin: 0 auto;
-
-        // .imgBox {
-        //     display: inline-block;
-        //     width: 300px;
-        //     overflow: hidden;
-        //     margin-left: 15px;
-        //     margin-top: 15px;
-        //     > img {
-        //         width: 100%;
-        //         height: 100%;
-        //         object-fit: cover;
-        //     }
-        // }
         .colum + .colum {
             margin-left: 16px;
         }
@@ -58,6 +46,16 @@
             }
             > div:nth-child(2n + 2) {
                 height: 33vw;
+            }
+        }
+        @media screen and (max-width: 515px) {
+            flex-wrap: wrap;
+            .colum {
+                width: 100%;
+                > div {
+                    width: 100%;
+                    height: 200px !important;
+                }
             }
         }
     }

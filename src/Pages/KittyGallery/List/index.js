@@ -82,13 +82,13 @@ const GarellyList = () => {
                 <InView
                     as="div"
                     onChange={(inView) => {
-                        if (!isLoading) {
-                            setListData((prevState) => ({
-                                ...prevState,
-                                nowPage: prevState.nowPage + 1,
-                                isRest: true,
-                            }));
-                        }
+                        // if (!isLoading) {
+                        setListData((prevState) => ({
+                            ...prevState,
+                            nowPage: prevState.nowPage + 1,
+                            isRest: true,
+                        }));
+                        // }
                     }}
                 >
                     <div className={cx('trigger')} />
