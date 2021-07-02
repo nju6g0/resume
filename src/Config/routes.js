@@ -33,6 +33,12 @@ export const routes = [
         exact: false,
         component: KittyGallery,
     },
+    {
+        key: 'comingsoon',
+        path: '/comingsoon',
+        exact: false,
+        component: Sample,
+    },
 ];
 
 export const galleryRoutes = [

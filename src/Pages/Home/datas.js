@@ -17,7 +17,7 @@ export const portfolios = [
     },
     { id: 'excel', title: '親愛的，show出你的口袋書單！', description: 'excel檔案讀取/下載', image: form },
     { id: 'kittyGallery', title: '奴才們，快來吸貓吧！', description: 'The Cat Api 串接', image: KittyGallery },
-    { id: 3, title: '還沒想到要做什麼', description: '還沒想到要做什麼', image: null },
+    { id: 'comingsoon', title: '還沒想到要做什麼', description: '還沒想到要做什麼', image: null },
 ];
 
 export const slideData = [
