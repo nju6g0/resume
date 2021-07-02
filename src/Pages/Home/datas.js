@@ -1,5 +1,6 @@
 import message_borad from 'image/home/portfolios/message_board.jpg';
 import form from 'image/home/portfolios/form.jpg';
+import KittyGallery from 'image/home/kittyGarelly_2.jpg';
 import totoro from 'image/home/ghibli/totoro.jpg';
 import totoro_busStation from 'image/home/ghibli/totoro_busStation.jpg';
 import totoro_face from 'image/home/ghibli/totoro_face.jpg';
@@ -14,8 +15,8 @@ export const portfolios = [
         description: '表單處理',
         image: message_borad,
     },
-    { id: 'excel', title: '親愛的，show出你的口袋書單吧！', description: 'excel檔案讀取/下載', image: form },
-    { id: 'stock', title: '那些我不懂的股票', description: '圖表呈現', image: null },
+    { id: 'excel', title: '親愛的，show出你的口袋書單！', description: 'excel檔案讀取/下載', image: form },
+    { id: 'kittyGallery', title: '奴才們，快來吸貓吧！', description: 'The Cat Api 串接', image: KittyGallery },
     { id: 3, title: '還沒想到要做什麼', description: '還沒想到要做什麼', image: null },
 ];
 

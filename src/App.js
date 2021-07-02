@@ -3,6 +3,7 @@ import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom';
 
 import { routes } from 'Config/routes';
 import { withPopWindowProvider } from 'Context/PopWindow';
+import { withAuthProvider } from 'Context/Auth';
 import PopWidnow from 'Component/PopWindow';
 
 function App() {
@@ -30,4 +31,4 @@ function App() {
     );
 }
 
-export default withPopWindowProvider(App);
+export default withAuthProvider(withPopWindowProvider(App));

@@ -31,7 +31,7 @@ export const orderList = [
     {
         id: '20210606001',
         key: 'KEBUKE',
-        date: '2021-06-06',
+        date: '2021-07-16',
         list: [
             {
                 member: 'A001',
@@ -58,7 +58,7 @@ export const orderList = [
     {
         id: '20210607001',
         key: 'CHUNYANG',
-        date: '2021-06-07',
+        date: '2021-07-17',
         list: [
             {
                 member: 'A002',
