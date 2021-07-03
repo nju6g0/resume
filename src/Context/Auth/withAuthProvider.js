@@ -5,7 +5,7 @@ import { Provider } from './Context';
 const withAuthProvider = (WrappedComponent) => {
     const WithAuthProvider = () => {
         const storageKey = 'auth';
-        const changeLoginStatus = (obj) => {
+        const changeLoginStatus = (obj = { isLogin: false, token: null }) => {
             if (obj.isLogin) {
                 sessionStorage.setItem(storageKey, JSON.stringify(obj));
             } else {

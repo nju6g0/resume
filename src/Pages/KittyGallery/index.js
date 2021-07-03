@@ -1,8 +1,10 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { withRouter, Switch, Route, Redirect, Link } from 'react-router-dom';
 
 import { withAuthConsumer } from 'Context/Auth';
+import { withPopWindowConsumer } from 'Context/PopWindow';
 import GoHome from 'Component/GoHome';
+import GarellyLogin from 'Pages/KittyGallery/Login';
 import { galleryRoutes } from 'Config/routes';
 import kittyAvatar from 'image/kittyGarelly/avatar.jpg';
 
@@ -10,9 +12,9 @@ import classes from './styles.module.scss';
 import classNames from 'classnames/bind';
 const cx = classNames.bind(classes);
 
-const KittyGallery = ({ location, history, authData }) => {
-    // const { isLogin, changeLoginStatusFunc } = authData;
-    const [isLogin, setIsLogin] = useState(false);
+const KittyGallery = ({ location, history, authData, popWindowData }) => {
+    const { isLogin, changeLoginStatusFunc } = authData;
+    const { openPopWindowFunc } = popWindowData;
 
     useEffect(() => {
         if (!isLogin) {
@@ -26,7 +28,7 @@ const KittyGallery = ({ location, history, authData }) => {
     return (
         <div className={cx('kittyGallery')}>
             <nav>
-                <h3>貓貓 Garelly</h3>
+                <Link to="/kittyGallery/galleryList">貓貓 Garelly</Link>
                 <div>
                     {isLogin ? (
                         <div className={cx('menu')}>
@@ -42,7 +44,7 @@ const KittyGallery = ({ location, history, authData }) => {
                                 </li>
                                 <li
                                     onClick={() => {
-                                        setIsLogin(false);
+                                        changeLoginStatusFunc();
                                     }}
                                 >
                                     log out
@@ -53,7 +55,7 @@ const KittyGallery = ({ location, history, authData }) => {
                         <button
                             type="button"
                             onClick={() => {
-                                setIsLogin(true);
+                                openPopWindowFunc({ popContent: <GarellyLogin /> });
                             }}
                         >
                             login
@@ -79,4 +81,4 @@ const KittyGallery = ({ location, history, authData }) => {
     );
 };
 
-export default withRouter(withAuthConsumer(KittyGallery));
+export default withRouter(withAuthConsumer(withPopWindowConsumer(KittyGallery)));

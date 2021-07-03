@@ -1,2 +1,41 @@
 .garellyLogin {
+    margin-top: 30px;
+    padding: 30px;
+    width: 50vw;
+    max-width: 400px;
+    > div {
+        margin-top: 1rem;
+        label {
+            width: 60px;
+        }
+        input {
+            width: calc(100% - 70px);
+        }
+    }
+    button {
+        display: block;
+        width: 100%;
+        margin-top: 1rem;
+        padding: 5px 0;
+        border: none;
+        background-color: #000;
+        color: #fff;
+        border-radius: 20px;
+        &:hover {
+            box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
+        }
+    }
+    button:disabled {
+        background-color: #ccc;
+    }
+    .feedback {
+        color: #f26666;
+        text-align: center;
+        font-size: 14px;
+        font-weight: bold;
+        margin-bottom: 1rem;
+    }
+    @media screen and (max-width: 767px) {
+        width: 88vw;
+    }
 }

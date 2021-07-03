@@ -1,20 +1,24 @@
 .kittyGallery {
     background-color: #000;
     color: #fff;
-    > a {
-        color: #fff;
-        border-color: #fff;
-    }
+
     nav {
         display: flex;
         flex-direction: column;
         align-items: flex-end;
         padding: 1rem 1rem 0 0;
-        height: 105px;
+        height: 120px;
         background-image: url('/image/kittyGarelly/background_2.jpg');
         background-position: bottom;
         background-size: contain;
         position: relative;
+        > a {
+            color: #fff;
+            border-color: #fff;
+            text-decoration: none;
+            font-size: 30px;
+            font-weight: bold;
+        }
         h3 {
             margin: 0;
         }
@@ -78,7 +82,7 @@
         }
     }
     main {
-        height: calc(100vh - 155px);
+        height: calc(100vh - 170px);
         min-height: 0;
         overflow-y: scroll;
         padding: 1rem;
