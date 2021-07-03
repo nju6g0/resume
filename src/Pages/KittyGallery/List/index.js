@@ -21,7 +21,7 @@ const GarellyList = () => {
     const getList = () => {
         const params = {
             params: {
-                limit: 7,
+                limit: 9,
                 page: listData.nowPage,
             },
         };
@@ -31,8 +31,8 @@ const GarellyList = () => {
                     ...prevState,
                     list: [
                         [...prevState.list[0], ...res.data.slice(0, 3)],
-                        [...prevState.list[1], ...res.data.slice(3, 5)],
-                        [...prevState.list[2], ...res.data.slice(5)],
+                        [...prevState.list[1], ...res.data.slice(3, 6)],
+                        [...prevState.list[2], ...res.data.slice(6)],
                     ],
                     isRest: false,
                 }));
@@ -50,11 +50,6 @@ const GarellyList = () => {
         <div className={cx('garellyList')}>
             GarellyList
             <div className={cx('imgs')}>
-                {/* {listData.list.map((img) => (
-                    <div key={img.id} className={cx('imgBox')}>
-                        <img src={img.url} alt="" />
-                    </div>
-                ))} */}
                 <div className={cx('colum', 'first')}>
                     {listData.list[0].map((img) => (
                         <div key={img.id}>
@@ -78,17 +73,15 @@ const GarellyList = () => {
                     ))}
                 </div>
             </div>
-            {listData.nowPage < 7 && (
+            {listData.nowPage < 10 && (
                 <InView
                     as="div"
                     onChange={(inView) => {
-                        // if (!isLoading) {
                         setListData((prevState) => ({
                             ...prevState,
                             nowPage: prevState.nowPage + 1,
                             isRest: true,
                         }));
-                        // }
                     }}
                 >
                     <div className={cx('trigger')} />
