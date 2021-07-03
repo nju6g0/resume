@@ -48,12 +48,12 @@ export const galleryRoutes = [
         exact: false,
         component: GarellyList,
     },
-    {
-        key: 'galleryLogin',
-        path: '/kittyGallery/galleryLogin',
-        exact: false,
-        component: GarellyLogin,
-    },
+    // {
+    //     key: 'galleryLogin',
+    //     path: '/kittyGallery/galleryLogin',
+    //     exact: false,
+    //     component: GarellyLogin,
+    // },
     {
         key: 'galleryFavorite',
         path: '/kittyGallery/galleryFavorite',

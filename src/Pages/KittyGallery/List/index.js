@@ -3,21 +3,47 @@ import { withRouter } from 'react-router-dom';
 import { from } from 'rxjs';
 import { InView } from 'react-intersection-observer';
 
-import { getImagesListAPI } from 'apis/gallery';
+import { withAuthConsumer } from 'Context/Auth';
+import { withPopWindowConsumer } from 'Context/PopWindow';
+import { getImagesListAPI, postFavouritesAPI, deleteFavouritesAPI } from 'apis/gallery';
+import { BsFillHeartFill, BsHeart } from 'react-icons/bs';
 
 import classes from './styles.module.scss';
 import classNames from 'classnames/bind';
 const cx = classNames.bind(classes);
 
-const GarellyList = () => {
+const GarellyList = ({ authData, popWindowData }) => {
     const fetchListener = useRef(null);
-    const [isLoading, setIsLoading] = useState(true);
+    const { openPopWindowFunc } = popWindowData;
+    const { isLogin, token } = authData;
     const [listData, setListData] = useState({
         nowPage: 0,
         isRest: true,
         list: [[], [], []],
     });
+    const [favoriteList, setFavoriteList] = useState([]);
 
+    const removeFavorite = (imageId) => {
+        const params = {
+            favoriteId: favoriteList.find((el) => el.imageId === imageId).favoriteId,
+        };
+        fetchListener.current = from(deleteFavouritesAPI(params, token)).subscribe((res) => {
+            if (res.status === 200) {
+                setFavoriteList([...favoriteList.filter((item) => item.imageId !== imageId)]);
+            }
+        });
+    };
+
+    const setFavorite = (imageId) => {
+        const params = {
+            image_id: imageId,
+        };
+        fetchListener.current = from(postFavouritesAPI(params, token)).subscribe((res) => {
+            if (res.status === 200) {
+                setFavoriteList([{ imageId: imageId, favoriteId: res.data.id }, ...favoriteList]);
+            }
+        });
+    };
     const getList = () => {
         const params = {
             params: {
@@ -37,7 +63,6 @@ const GarellyList = () => {
                     isRest: false,
                 }));
             }
-            setIsLoading(false);
         });
     };
 
@@ -48,30 +73,38 @@ const GarellyList = () => {
     }, [listData.isRest]);
     return (
         <div className={cx('garellyList')}>
-            GarellyList
             <div className={cx('imgs')}>
-                <div className={cx('colum', 'first')}>
-                    {listData.list[0].map((img) => (
-                        <div key={img.id}>
-                            {/* style={{ height: `${img.height * (300 / img.width)}px` }} */}
-                            <img src={img.url} alt="" />
-                        </div>
-                    ))}
-                </div>
-                <div className={cx('colum', 'second')}>
-                    {listData.list[1].map((img) => (
-                        <div key={img.id}>
-                            <img src={img.url} alt="" />
-                        </div>
-                    ))}
-                </div>
-                <div className={cx('colum', 'third')}>
-                    {listData.list[2].map((img) => (
-                        <div key={img.id}>
-                            <img src={img.url} alt="" />
-                        </div>
-                    ))}
-                </div>
+                {Array.from(['first', 'seocnd', ' third'], (x, i) => x).map((colum, idx) => (
+                    <div className={cx('colum', colum)}>
+                        {listData.list[idx].map((img) => (
+                            <div key={img.id}>
+                                <img src={img.url} alt="" />
+                                <div
+                                    className={cx('favorite')}
+                                    onClick={() => {
+                                        if (isLogin) {
+                                            if (favoriteList.some((el) => el.imageId === img.id)) {
+                                                removeFavorite(img.id);
+                                            } else {
+                                                setFavorite(img.id);
+                                            }
+                                        } else {
+                                            openPopWindowFunc({
+                                                popContent: <div className={cx('alert')}>please login to continue</div>,
+                                            });
+                                        }
+                                    }}
+                                >
+                                    {favoriteList.some((el) => el.imageId === img.id) ? (
+                                        <BsFillHeartFill />
+                                    ) : (
+                                        <BsHeart />
+                                    )}
+                                </div>
+                            </div>
+                        ))}
+                    </div>
+                ))}
             </div>
             {listData.nowPage < 10 && (
                 <InView
@@ -91,4 +124,4 @@ const GarellyList = () => {
     );
 };
 
-export default withRouter(GarellyList);
+export default withRouter(withAuthConsumer(withPopWindowConsumer(GarellyList)));
