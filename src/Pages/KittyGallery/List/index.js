@@ -6,6 +6,7 @@ import { InView } from 'react-intersection-observer';
 import { withAuthConsumer } from 'Context/Auth';
 import { withPopWindowConsumer } from 'Context/PopWindow';
 import { getImagesListAPI, postFavouritesAPI, deleteFavouritesAPI } from 'apis/gallery';
+import GarellyLogin from 'Pages/KittyGallery/Login';
 import { BsFillHeartFill, BsHeart } from 'react-icons/bs';
 
 import classes from './styles.module.scss';
@@ -97,9 +98,7 @@ const GarellyList = ({ authData, popWindowData }) => {
                                                 setFavorite(img.id);
                                             }
                                         } else {
-                                            openPopWindowFunc({
-                                                popContent: <div className={cx('alert')}>please login to continue</div>,
-                                            });
+                                            openPopWindowFunc({ popContent: <GarellyLogin /> });
                                         }
                                     }}
                                 >

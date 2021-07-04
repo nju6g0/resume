@@ -12,8 +12,8 @@ const GarellyLogin = ({ authData, popWindowData }) => {
     const { closePopWindowFunc } = popWindowData;
     const [isLoading, setIsLoading] = useState(false);
     const [formData, setFormData] = useState({
-        username: 'yishan',
-        password: 'sdfFHyujm87654kj@ytrfvbn',
+        username: '',
+        password: '',
     });
     const [feedback, setFeedback] = useState({
         isShow: false,
