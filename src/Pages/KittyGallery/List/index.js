@@ -67,6 +67,14 @@ const GarellyList = ({ authData, popWindowData }) => {
     };
 
     useEffect(() => {
+        setListData({
+            nowPage: 0,
+            isRest: true,
+            list: [[], [], []],
+        });
+    }, [isLogin]);
+
+    useEffect(() => {
         if (listData.isRest) {
             getList();
         }

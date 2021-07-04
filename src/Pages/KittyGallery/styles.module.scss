@@ -51,6 +51,7 @@
             width: 150px;
             ul {
                 display: none;
+                z-index: 1;
             }
             li {
                 cursor: pointer;

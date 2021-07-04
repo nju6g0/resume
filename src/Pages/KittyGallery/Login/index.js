@@ -12,8 +12,8 @@ const GarellyLogin = ({ authData, popWindowData }) => {
     const { closePopWindowFunc } = popWindowData;
     const [isLoading, setIsLoading] = useState(false);
     const [formData, setFormData] = useState({
-        username: '',
-        password: '',
+        username: 'yishan',
+        password: 'sdfFHyujm87654kj@ytrfvbn',
     });
     const [feedback, setFeedback] = useState({
         isShow: false,
@@ -35,7 +35,7 @@ const GarellyLogin = ({ authData, popWindowData }) => {
         });
         window.setTimeout(() => {
             if (results.every((el) => el)) {
-                changeLoginStatusFunc({ isLogin: true, token: '4742099d-dc42-4d3d-a4d0-ca077246a7d9' });
+                changeLoginStatusFunc({ isLogin: true });
                 closePopWindowFunc();
             } else {
                 setFeedback({
@@ -56,6 +56,7 @@ const GarellyLogin = ({ authData, popWindowData }) => {
                 <label>帳號： </label>
                 <input
                     type="text"
+                    value={formData.username}
                     onChange={(e) => {
                         saveValue('username', e.target.value);
                     }}
@@ -65,6 +66,7 @@ const GarellyLogin = ({ authData, popWindowData }) => {
                 <label>密碼：</label>
                 <input
                     type="password"
+                    value={formData.password}
                     onChange={(e) => {
                         saveValue('password', e.target.value);
                     }}
