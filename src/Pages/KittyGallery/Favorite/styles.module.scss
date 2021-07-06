@@ -33,5 +33,16 @@
                 }
             }
         }
+        @media screen and (max-width: 767px) {
+            > div {
+                width: calc(50% - 16px);
+                height: 33vw;
+                padding: 5px 5px 20px 5px;
+                .favorite {
+                    top: 5px;
+                    right: 8px;
+                }
+            }
+        }
     }
 }
