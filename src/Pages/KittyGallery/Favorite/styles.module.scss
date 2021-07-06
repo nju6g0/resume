@@ -1,2 +1,37 @@
 .garellyFavotite {
+    .imgs {
+        display: flex;
+        flex-wrap: wrap;
+        max-width: 960px;
+        margin: 0 auto;
+        > div {
+            width: calc(33% - 16px);
+            height: 28vw;
+            margin-right: 16px;
+            margin-top: 26px;
+            position: relative;
+            border: 1px solid #ccc;
+            padding: 10px 10px 30px 10px;
+            background-color: #fff;
+            box-shadow: 5px 10px 10px rgba(255, 255, 255, 0.5);
+            > img {
+                width: 100%;
+                // height: auto;
+                height: 100%;
+                object-fit: cover;
+                object-position: top;
+                border: 1px solid #ccc;
+            }
+            .favorite {
+                position: absolute;
+                top: 20px;
+                right: 20px;
+                color: #f26666;
+                cursor: pointer;
+                &:hover {
+                    color: #fff;
+                }
+            }
+        }
+    }
 }
