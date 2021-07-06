@@ -28,7 +28,7 @@ const GarellyLogin = ({ authData, popWindowData }) => {
     };
 
     const sendForm = () => {
-        const validValues = { username: 'yishan', password: 'sdfFHyujm87654kj@ytrfvbn' };
+        const validValues = { username: 'yishan', password: '54413' };
         const results = [];
         Object.keys(formData).forEach((key) => {
             results.push(validValues[key] === formData[key]);
