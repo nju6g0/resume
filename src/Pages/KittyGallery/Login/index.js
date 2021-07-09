@@ -12,8 +12,8 @@ const GarellyLogin = ({ authData, popWindowData }) => {
     const { closePopWindowFunc } = popWindowData;
     const [isLoading, setIsLoading] = useState(false);
     const [formData, setFormData] = useState({
-        username: 'yishan',
-        password: '54413',
+        username: '',
+        password: '',
     });
     const [feedback, setFeedback] = useState({
         isShow: false,
@@ -28,7 +28,7 @@ const GarellyLogin = ({ authData, popWindowData }) => {
     };
 
     const sendForm = () => {
-        const validValues = { username: 'yishan', password: '54413' };
+        const validValues = { username: 'yishan', password: '@Aa123456' };
         const results = [];
         Object.keys(formData).forEach((key) => {
             results.push(validValues[key] === formData[key]);
