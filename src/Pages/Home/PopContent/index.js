@@ -7,11 +7,6 @@ const cx = classNames.bind(classes);
 const PopContent = ({ data }) => {
     return (
         <div className={`${cx('popContent')} row gx-0`}>
-            {/* <div className="col-md-3">
-                {data.subTitle.split('').map((word) => (
-                    <div>{word}</div>
-                ))}
-            </div> */}
             <div className={`${cx('imgBox')} col-md-8`}>
                 <img src={data.image} alt="totoro" />
             </div>

@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState, useRef } from 'react';
 import XLSX from 'xlsx';
 
 import { withPopWindowConsumer } from 'Context/PopWindow';
@@ -18,29 +18,16 @@ const Excel = ({ popWindowData }) => {
     const [fileName, setFileName] = useState('');
 
     const readFile = (e) => {
-        // console.log(e.target.files);
         if (e.target.files.length > 0) {
-            var files = e.target.files,
+            const files = e.target.files,
                 f = files[0];
-            var reader = new FileReader();
+            const reader = new FileReader();
             reader.onload = function (e) {
-                var data = new Uint8Array(e.target.result);
-                var workbook = XLSX.read(data, { type: 'array' });
-                // console.log(workbook);
-                /* DO SOMETHING WITH workbook HERE */
-                var first_sheet_name = workbook.SheetNames[0];
-                var address_of_cell = 'A1';
-
-                /* Get worksheet */
-                var worksheet = workbook.Sheets[first_sheet_name];
-
-                /* Find desired cell */
-                var desired_cell = worksheet[address_of_cell];
-
-                /* Get the value */
+                const data = new Uint8Array(e.target.result);
+                const workbook = XLSX.read(data, { type: 'array' });
+                const first_sheet_name = workbook.SheetNames[0];
+                const worksheet = workbook.Sheets[first_sheet_name];
                 if (worksheet['!ref']) {
-                    var desired_value = desired_cell ? desired_cell.v : undefined;
-                    // console.log(worksheet['!ref']);
                     const index = worksheet['!ref'].indexOf(':');
                     const numArr = worksheet['!ref'].substring(index + 1).split('');
                     const numIndex = numArr.findIndex((el) => !isNaN(el));
@@ -55,7 +42,6 @@ const Excel = ({ popWindowData }) => {
                         });
                         datas.push(data);
                     }
-                    // console.log(datas);
                     setTableData(datas);
                     setFileName(f.name);
                 } else {
@@ -63,21 +49,14 @@ const Excel = ({ popWindowData }) => {
                         popContent: <Naughty />,
                     });
                 }
-
-                // var container = document.getElementById('tableau');
-                // container.innerHTML = XLSX.utils.sheet_to_html(worksheet);
-
-                // const json = XLSX.utils.sheet_to_json(worksheet);
-                // console.log(json);
             };
             reader.readAsArrayBuffer(f);
         }
     };
     const downloadFile = () => {
-        var wb = XLSX.utils.book_new();
-        var ws_name = 'SheetJS';
-        /* make worksheet */
-        var ws_data = [
+        const wb = XLSX.utils.book_new();
+        const ws_name = 'SheetJS';
+        const ws_data = [
             ['書名', 'ISBN', '作者', '分類', '內容簡介'],
             [
                 '在森崎書店的日子',
@@ -94,8 +73,7 @@ const Excel = ({ popWindowData }) => {
                 '兒子回到過去拯救不成材的老爸？穿梭於過去、現在、未來超越時空的父子情日本讀者一致推薦，東野十大人氣長篇之一！若你看過《祕密》、《紅色手指》，絕不能錯過又一部東野流探討親子關係的感人作品！',
             ],
         ];
-        var ws = XLSX.utils.aoa_to_sheet(ws_data);
-        /* Add the worksheet to the workbook */
+        const ws = XLSX.utils.aoa_to_sheet(ws_data);
         XLSX.utils.book_append_sheet(wb, ws, ws_name);
         XLSX.writeFile(wb, 'sample.xlsx');
     };
@@ -123,7 +101,6 @@ const Excel = ({ popWindowData }) => {
                         onChange={readFile}
                     />
                 </div>
-                {/* <div className={cx('table')} id="tableau"></div> */}
                 <div className={cx('fakeTable')}>
                     <div className={cx('tHead')}>
                         <span>{tableData[0]?.A}</span>

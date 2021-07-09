@@ -19,19 +19,20 @@ const GarellyFavotite = ({ authData }) => {
     const [listData, setListData] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
 
-    const removeFavorite = () => {
-        const params = {
-            favoriteId: removeTarget,
-        };
-        fetchListener.current = from(deleteFavouritesAPI(params, token)).subscribe((res) => {
-            if (res.status === 200) {
-                setListData([...listData.filter((img) => img.id !== removeTarget)]);
-                setRemoveTarget(null);
-            }
-        });
-    };
-
     useEffect(() => {
+        const removeFavorite = () => {
+            if (removeTarget) {
+                const params = {
+                    favoriteId: removeTarget,
+                };
+                fetchListener.current = from(deleteFavouritesAPI(params, token)).subscribe((res) => {
+                    if (res.status === 200) {
+                        setListData([...listData.filter((img) => img.id !== removeTarget)]);
+                        setRemoveTarget(null);
+                    }
+                });
+            }
+        };
         if (removeTarget) {
             removeFavorite();
         }
@@ -50,7 +51,7 @@ const GarellyFavotite = ({ authData }) => {
                 setIsLoading(false);
             }
         });
-    }, []);
+    });
 
     if (isLoading) return <Loading />;
     return (

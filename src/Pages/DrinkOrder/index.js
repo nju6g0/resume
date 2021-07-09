@@ -1,7 +1,6 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState } from 'react';
 
 import Add from './Add';
-import Edit from './Edit';
 import List from './List';
 import GoHome from 'Component/GoHome';
 import { orderList } from './datas';
@@ -27,14 +26,6 @@ const DrinkOrder = () => {
             icon: <BsChevronDoubleRight />,
             goMode: 'list',
         },
-        // {
-        //     key: 'edit',
-        //     component: <Edit />,
-        //     bcgImg: addbcg,
-        //     button: '看看有哪些團',
-        //     icon: <BsChevronDoubleRight />,
-        //     goMode: 'list',
-        // },
         {
             key: 'list',
             component: <List />,
@@ -52,23 +43,15 @@ const DrinkOrder = () => {
             setListData((prevState) => [...prevState, obj]);
         },
         updateListFunc: (key, obj) => {
-            console.log(key, obj);
             listData.find((order) => order.id === key).list.push(obj);
             setListData(listData);
-            console.log(key, obj);
         },
     };
 
     return (
         <OrderContext.Provider value={providerData}>
-            <div
-                className={cx('drinkorder')}
-                // style={{
-                //     backgroundImage: `url(${routes.find((el) => el.key === mode).bcgImg})`,
-                // }}
-            >
+            <div className={cx('drinkorder')}>
                 <div className={cx('container')}>
-                    {/* style={{ width: mode === 'list' ? '50%' : '30%' }} */}
                     <div
                         className={cx('button')}
                         onClick={() => {

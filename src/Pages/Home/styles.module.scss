@@ -46,14 +46,6 @@ main {
         color: #fff;
         height: 100vh;
         padding-top: 100px;
-        // margin-top: -50px;
-        // min-height: calc(100vh - 80px);
-        // background-image: url('../../image/home/section_13.jpg');
-        // background-attachment: fixed;
-        // background-position: center center;
-        // background-repeat: no-repeat;
-        // background-size: cover;
-        // -webkit-filter: blur(2px);
         h1,
         div {
             position: inherit;
@@ -64,7 +56,6 @@ main {
             font-size: 3rem;
             text-align: center;
             width: 10%;
-            // border: 5px solid #fff;
             border-top: 10px solid #fff;
             border-bottom: 10px solid #fff;
             margin: 0 auto;
@@ -78,8 +69,6 @@ main {
             position: absolute;
             top: 0;
             left: 0;
-            // background-color: rgba(255, 255, 255, 0.1);
-            // background-color: rgba(222, 226, 3, 0.1);
             background-image: url('../../image/home/section_13.jpg');
             background-attachment: fixed;
             background-position: center center;
@@ -88,10 +77,6 @@ main {
             -webkit-filter: blur(2px);
         }
         @media screen and (max-width: 768px) {
-            &::after {
-                // background-position: center right;
-            }
-
             h1 {
                 width: 20%;
                 font-size: 2rem;
@@ -100,7 +85,6 @@ main {
     }
     .introduction {
         padding: 80px 30px 50px 30px;
-        // width: 70%;
         margin: 0 auto;
         min-height: 80vh;
         h2 {
@@ -121,9 +105,6 @@ main {
             background-color: rgba(255, 255, 255, 0.5);
             padding: 1rem 1rem 1rem 2rem;
         }
-        // @media screen and (max-width: 992px) {
-        //     width: 80%;
-        // }
         @media screen and (max-width: 767px) {
             div {
                 > img {
@@ -408,17 +389,6 @@ main {
             padding: 50px 20px;
         }
     }
-    // section:last-child {
-    //     > div {
-    //         height: 300px;
-    //     }
-    //     > div:first-child {
-    //         background-color: $color_5;
-    //     }
-    //     > div:nth-child(2) {
-    //         background-color: $color_4;
-    //     }
-    // }
     @media screen and (max-width: 768px) {
         h2 {
             margin-bottom: 0px;

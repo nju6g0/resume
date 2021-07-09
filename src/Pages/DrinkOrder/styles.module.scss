@@ -7,7 +7,6 @@
     height: calc(100vh - 50px);
     position: relative;
     .container {
-        // min-width: 30%;
         max-width: 90%;
         position: absolute;
         top: 50%;
@@ -56,11 +55,11 @@
                 height: 7px;
             }
             &::-webkit-scrollbar-track {
-                background-color: #fff; //a297a8
+                background-color: #fff;
             }
 
             &::-webkit-scrollbar-thumb {
-                background-color: #a297a8; //7c789d
+                background-color: #a297a8;
             }
             .list {
                 // width: 50%;
@@ -68,7 +67,6 @@
                 min-height: 100%;
             }
             .add {
-                // width: 30%;
                 input[type='text'],
                 input[type='number'] {
                     padding: 5px 10px;

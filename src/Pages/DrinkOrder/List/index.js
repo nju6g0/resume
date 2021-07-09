@@ -1,7 +1,7 @@
-import React, { useState, useRef, useEffect, useContext } from 'react';
+import React, { useState, useContext } from 'react';
 
 import { OrderContext } from '../index';
-import { memberList, menu, iceOptions, sugarOptions, otherOptions } from '../datas';
+import { menu, iceOptions, sugarOptions, otherOptions } from '../datas';
 
 import classes from '../styles.module.scss';
 import classNames from 'classnames/bind';
@@ -11,9 +11,6 @@ const List = () => {
     const { listData } = useContext(OrderContext);
     const [nowShowId, setNowShowId] = useState(listData[0].id);
 
-    // useEffect(() => {
-    //     console.log(listData);
-    // }, []);
     return (
         <div className={cx('list')}>
             <select
@@ -42,7 +39,6 @@ const List = () => {
                         .find((el) => el.id === nowShowId)
                         .list.map((item, idx) => (
                             <tr id={`order_${idx}`}>
-                                {/* <th scope="row">{memberList.find((mem) => mem.no === item.member).name}</th> */}
                                 <th scope="row">{item.memberName}</th>
                                 <td>
                                     {

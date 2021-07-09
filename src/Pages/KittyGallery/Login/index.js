@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 
 import { withAuthConsumer } from 'Context/Auth';
 import { withPopWindowConsumer } from 'Context/PopWindow';
@@ -12,8 +12,8 @@ const GarellyLogin = ({ authData, popWindowData }) => {
     const { closePopWindowFunc } = popWindowData;
     const [isLoading, setIsLoading] = useState(false);
     const [formData, setFormData] = useState({
-        username: '',
-        password: '',
+        username: 'yishan',
+        password: '54413',
     });
     const [feedback, setFeedback] = useState({
         isShow: false,

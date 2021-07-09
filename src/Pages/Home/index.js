@@ -64,7 +64,7 @@ const Home = ({ popWindowData }) => {
                             <br />
                             <br />
                             辭職之後，開始清查人生的 todo
-                            list，在因緣際會之下接觸到前端這個陌生的領域，在網路資源自學html及css，為了更有系統的學習決定到資策會接受訓練。也說不上來前端的魅力在哪裡，但就是很享受把一個想法具象成有功能網站的過程，並從中獲得滿滿的成就感；然後，期許自己有一天能像胖虎一樣，很驕傲的大聲說出：「我是一個前端開發者。」(題外話，不覺得胖虎很威嗎？怎麼會有人如此有自信地封自己為孩子王。)
+                            list，在一次偶然的機會下接觸到前端這個陌生的領域，開始於網路資源自學html及css，為了更有系統的學習相關知識，決定到資策會接受訓練。也說不上來前端的魅力在哪裡，但就是很享受把一個想法具象成有功能網站的過程，並從中獲得滿滿的成就感；然後，期許自己有一天能像胖虎一樣，很驕傲的大聲說出：「我是一個前端開發者。」(題外話，不覺得胖虎很威嗎？怎麼會有人如此有自信地封自己為孩子王。)
                             <br />
                             <br />
                         </p>
@@ -222,17 +222,6 @@ const Home = ({ popWindowData }) => {
                     </div>
                 </div>
             </section>
-            {/* <section>
-                <div>
-                    <p>此網站圖片資源來自：</p>
-                    <div className="row">
-                        <p className="col-4">freepik (https://www.freepik.com/)</p>
-                        <p className="col-4">Unsplash (https://unsplash.com/)</p>
-                        <p className="col-4">STUDIO GHIBLI (https://www.ghibli.jp/info/013344/)</p>
-                    </div>
-                </div>
-                <div></div>
-            </section> */}
         </Fragment>
     );
 };

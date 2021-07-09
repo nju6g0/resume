@@ -45,27 +45,6 @@ const GarellyList = ({ authData, popWindowData }) => {
             }
         });
     };
-    const getList = () => {
-        const params = {
-            params: {
-                limit: 9,
-                page: listData.nowPage,
-            },
-        };
-        fetchListener.current = from(getImagesListAPI(params)).subscribe((res) => {
-            if (res.status === 200) {
-                setListData((prevState) => ({
-                    ...prevState,
-                    list: [
-                        [...prevState.list[0], ...res.data.slice(0, 3)],
-                        [...prevState.list[1], ...res.data.slice(3, 6)],
-                        [...prevState.list[2], ...res.data.slice(6)],
-                    ],
-                    isRest: false,
-                }));
-            }
-        });
-    };
 
     useEffect(() => {
         setListData({
@@ -76,6 +55,27 @@ const GarellyList = ({ authData, popWindowData }) => {
     }, [isLogin]);
 
     useEffect(() => {
+        const getList = () => {
+            const params = {
+                params: {
+                    limit: 9,
+                    page: listData.nowPage,
+                },
+            };
+            fetchListener.current = from(getImagesListAPI(params)).subscribe((res) => {
+                if (res.status === 200) {
+                    setListData((prevState) => ({
+                        ...prevState,
+                        list: [
+                            [...prevState.list[0], ...res.data.slice(0, 3)],
+                            [...prevState.list[1], ...res.data.slice(3, 6)],
+                            [...prevState.list[2], ...res.data.slice(6)],
+                        ],
+                        isRest: false,
+                    }));
+                }
+            });
+        };
         if (listData.isRest) {
             getList();
         }
@@ -84,7 +84,7 @@ const GarellyList = ({ authData, popWindowData }) => {
         <div className={cx('garellyList')}>
             <div className={cx('imgs')}>
                 {Array.from(['first', 'seocnd', ' third'], (x, i) => x).map((colum, idx) => (
-                    <div className={cx('colum', colum)}>
+                    <div key={colum} className={cx('colum', colum)}>
                         {listData.list[idx].map((img) => (
                             <div key={img.id}>
                                 <img src={img.url} alt="" />

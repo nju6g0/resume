@@ -10,11 +10,10 @@ code {
     font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
 }
 
-/* header, */
 footer {
-    /* position: absolute; */
     height: 50px;
-    background-color: #ccc;
+    background-color: #111;
+    color: #fff;
 }
 footer {
     line-height: 50px;
