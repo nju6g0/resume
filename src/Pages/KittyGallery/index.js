@@ -6,7 +6,7 @@ import { withPopWindowConsumer } from 'Context/PopWindow';
 import GoHome from 'Component/GoHome';
 import GarellyLogin from 'Pages/KittyGallery/Login';
 import { galleryRoutes } from 'Config/routes';
-import kittyAvatar from 'image/kittyGarelly/avatar.jpg';
+import kittyAvatar from 'image/kittyGarelly_avatar.jpg';
 
 import classes from './styles.module.scss';
 import classNames from 'classnames/bind';

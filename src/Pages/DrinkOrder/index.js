@@ -4,8 +4,6 @@ import Add from './Add';
 import List from './List';
 import GoHome from 'Component/GoHome';
 import { orderList } from './datas';
-import addbcg from 'image/drinkorder/background_add.jpg';
-import listbcg from 'image/drinkorder/background_list.jpg';
 
 import { BsChevronDoubleRight, BsPlusCircle } from 'react-icons/bs';
 import classes from './styles.module.scss';
@@ -21,7 +19,6 @@ const DrinkOrder = () => {
         {
             key: 'add',
             component: <Add />,
-            bcgImg: addbcg,
             button: '看看大家點什麼',
             icon: <BsChevronDoubleRight />,
             goMode: 'list',
@@ -29,7 +26,6 @@ const DrinkOrder = () => {
         {
             key: 'list',
             component: <List />,
-            bcgImg: listbcg,
             button: '我要跟團',
             icon: <BsPlusCircle />,
             goMode: 'add',

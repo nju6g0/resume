@@ -1,12 +1,12 @@
-import message_borad from 'image/home/portfolios/message_board.jpg';
-import form from 'image/home/portfolios/form.jpg';
-import KittyGallery from 'image/home/kittyGarelly_2.jpg';
-import totoro from 'image/home/ghibli/totoro.jpg';
-import totoro_busStation from 'image/home/ghibli/totoro_busStation.jpg';
-import totoro_face from 'image/home/ghibli/totoro_face.jpg';
-import totoro_father from 'image/home/ghibli/totoro_father.jpg';
-import totoro_cry from 'image/home/ghibli/totoro_cry.jpg';
-import totoro_bus from 'image/home/ghibli/totoro_bus.jpg';
+import message_borad from 'image/home_portfolios_message_board.jpg';
+import form from 'image/home_portfolios_form.jpg';
+import KittyGallery from 'image/home_portfolios_kittyGarelly.jpg';
+import totoro from 'image/home_ghibli_totoro.jpg';
+import totoro_busStation from 'image/home_ghibli_totoro_busStation.jpg';
+import totoro_face from 'image/home_ghibli_totoro_face.jpg';
+import totoro_father from 'image/home_ghibli_totoro_father.jpg';
+import totoro_cry from 'image/home_ghibli_totoro_cry.jpg';
+import totoro_bus from 'image/home_ghibli_totoro_bus.jpg';
 
 export const portfolios = [
     {

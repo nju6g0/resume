@@ -3,7 +3,7 @@ import { withRouter, Link } from 'react-router-dom';
 
 import { withPopWindowConsumer } from 'Context/PopWindow';
 import { portfolios, slideData } from './datas';
-import mainPic from 'image/home/main.jpg';
+import mainPic from 'image/home_section_2.jpg';
 import PopContent from './PopContent';
 
 import { BsChatSquareQuote, BsChevronCompactLeft, BsChevronCompactRight } from 'react-icons/bs';
