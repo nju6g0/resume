@@ -109,6 +109,8 @@ const Home = ({ popWindowData }) => {
                         <li>JQUERY</li>
                         <li>BOOTSTRAP</li>
                         <li>REACT</li>
+                        <li>REDUX, REDUX SAGA</li>
+                        <li>NEXT JS</li>
                     </ul>
                 </div>
                 <div className="col-12 col-md-1"></div>
@@ -116,17 +118,17 @@ const Home = ({ popWindowData }) => {
                     <h3>訓練/經歷</h3>
                     <ul>
                         <li>
-                            和泰聯網股份有限公司，前端工程師，Mar 2021 ~ 迄今(在職中)。
+                            和泰聯網股份有限公司，前端工程師，Mar. 2021 ~ Jul. 2021。
                             <br />
                             <small>以 React 撰寫 yoxi 企業簽單後台管理系統。</small>
                         </li>
                         <li>
-                            緯創軟體股份有限公司，前端工程師，Mar 2020 ~ Mar 2021。
+                            緯創軟體股份有限公司，前端工程師，Mar. 2020 ~ Mar. 2021。
                             <br />
                             <small>參與Acer 電競社群平台 Planet9網站開發，以 React 撰寫前端頁面。</small>
                         </li>
                         <li>
-                            精誠資訊股份有限公司，前端工程師，Jul 2019 ~ Mar 2020。
+                            精誠資訊股份有限公司，前端工程師，Jul. 2019 ~ Mar. 2020。
                             <br />
                             <small>以 angular 撰寫臺灣銀行端末系統前端頁面(系統翻新)。</small>
                         </li>
