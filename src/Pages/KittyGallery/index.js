@@ -28,7 +28,7 @@ const KittyGallery = ({ location, history, authData, popWindowData }) => {
     return (
         <div className={cx('kittyGallery')}>
             <nav>
-                <Link to="/kittyGallery/galleryList">貓貓 Garelly</Link>
+                <Link to="/kittyGallery/galleryList">貓貓 Gallery</Link>
                 <div>
                     {isLogin ? (
                         <div className={cx('menu')}>
