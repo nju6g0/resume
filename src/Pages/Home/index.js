@@ -7,6 +7,7 @@ import mainPic from 'image/home_section_2.jpg';
 import PopContent from './PopContent';
 
 import { BsChatSquareQuote, BsChevronCompactLeft, BsChevronCompactRight } from 'react-icons/bs';
+import Main from './Main';
 import classes from './styles.module.scss';
 import classNames from 'classnames/bind';
 const cx = classNames.bind(classes);
@@ -42,13 +43,7 @@ const Home = ({ popWindowData }) => {
 
     return (
         <Fragment>
-            <section className={cx('main')}>
-                <div className="container">
-                    <h1>
-                        我<br />是<br />胖<br />虎<br />我<br />是<br />孩<br />子<br />王<br />
-                    </h1>
-                </div>
-            </section>
+            <Main />
             <section className={cx('introduction')}>
                 <div className="row gx-0">
                     <div className="col-12 col-md-6">
