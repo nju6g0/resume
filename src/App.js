@@ -33,7 +33,7 @@ function App() {
                     </Switch>
                 </BrowserRouter>
             </main>
-            <footer style={{ textAlign: 'center' }}>◎ 2021 YiShan, Su / Thank you for coming.</footer>
+            <footer style={{ textAlign: 'center' }}>◎ 2022 YiShan, Su / Thank you for coming.</footer>
             <PopWidnow />
         </Fragment>
     );
