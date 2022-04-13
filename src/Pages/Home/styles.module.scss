@@ -148,31 +148,30 @@ main {
     }
     .description.shrink {
       top: 68vh;
-      // color: $color_7;
-      // top: 47vh;
-      // left: 50%;
-      // transform: translateX(-50%);
-      // width: 80%;
       h1 {
         font-weight: 2rem;
-        // color: #fff;
       }
       p {
         font-size: 1rem;
       }
     }
     @media screen and (max-width: 768px) {
+      ul {
+        img {
+          object-position: center !important;
+        }
+      }
       .description {
         top: 50%;
         left: 50%;
         transform: translate(-50%, -50%);
         width: 80%;
-      }
-      h1 {
-        font-size: 2rem;
-      }
-      p {
-        font-size: 1rem;
+        h1 {
+          font-size: 2rem;
+        }
+        p {
+          font-size: 1rem;
+        }
       }
     }
   }
