@@ -111,13 +111,13 @@ main {
           height: 100%;
           object-fit: cover;
           object-position: right bottom;
-          animation: zoomIn 4s infinite;
+          animation: zoomIn 8s infinite;
           opacity: 0;
         }
       }
       li:nth-child(2) {
         img {
-          animation-delay: 2s;
+          animation-delay: 4s;
         }
       }
     }
