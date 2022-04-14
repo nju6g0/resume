@@ -21,7 +21,7 @@ const Main = () => {
       <ul className={isShrink && cx("shrink")}>
         {/* picsumId:[11, 110, 129, 182, 195*, 200, 204*, 212] */}
         <li><img src='https://picsum.photos/id/200/1280/900?random=2'/></li>
-        <li></li>
+        <li><img src='https://picsum.photos/id/212/1280/900?random=2'/></li>
       </ul>
       <div className={cx("description", isShrink?'shrink':'')}>
         <h1>Welcome YiShan's Resume</h1>
