@@ -7,7 +7,7 @@ const cx = classNames.bind(classes);
 
 const AboutMe = () => {
     return(
-        <section className={cx('introduction')}>
+        <section className={cx('aboutMe')}>
         <div className="row gx-0">
             <div className="col-12 col-md-6">
                 <img src={mainPic} alt="" />

@@ -86,7 +86,7 @@ main {
   .taiwanIcon {
     background-color: $color_7;
     color: #fff;
-    width: 100vw;
+    width: 100%;
     height: 120vh;
     ul,
     li,
@@ -204,8 +204,8 @@ main {
       }
     }
   }
-  .introduction {
-    padding: 80px 30px 50px 30px;
+  .aboutMe {
+    padding: 160px 30px 50px 30px;
     margin: 0 auto;
     min-height: 80vh;
     h2 {
