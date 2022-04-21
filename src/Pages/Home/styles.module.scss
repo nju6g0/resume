@@ -16,6 +16,7 @@ main {
   }
   > section {
     position: relative;
+    background-color: $color_0;
   }
   .button {
     background-color: #fff;
@@ -74,7 +75,7 @@ main {
       background-position: center center;
       background-repeat: no-repeat;
       background-size: cover;
-      -webkit-filter: blur(2px);
+      filter: blur(2px);
     }
     @media screen and (max-width: 768px) {
       h1 {
@@ -511,6 +512,52 @@ main {
     }
     @media screen and (max-width: 768px) {
       padding: 50px 20px;
+    }
+  }
+  .wave {
+    position: relative;
+    > div {
+      border-radius: 50%;
+    }
+    > div:first-child {
+      width: 25vw;
+      height: 25vw;
+      background-color: $color_0;
+      position: absolute;
+      top: -7vw;
+      left: -4vw;
+    }
+    > div:nth-child(2) {
+      width: 50vw;
+      height: 50vw;
+      background-color: $color_0;
+      position: absolute;
+      top: -6vw;
+      left: 9vw;
+    }
+    > div:nth-child(3) {
+      width: 30vw;
+      height: 50vw;
+      background-color: $color_0;
+      position: absolute;
+      top: -5vw;
+      left: 40vw;
+    }
+    > div:nth-child(4) {
+      width: 40vw;
+      height: 20vw;
+      background-color: $color_0;
+      position: absolute;
+      top: -5vw;
+      left: 58vw;
+    }
+    > div:last-child {
+      width: 30vw;
+      height: 30vw;
+      background-color: $color_0;
+      position: absolute;
+      top: -10vw;
+      right: -20vw;
     }
   }
   @media screen and (max-width: 768px) {
