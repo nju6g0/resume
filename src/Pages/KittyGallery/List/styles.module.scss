@@ -1,39 +1,65 @@
 .garellyList {
-    .imgs {
-        display: flex;
-        flex-wrap: nowrap;
-        max-width: 960px;
-        min-height: calc(100vh - 155px);
-        margin: 0 auto;
-        .colum + .colum {
-            margin-left: 16px;
-        }
-        .colum {
-            width: 300px;
-            > div {
-                width: 100%;
-                min-height: 10vw;
-                margin-top: 15px;
-                border: 1px solid #fff;
-                position: relative;
-                > img {
-                    width: 100%;
-                    height: auto;
-                }
-            }
-            .favorite {
-                position: absolute;
-                top: 10px;
-                right: 10px;
-                cursor: pointer;
-            }
-        }
+  .imgs {
+    display: flex;
+    flex-wrap: nowrap;
+    max-width: 960px;
+    min-height: calc(100vh - 155px);
+    margin: 0 auto;
+    .colum + .colum {
+      margin-left: 16px;
     }
-    .trigger {
-        height: 100px;
+    .colum {
+      width: 300px;
+      > div {
+        width: 100%;
+        min-height: 10vw;
+        margin-top: 15px;
+        border: 1px solid #fff;
+        position: relative;
+        > img {
+          width: 100%;
+          height: auto;
+        }
+      }
+      .favorite {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        cursor: pointer;
+      }
     }
+  }
+  .trigger {
+    height: 100px;
+  }
 }
 .alert {
-    border: 1px solid #ccc;
-    padding: 60px 1rem 1rem 1rem;
+  border: 1px solid #ccc;
+  padding: 60px 1rem 1rem 1rem;
+}
+.MasonryLayout {
+  min-height: 100vh;
+  column-count: 3;
+  column-gap: 10px;
+  margin: 0 auto;
+  .imgBox {
+    display: inline-block;
+    font-size: 12px;
+    border: 1px dotted #4f4f4f;
+    padding: 10px;
+    margin: 5px 5px 5px 0;
+    overflow: hidden;
+    font-size: 15px;
+    line-height: 1.5em;
+    letter-spacing: 1pt;
+    color: #353535;
+    border-radius: 5px;
+    > img {
+      width: 100%;
+      object-fit: cover;
+    }
+  }
+}
+.trigger {
+  height: 100px;
 }
