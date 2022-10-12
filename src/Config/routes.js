@@ -6,6 +6,7 @@ import GarellyUpload from 'Pages/KittyGallery/Upload';
 import GarellyFavorite from 'Pages/KittyGallery/Favorite';
 import GarellyList from 'Pages/KittyGallery/List';
 import Sample from 'Pages/emptyPage';
+import Animation from 'Pages/Animation';
 
 export const routes = [
     {
@@ -31,6 +32,18 @@ export const routes = [
         path: '/kittyGallery',
         exact: false,
         component: KittyGallery,
+    },
+    {
+        key: 'thef2e',
+        path: '/thef2e',
+        exact: false,
+        component: Sample,
+    },
+    {
+        key: 'animation',
+        path: '/animation',
+        exact: false,
+        component: Animation,
     },
     {
         key: 'comingsoon',

@@ -1,6 +1,8 @@
 import message_borad from 'image/home_portfolios_message_board.jpg';
 import form from 'image/home_portfolios_form.jpg';
 import KittyGallery from 'image/home_portfolios_kittyGarelly.jpg';
+import animation from 'image/home_protfolios_animation_2.jpg';
+import thef2e from 'image/home_protfolios_animation.jpg';
 import totoro from 'image/home_ghibli_totoro.jpg';
 import totoro_busStation from 'image/home_ghibli_totoro_busStation.jpg';
 import totoro_face from 'image/home_ghibli_totoro_face.jpg';
@@ -9,13 +11,15 @@ import totoro_cry from 'image/home_ghibli_totoro_cry.jpg';
 import totoro_bus from 'image/home_ghibli_totoro_bus.jpg';
 
 export const portfolios = [
+    { id: 'thef2e', title: 'The F2E 4th', description: 'coming soon...', image: thef2e },
+    { id: 'animation', title: 'animation 金促咪', description: 'HAHOW 動畫互動網頁特效入門 課程練習', image: animation },
+    { id: 'excel', title: '親愛的，show出你的口袋書單！', description: 'excel檔案讀取/下載', image: form },
     {
         id: 'drinkorder',
         title: '夥伴們，飲料訂起來！',
         description: '表單處理',
         image: message_borad,
     },
-    { id: 'excel', title: '親愛的，show出你的口袋書單！', description: 'excel檔案讀取/下載', image: form },
     { id: 'kittyGallery', title: '奴才們，快來吸貓吧！', description: 'The Cat Api 串接', image: KittyGallery },
     { id: 'comingsoon', title: '還沒想到要做什麼', description: '還沒想到要做什麼', image: null },
 ];
