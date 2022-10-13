@@ -1,12 +1,17 @@
 import React from "react";
 
 import GoHome from "Component/GoHome";
+import SunAndMoon from "./SunAndMoon";
+import Monsters from "./Monsters";
+import Loading from "./Loading";
 
 const MainPage = () => {
   return (
     <>
-      <h3>animation</h3>
+      <SunAndMoon />
+      <Monsters />
       <GoHome />
+      <Loading />
     </>
   );
 };

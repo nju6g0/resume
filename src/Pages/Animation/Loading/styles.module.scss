@@ -1,0 +1,100 @@
+$base_space: 8px;
+$color_dark_brown: #2c1d0a;
+$color_light_brown: #d4bd70;
+
+@mixin square($w, $h: $w, $r: 0) {
+  width: $w;
+  height: $h;
+  @if $r != 0 {
+    border-radius: $r;
+  }
+}
+
+.wrapper {
+  width: 100%;
+  height: 100vh;
+  background-color: #fff;
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  div {
+    position: relative;
+  }
+  .monster {
+    @include square(120px, 80px);
+    background-color: $color_light_brown;
+    animation: jumping 0.5s infinite alternate;
+    transition: 0.5s;
+    box-shadow: 0 0 10px rgba($color_dark_brown, 0.5);
+    position: relative;
+    .eye {
+      position: absolute;
+      top: 30px;
+      background-color: $color_dark_brown;
+      @include square(12px, 12px, 50%);
+    }
+    .eye:first-child {
+      left: 30px;
+    }
+    .eye:last-child {
+      right: 30px;
+    }
+    &::after {
+      content: "";
+      position: absolute;
+      left: 50%;
+      bottom: 16px;
+      transform: translateX(-50%);
+      @include square(0);
+      border: 12px solid;
+      border-color: transparent transparent $color_dark_brown transparent;
+    }
+  }
+  @keyframes jumping {
+    0% {
+      transform: translateY(0);
+      box-shadow: 0 0 10px rgba(black, 0.5);
+    }
+    100% {
+      transform: translateY(-150px);
+      box-shadow: 0 180px 50px rgba(black, 0.2);
+    }
+  }
+  .progressBar {
+    @include square(200px, 8px, 4px);
+    border: 1px solid black;
+    margin-top: $base_space * 5;
+    position: relative;
+    overflow: hidden;
+    .progressInner {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 0;
+      height: 100%;
+      background-color: black;
+    }
+  }
+  .progressBar + span {
+    position: absolute;
+    left: 0;
+  }
+}
+
+.wrapper.animation {
+  opacity: 0;
+  left: 100%;
+  transition: 0.5s;
+  transition-delay: 0.7s;
+  .monster {
+    @include square(0);
+    .eye,
+    &::after {
+      display: none;
+    }
+  }
+}
