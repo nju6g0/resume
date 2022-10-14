@@ -43,6 +43,13 @@ $color_dark_gold: gold;
     }
   }
 
+  .sun {
+    @include square(60px, 60px, 50%);
+    @include position_ab(20vw, 70vh);
+    background-color: $color_dark_gold;
+    box-shadow: 0 0 10px $color_dark_gold;
+  }
+
   .starsContainer {
     position: relative;
     @include square(100%);

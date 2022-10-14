@@ -10,6 +10,7 @@ const SunAndMoon = () => {
   return (
     <div ref={containerRef} className={cx("wrapper")}>
       <div className={cx("moon")} />
+      <div className={cx("sun")} />
       <div className={cx("starsContainer")}>
         {Array.from({ length: 30 }, (x) => x).map((star, idx) => (
           <div key={`star${idx}`} className={`star${idx + 1}`} />
