@@ -1,0 +1,29 @@
+%highLight {
+  background-color: rgba(black, 0.6);
+  color: #fff;
+}
+
+.container {
+  position: fixed;
+  top: 20%;
+  right: 0;
+  display: flex;
+  flex-direction: column;
+  > span {
+    padding: 8px 16px;
+    background-color: rgba(black, 0.3);
+    border-radius: 18px;
+    line-height: 20px;
+    cursor: pointer;
+    transition: 0.3s;
+    &:hover {
+      @extend %highLight;
+    }
+  }
+  > span.highLight {
+    @extend %highLight;
+  }
+  > span + span {
+    margin-top: 8px;
+  }
+}
