@@ -1,5 +1,52 @@
 .wrapper {
   width: 100%;
   height: 100vh;
-  background-color: antiquewhite;
+  background: linear-gradient(
+    180deg,
+    rgb(1, 1, 51),
+    rgb(48, 50, 143),
+    rgb(205, 205, 228),
+    antiquewhite 80%,
+    white
+  );
+  background-size: 100% 400%;
+  overflow: hidden;
+
+  .starsContainer {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    [class^="star"] {
+      width: 3px;
+      height: 3px;
+      border-radius: 50%;
+      background-color: #fff;
+      animation: falling 1s infinite;
+      position: absolute;
+    }
+    @for $i from 1 through 30 {
+      > div:nth-child(#{$i}) {
+        $positionX: random() * 100%;
+        $positionY: random() * -50%;
+        left: $positionX;
+        top: $positionY;
+        animation-delay: $i * -0.1s;
+      }
+    }
+    @keyframes falling {
+      0%,
+      100% {
+        opacity: 0;
+      }
+      70% {
+        opacity: 1;
+      }
+      0% {
+        transform: translate(100px, 0);
+      }
+      100% {
+        transform: translate(0, 500px);
+      }
+    }
+  }
 }
