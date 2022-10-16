@@ -28,10 +28,10 @@ $color_dark_gold: gold;
   overflow: hidden;
   position: relative;
   transition: 2s;
+  cursor: pointer;
 
   .moon,
   .sun {
-    cursor: pointer;
     transition: 1s;
   }
   .moon {
