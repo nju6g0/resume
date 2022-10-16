@@ -400,6 +400,8 @@ main {
     }
     @media screen and (max-width: 768px) {
       padding: 50px 20px;
+      background-size: contain;
+      background-color: #f0efed;
       > div:nth-child(2) {
         height: 10px;
       }
