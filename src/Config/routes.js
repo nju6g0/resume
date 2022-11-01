@@ -7,6 +7,7 @@ import GarellyFavorite from 'Pages/KittyGallery/Favorite';
 import GarellyList from 'Pages/KittyGallery/List';
 import Sample from 'Pages/emptyPage';
 import Animation from 'Pages/Animation';
+import TheF2E from 'Pages/TheF2E';
 
 export const routes = [
     {
@@ -37,7 +38,7 @@ export const routes = [
         key: 'thef2e',
         path: '/thef2e',
         exact: false,
-        component: Sample,
+        component: TheF2E,
     },
     {
         key: 'animation',
