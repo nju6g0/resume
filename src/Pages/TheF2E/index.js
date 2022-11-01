@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
-import qs from 'qs'
-import { useParams, useLocation, useHistory, useQuery } from 'react-router-dom'
+import qs from "qs";
+import { useParams, useLocation, useHistory, useQuery } from "react-router-dom";
 
 import GoHome from "Component/GoHome";
 import Web from "./Web";
@@ -15,18 +15,19 @@ const SIGN = "sign";
 const SCRUM = "scurm";
 
 const Page = () => {
-  const location = useLocation()
-  const history = useHistory()
+  const location = useLocation();
+  const history = useHistory();
   const params = useParams();
-  const querys = qs.parse(location.search, { ignoreQueryPrefix: true })
-  const [nowTab, setNowTab] = useState('');
+  const querys = qs.parse(location.search, { ignoreQueryPrefix: true });
+  const [nowTab, setNowTab] = useState("");
+  const [showHeader, setShowHeader] = useState(true);
 
-  const toggleTab = tab => {
+  const toggleTab = (tab) => {
     history.push({
       pathname: location.pathname,
-      search: qs.stringify({ tab })
-    })
-  }
+      search: qs.stringify({ tab }),
+    });
+  };
 
   const renderTabContent = () => {
     switch (nowTab) {
@@ -40,21 +41,51 @@ const Page = () => {
     }
   };
 
-  useEffect(()=>{
-    setNowTab(querys.tab || WEB)
-  },[querys])
+  useEffect(() => {
+    setNowTab(querys.tab || WEB);
+  }, [querys]);
+
+  useEffect(() => {
+    const handleScroll = (e) => {
+      setShowHeader(window.scrollY <= 0);
+    };
+    document.addEventListener("scroll", handleScroll);
+    return () => {
+      document.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
 
   return (
     <div className={cx("wrapper")}>
       <div className={cx("container")}>
-        <header>
-          <h3>The F2E 4th 互動式網頁設計</h3>
-          <ul className={cx("tabs")}>
-            <li onClick={()=>{toggleTab(WEB)}}>The F2E 活動網站設計</li>
-            <li onClick={()=>{toggleTab(SIGN)}}>今晚，我想來點點簽</li>
-            <li onClick={()=>{toggleTab(SCRUM)}}>Scrum 新手村</li>
-          </ul>
-        </header>
+        {showHeader && (
+          <header>
+            <h3>The F2E 4th 互動式網頁設計</h3>
+            <ul className={cx("tabs")}>
+              <li
+                onClick={() => {
+                  toggleTab(WEB);
+                }}
+              >
+                The F2E 活動網站設計
+              </li>
+              <li
+                onClick={() => {
+                  toggleTab(SIGN);
+                }}
+              >
+                今晚，我想來點點簽
+              </li>
+              <li
+                onClick={() => {
+                  toggleTab(SCRUM);
+                }}
+              >
+                Scrum 新手村
+              </li>
+            </ul>
+          </header>
+        )}
         <main>{renderTabContent()}</main>
       </div>
       <GoHome />
