@@ -14,6 +14,21 @@ const WEB = "web";
 const SIGN = "sign";
 const SCRUM = "scurm";
 
+const TABS = [
+  {
+    key: WEB,
+    text: "The F2E 活動網站設計",
+  },
+  {
+    key: SIGN,
+    text: "今晚，我想來點點簽",
+  },
+  {
+    key: SCRUM,
+    text: "Scrum 新手村",
+  },
+];
+
 const Page = () => {
   const location = useLocation();
   const history = useHistory();
@@ -22,7 +37,9 @@ const Page = () => {
   const [nowTab, setNowTab] = useState("");
   const [showHeader, setShowHeader] = useState(true);
 
-  const toggleTab = (tab) => {
+  const handleClickTab = (tab) => {
+    if (tab === nowTab) return;
+
     history.push({
       pathname: location.pathname,
       search: qs.stringify({ tab }),
@@ -46,6 +63,7 @@ const Page = () => {
   }, [querys]);
 
   useEffect(() => {
+    window.scrollTo(0, 0);
     const handleScroll = (e) => {
       setShowHeader(window.scrollY <= 0);
     };
@@ -62,27 +80,17 @@ const Page = () => {
           <header>
             <h3>The F2E 4th 互動式網頁設計</h3>
             <ul className={cx("tabs")}>
-              <li
-                onClick={() => {
-                  toggleTab(WEB);
-                }}
-              >
-                The F2E 活動網站設計
-              </li>
-              <li
-                onClick={() => {
-                  toggleTab(SIGN);
-                }}
-              >
-                今晚，我想來點點簽
-              </li>
-              <li
-                onClick={() => {
-                  toggleTab(SCRUM);
-                }}
-              >
-                Scrum 新手村
-              </li>
+              {TABS.map((tab) => (
+                <li
+                  key={`tab_${tab.key}`}
+                  {...(nowTab === tab.key && { className: cx("active") })}
+                  onClick={() => {
+                    handleClickTab(tab.key);
+                  }}
+                >
+                  {tab.text}
+                </li>
+              ))}
             </ul>
           </header>
         )}

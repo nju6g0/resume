@@ -7,7 +7,11 @@
     margin: 0 auto;
     height: 100vh;
     // background-color: blanchedalmond;
+    position: relative;
     header {
+      position: absolute;
+      top: 0;
+      left: 0;
       h3 {
       }
       ul {
@@ -17,9 +21,17 @@
         display: flex;
         li {
           cursor: pointer;
+          &:hover {
+            text-decoration: underline;
+          }
         }
         li + li {
           margin-left: 16px;
+        }
+        li.active {
+          cursor: auto;
+          text-decoration: none;
+          color: #f26666;
         }
       }
     }

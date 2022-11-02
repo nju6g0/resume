@@ -5,7 +5,7 @@ import classNames from "classnames/bind";
 const cx = classNames.bind(classes);
 
 const Scrum = () => {
-  return "Scrum 新手村";
+  return <div className={cx("wrapper")}>Scrum 新手村</div>;
 };
 
 export default Scrum;
