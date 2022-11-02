@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import qs from "qs";
-import { useParams, useLocation, useHistory, useQuery } from "react-router-dom";
+import { useLocation, useHistory } from "react-router-dom";
 
 import GoHome from "Component/GoHome";
 import Web from "./Web";
@@ -12,7 +12,7 @@ const cx = classNames.bind(classes);
 
 const WEB = "web";
 const SIGN = "sign";
-const SCRUM = "scurm";
+const SCRUM = "scrum";
 
 const TABS = [
   {
@@ -32,10 +32,9 @@ const TABS = [
 const Page = () => {
   const location = useLocation();
   const history = useHistory();
-  const params = useParams();
   const querys = qs.parse(location.search, { ignoreQueryPrefix: true });
   const [nowTab, setNowTab] = useState("");
-  const [showHeader, setShowHeader] = useState(true);
+  const [showHeader, setShowHeader] = useState(false);
 
   const handleClickTab = (tab) => {
     if (tab === nowTab) return;
@@ -63,7 +62,7 @@ const Page = () => {
   }, [querys]);
 
   useEffect(() => {
-    window.scrollTo(0, 0);
+    window.scrollTo(0, 1);
     const handleScroll = (e) => {
       setShowHeader(window.scrollY <= 0);
     };
