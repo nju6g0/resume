@@ -5,19 +5,16 @@ import classes from "./styles.module.scss";
 import classNames from "classnames/bind";
 const cx = classNames.bind(classes);
 
-const Button = ({ text, icon, width }) => {
-    console.log(text)
-  return (
-    <button
-      type="button"
-      className={cx("button")}
-      style={{ width, height: width / 3, fontSize: width / 10 }}
-    >
-      {text}
-      {icon}
-    </button>
-  );
-};
+const Button = ({ text, icon, width }) => (
+  <button
+    type="button"
+    className={cx("button")}
+    style={{ width, height: width / 3, fontSize: width / 10 }}
+  >
+    {text}
+    {icon}
+  </button>
+);
 
 Button.defaultProps = {
   width: 90,
