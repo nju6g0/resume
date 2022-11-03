@@ -19,7 +19,7 @@ const datas = [
 const BlockA = () => {
   return (
     <div className={cx("blockA")}>
-      <h2>The F2E</h2>
+      <h2>The F2E |</h2>
       <div className={cx("left")}>
         <img className={cx("orbit")} src={img_orbit} alt="orbit" />
         <p>互動式網頁設計!</p>
