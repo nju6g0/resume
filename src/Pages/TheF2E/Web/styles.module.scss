@@ -2,6 +2,8 @@ $color_green: #5be224;
 $color_white: #fff;
 
 $basic_size: 8px;
+$breakPoint_small: 414px;
+$breakPoint_middle: 768px;
 
 @mixin title($size: $basic_size * 8) {
   color: $color_green;
@@ -22,6 +24,7 @@ $basic_size: 8px;
   border: none;
   display: inline-block;
   transition: 0.3s;
+  font-weight: bold;
   &:hover {
     opacity: 0.9;
   }
@@ -58,40 +61,52 @@ $basic_size: 8px;
 }
 .blockA {
   height: 900px;
+  min-height: 100vh;
   max-width: 1440px;
   margin: 0 auto;
   display: flex;
+  position: relative;
   padding-top: $basic_size * 10;
-  padding: 90px 0 0 50px;
+  // padding: 90px 0 0 50px;
+  h2 {
+    @include title(18);
+    @include position_ab(90px, 90px);
+    z-index: 1;
+  }
   .left {
-    position: relative;
     width: 50%;
-    .texts {
-      @include position_ab($basic_size * 6, 0);
-      h2 {
-        @include title(18);
-      }
-      p {
-        font-size: $basic_size * 4;
-        margin-top: $basic_size * 6;
-      }
+    height: 100%;
+    padding-left: $basic_size * 12;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: relative;
+    p {
+      font-size: $basic_size * 4;
+      margin-top: -$basic_size * 6;
     }
-    .info {
-      height: 100%;
+    img {
+      max-width: 100%;
+    }
+    img.orbit {
+      margin-top: $basic_size * 10;
+      margin-left: -$basic_size * 8;
+      width: $basic_size * 34;
+    }
+    button {
+      margin-top: $basic_size * 8;
+    }
+    .datas {
       display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      > img:first-child {
-        margin-top: $basic_size * 10;
-        width: $basic_size * 40;
-      }
-      > button {
-      }
-      .datas {
+      flex-direction: column-reverse;
+      margin-top: $basic_size * 10;
+      > div {
         display: flex;
       }
-      .datas + img {
-        width: $basic_size * 32;
+      img.alients {
+        width: $basic_size * 28;
+        margin-left: -$basic_size * 12;
+        margin-top: -$basic_size * 10;
       }
     }
   }
@@ -125,6 +140,32 @@ $basic_size: 8px;
           height: 10px;
         }
       }
+    }
+  }
+  @media only screen and (max-width: $breakPoint_middle) {
+    padding: 90px 0 0 0;
+    .left {
+      width: 100%;
+      align-items: center;
+      padding-left: 0;
+      h2 {
+        left: 50%;
+        transform: translateX(-50%);
+        width: 100%;
+        text-align: center;
+      }
+      .datas {
+        width: 100%;
+        flex-direction: row;
+        justify-content: space-between;
+        margin-top: 0;
+        img.alients {
+          margin-left: 0;
+        }
+      }
+    }
+    .right {
+      display: none;
     }
   }
 }

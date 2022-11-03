@@ -19,25 +19,25 @@ const datas = [
 const BlockA = () => {
   return (
     <div className={cx("blockA")}>
+      <h2>The F2E</h2>
       <div className={cx("left")}>
-        <div className={cx("info")}>
-          <img src={img_orbit} alt="projector" />
-          <Button text="我 要 報 名 " icon={<BsArrowUpRight />} width={240} />
-          <div className={cx("datas")}>
+        <img className={cx("orbit")} src={img_orbit} alt="orbit" />
+        <p>互動式網頁設計!</p>
+        <Button text="我 要 報 名 " icon={<BsArrowUpRight />} width={240} />
+        <div className={cx("datas")}>
+          <img className={cx("alients")} src={img_aliens} alt="alients" />
+          <div>
             {datas.map((data) => (
               <DataLayout {...data} />
             ))}
           </div>
-          <img src={img_aliens} alt="alients" />
-        </div>
-        <div className={cx("texts")}>
-          <h2>The F2E</h2>
-          <p>互動式網頁設計!</p>
         </div>
       </div>
       <div className={cx("right")}>
         <p>4th</p>
-        {Array.from({length:50}, (x,i) => i).map(star => <div className={cx("star")} />)}
+        {Array.from({ length: 50 }, (x, i) => i).map((star) => (
+          <div className={cx("star")} />
+        ))}
       </div>
     </div>
   );
