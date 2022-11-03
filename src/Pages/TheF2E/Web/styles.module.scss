@@ -1,4 +1,130 @@
+$color_green: #5be224;
+$color_white: #fff;
+
+$basic_size: 8px;
+
+@mixin title($size: $basic_size * 8) {
+  color: $color_green;
+  font-size: $basic_size * $size;
+  font-weight: bolder;
+  text-shadow: -8px 4px 0 $color_white;
+}
+@mixin position_ab($x: 0, $y: 0) {
+  position: absolute;
+  top: $y;
+  left: $x;
+}
+
+.button {
+  background: url("../../../image/F2E_web/button_bgc.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  border: none;
+  display: inline-block;
+  transition: 0.3s;
+  &:hover {
+    opacity: 0.9;
+  }
+}
+.dataLayout {
+  color: $color_green;
+  margin-right: $basic_size * 8;
+  font-size: $basic_size * 3;
+  span {
+    width: 100%;
+    display: inline-block;
+    text-align: center;
+  }
+  > div {
+    height: $basic_size * 3;
+    &::after {
+      content: "";
+      width: 100%;
+      height: 1px;
+      display: block;
+      background-color: $color_green;
+      transform-origin: top right;
+      transform: rotate(-25deg);
+    }
+  }
+  > div + span {
+    font-size: $basic_size * 4;
+    margin-left: $basic_size * 4;
+    font-weight: bold;
+  }
+}
 .wrapper {
-  height: 100vh;
-  padding-top: 100px;
+  font-family: Cubic;
+}
+.blockA {
+  height: 900px;
+  max-width: 1440px;
+  margin: 0 auto;
+  display: flex;
+  padding-top: $basic_size * 10;
+  padding: 90px 0 0 50px;
+  .left {
+    position: relative;
+    width: 50%;
+    .texts {
+      @include position_ab($basic_size * 6, 0);
+      h2 {
+        @include title(18);
+      }
+      p {
+        font-size: $basic_size * 4;
+        margin-top: $basic_size * 6;
+      }
+    }
+    .info {
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      > img:first-child {
+        margin-top: $basic_size * 10;
+        width: $basic_size * 40;
+      }
+      > button {
+      }
+      .datas {
+        display: flex;
+      }
+      .datas + img {
+        width: $basic_size * 32;
+      }
+    }
+  }
+  .right {
+    width: 50%;
+    background-image: url("../../../image/F2E_web/projector.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    position: relative;
+    > p {
+      transform: translateX(-50%);
+      @include position_ab(50%, 10vh);
+      @include title(16);
+    }
+    .star {
+      width: 5px;
+      height: 5px;
+      background-color: $color_white;
+    }
+    @for $i from 1 through 50 {
+      > div:nth-child(#{$i}) {
+        $positionX: random() * 100%;
+        $positionY: random() * 100%;
+        @include position_ab($positionX, $positionY);
+        @if ($i % 2) == 0 {
+          background-color: $color_green;
+        }
+        @if ($i % 8) == 0 {
+          width: 10px;
+          height: 10px;
+        }
+      }
+    }
+  }
 }

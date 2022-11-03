@@ -1,17 +1,17 @@
 import React from "react";
 
-import BlockA from "./BlockA";
-
 import classes from "./styles.module.scss";
 import classNames from "classnames/bind";
 const cx = classNames.bind(classes);
 
-const Web = () => {
+const DataLayout = ({ text, number }) => {
   return (
-    <div className={cx("wrapper")}>
-      <BlockA />
+    <div className={cx("dataLayout")}>
+      <span>{text}</span>
+      <div></div>
+      <span>{number}</span>
     </div>
   );
 };
 
-export default Web;
+export default DataLayout;
