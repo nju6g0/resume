@@ -1,17 +1,15 @@
 .wrapper {
   background-color: black;
   color: #fff;
-  .container {
+  header {
     width: 100%;
-    max-width: 1280px;
-    margin: 0 auto;
-    height: 100vh;
-    // background-color: blanchedalmond;
-    position: relative;
-    header {
-      position: absolute;
-      top: 0;
-      left: 0;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: black;
+    .container {
+      max-width: 1280px;
+      margin: 0 auto;
       h3 {
       }
       ul {
