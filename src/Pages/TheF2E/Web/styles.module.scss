@@ -61,13 +61,11 @@ $breakPoint_middle: 768px;
 }
 .blockA {
   height: 900px;
-  min-height: 100vh;
   max-width: 1440px;
   margin: 0 auto;
   display: flex;
   position: relative;
   padding-top: $basic_size * 10;
-  // padding: 90px 0 0 50px;
   h2 {
     @include title(18);
     @include position_ab(90px, 90px);
@@ -143,17 +141,17 @@ $breakPoint_middle: 768px;
     }
   }
   @media only screen and (max-width: $breakPoint_middle) {
-    padding: 90px 0 0 0;
+    max-height: 800px;
+    h2 {
+      width: 100%;
+      text-align: center;
+      left: 50%;
+      transform: translateX(-50%);
+    }
     .left {
       width: 100%;
       align-items: center;
       padding-left: 0;
-      h2 {
-        left: 50%;
-        transform: translateX(-50%);
-        width: 100%;
-        text-align: center;
-      }
       .datas {
         width: 100%;
         flex-direction: row;
@@ -161,6 +159,36 @@ $breakPoint_middle: 768px;
         margin-top: 0;
         img.alients {
           margin-left: 0;
+        }
+      }
+    }
+    .right {
+      display: none;
+    }
+  }
+  @media only screen and (max-width: $breakPoint_small) {
+    height: 100vh;
+    h2 {
+      font-size: $basic_size * 10;
+    }
+    .left {
+      justify-content: flex-end;
+      p {
+        font-size: $basic_size * 3;
+      }
+      img.orbit {
+        display: none;
+      }
+      .button {
+        margin-top: 0;
+      }
+      .datas {
+        width: 100%;
+        flex-direction: column-reverse;
+        margin-top: $basic_size * 4;
+        img.alients {
+          margin-left: 0;
+          margin-top: 0;
         }
       }
     }
