@@ -24,6 +24,12 @@ main {
   min-height: calc(100vh - 50px);
 }
 
+@font-face {
+  font-family: "Cubic";
+  src: local("Cubic"),
+    url("./fonts/cubic/Cubic_11_1.013_R.ttf") format("truetype");
+}
+
 /*!
 * @package twicon
 * @version 1.001

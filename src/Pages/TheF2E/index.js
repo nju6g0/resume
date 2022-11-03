@@ -74,9 +74,9 @@ const Page = () => {
 
   return (
     <div className={cx("wrapper")}>
-      <div className={cx("container")}>
-        {showHeader && (
-          <header>
+      {showHeader && (
+        <header>
+          <div className={cx("container")}>
             <h3>The F2E 4th 互動式網頁設計</h3>
             <ul className={cx("tabs")}>
               {TABS.map((tab) => (
@@ -91,10 +91,10 @@ const Page = () => {
                 </li>
               ))}
             </ul>
-          </header>
-        )}
-        <main>{renderTabContent()}</main>
-      </div>
+          </div>
+        </header>
+      )}
+      <main>{renderTabContent()}</main>
       <GoHome />
     </div>
   );

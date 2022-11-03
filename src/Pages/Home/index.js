@@ -7,16 +7,20 @@ import Portfolios from './Portfolios';
 import Experience from './Experience';
 import Totoro from './Totoro';
 
+import classes from "./styles.module.scss";
+import classNames from "classnames/bind";
+const cx = classNames.bind(classes);
+
 
 const Home = () => {
     return (
-        <Fragment>
+        <div className={cx("home")}>
             <Main />
             <AboutMe />
             <Portfolios />
             <Experience />
             <Totoro />
-        </Fragment>
+        </div>
     );
 };
 

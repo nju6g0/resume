@@ -4,6 +4,8 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
+import 'fonts/cubic/Cubic_11_1.013_R.ttf';
+
 ReactDOM.render(
   <React.StrictMode>
     <App />
