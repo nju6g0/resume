@@ -3,6 +3,9 @@ $color_orange: #cfa575;
 $color_yellow_light: #efe5a4;
 $color_yellow_dark: #d2c67a;
 $color_green: #4e7b57;
+$color_green_light: #a9c1ae;
+$color_purple: #8a8ea3;
+$color_gray: #cccccc;
 $color_white: #fff;
 $color_black: #000;
 $color_bg_gray: #f1ede9;
@@ -11,6 +14,24 @@ $color_bg_gray: #f1ede9;
 $max_width: 1920px;
 $size_tablet: 768px;
 $size_mobile: 480px;
+
+@mixin rectangle($w, $h, $r: 0, $color: transparent) {
+  width: $w;
+  height: $h;
+  @if ($r != 0) {
+    border-radius: $r;
+  }
+  background-color: $color;
+}
+
+@mixin border_font($strock: 1px, $color: $color_black) {
+  color: $color_white;
+  // text-shadow: -1px 1px 0 $color_black, 1px 1px 0 $color_black,
+  //   1px -1px 0 $color_black, -1px -1px 0 $color_black;
+  // -webkit-text-stroke-width: $strock;
+  -webkit-text-stroke-width: $strock;
+  -webkit-text-stroke-color: $color;
+}
 
 .wrap {
 }
@@ -25,6 +46,7 @@ $size_mobile: 480px;
   position: fixed;
   top: 0;
   left: 0;
+  z-index: 10;
   > div {
     position: relative;
     max-width: 100%;
@@ -72,6 +94,7 @@ $size_mobile: 480px;
 .header {
   border-bottom: 1px solid $color_black;
   color: $color_green;
+  max-width: 100%;
   > div {
     width: 100%;
     max-width: $max_width;
@@ -130,6 +153,287 @@ $size_mobile: 480px;
       .menu {
         display: block;
       }
+    }
+  }
+}
+
+.banner {
+  color: $color_black;
+  padding: 65px 1rem 0 1rem;
+  min-height: 100vh;
+  background: url("/image/F2E_web/banner_star.png") no-repeat 3% 30%,
+    url("/image/F2E_web/banner_star.png") no-repeat 90% 6%,
+    url("/image/F2E_web/parallelogram.png") no-repeat 10% -100px,
+    url("/image/F2E_web/parallelogram.png") no-repeat 112% 40%;
+  background-color: $color_bg_gray;
+  > div {
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    .left,
+    .middle,
+    .right {
+      max-width: 100%;
+    }
+    .left,
+    .right {
+      width: 422px;
+      height: 335px;
+    }
+    .left {
+      position: relative;
+      > p {
+        font-weight: 900;
+        font-size: 32px;
+        color: $color_black;
+      }
+      > p:nth-child(2) {
+        @include border_font(1px);
+        display: none;
+      }
+      > div {
+        position: absolute;
+        transition: 0.3s;
+      }
+      .triangle {
+        @include rectangle(0, 0);
+        border-right: 60px solid transparent;
+        border-left: 40px solid transparent;
+        border-bottom: 80px solid $color_white;
+        transform: rotate(-20deg);
+        top: 50px;
+        right: 60px;
+      }
+      .rectangle {
+        @include rectangle(100px, 150px, 0, $color_purple);
+        transform: rotate(-15deg);
+        bottom: 70px;
+        right: 20px;
+      }
+      .circleBig {
+        @include rectangle(220px, 111px, 50%, $color_gray);
+        transform: rotate(20deg);
+        bottom: 70px;
+        right: 40px;
+      }
+      .circlesmall {
+        @include rectangle(111px, 72px, 50%, $color_gray);
+        top: 100px;
+        left: 20px;
+        opacity: 0;
+      }
+      &:hover {
+        .triangle {
+          top: 30px;
+          right: 80px;
+        }
+        .rectangle {
+          bottom: 50px;
+        }
+        .circleBig {
+          bottom: 30px;
+          right: 50px;
+        }
+        .circlesmall {
+          opacity: 1;
+        }
+        > p:first-child {
+          display: none;
+        }
+        > p:nth-child(2) {
+          display: block;
+        }
+      }
+    }
+    .middle {
+      width: 433px;
+      height: 276px;
+      text-align: center;
+      padding-bottom: 200px;
+      box-sizing: content-box;
+      background: url("/image/F2E_web/banner_title_bcg.png") no-repeat center;
+      h2,
+      h4,
+      h6,
+      p {
+        font-weight: 900;
+        margin: 0;
+        transition: 0.3s;
+        z-index: 5;
+      }
+      p,
+      h2 {
+        @include border_font(2px);
+      }
+      p {
+        font-size: 40px;
+        line-height: 40px;
+      }
+      h2 {
+        font-size: 80px;
+        line-height: 80px;
+      }
+      h4 {
+        font-size: 48px;
+        line-height: 68px;
+      }
+      h6 {
+        font-weight: 500;
+        font-size: 32px;
+        line-height: 42px;
+        width: 80%;
+        margin: 10px auto;
+      }
+      &:hover {
+        h2 {
+          text-shadow: 0px 0px 0 $color_black, 0px 0px 0 $color_black,
+            0px 10px 0 $color_black, -5px 0px 0 $color_black;
+        }
+        h6 {
+          background-color: $color_white;
+        }
+      }
+      > div {
+        &::before {
+          content: "";
+          @include rectangle(306px, 144px, 50%, $color_green_light);
+          position: absolute;
+        }
+      }
+    }
+    .right {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      > p,
+      > div {
+        width: 50%;
+      }
+      > P {
+        font-weight: 900;
+        font-size: 32px;
+        line-height: 38px;
+      }
+      > .imgBox {
+        height: 100%;
+        > img {
+          width: 100%;
+          height: 100%;
+          object-fit: contain;
+        }
+        > img:first-child {
+          transform: rotateY(180deg);
+        }
+        > img:nth-child(2) {
+          display: none;
+          object-fit: cover;
+          object-position: right bottom;
+        }
+      }
+      > .text {
+        display: none;
+        > p {
+          @include border_font(1px, $color_black);
+          font-weight: 900;
+          font-size: 32px;
+          line-height: 38px;
+        }
+        > p:first-child {
+          text-decoration: line-through;
+        }
+      }
+      &:hover {
+        > p {
+          display: none;
+        }
+        > div {
+          display: block;
+        }
+        > .imgBox {
+          > img:first-child {
+            display: none;
+          }
+          > img:nth-child(2) {
+            display: block;
+          }
+        }
+      }
+    }
+    @media screen and (max-width: $size_tablet) {
+      flex-direction: column;
+      align-items: center;
+      .middle {
+        order: 1;
+        width: 100%;
+        background-size: 70%;
+        padding-bottom: 290px;
+        h2 {
+          text-shadow: 0px 0px 0 $color_black, 0px 0px 0 $color_black,
+            0px 10px 0 $color_black, -5px 0px 0 $color_black;
+        }
+      }
+      .left {
+        order: 2;
+        > p:first-child {
+          display: none;
+        }
+        > p:nth-child(2) {
+          display: block;
+        }
+      }
+      .right {
+        order: 3;
+        margin-left: 30%;
+        > p {
+          display: none;
+        }
+        > .text {
+          display: block;
+        }
+        > .imgBox {
+          > img:first-child {
+            display: none;
+          }
+          > img:nth-child(2) {
+            display: block;
+          }
+        }
+      }
+    }
+  }
+  .applyButton {
+    display: block;
+    font-weight: 900;
+    font-size: 20px;
+    border: 1px solid $color_black;
+    background-color: $color_white;
+    margin: 0 auto;
+    transition: 0.3s;
+    &:hover {
+      box-shadow: 5px 5px 0 $color_black;
+    }
+  }
+  .footer {
+    max-width: 100%;
+    overflow: hidden;
+    display: flex;
+    justify-content: flex-start;
+    margin-top: 200px;
+    p {
+      font-weight: 900;
+      font-size: 80px;
+      line-height: 80px;
+      color: $color_white;
+    }
+  }
+  @media screen and (max-width: $size_tablet) {
+    background: url("/image/F2E_web/banner_star.png") no-repeat 110% 40%,
+      url("/image/F2E_web/banner_star.png") no-repeat -10% 70%,
+      url("/image/F2E_web/parallelogram.png") no-repeat 50% 110%;
+    background-color: $color_bg_gray;
+    padding-bottom: 50px;
+    .footer {
+      display: none;
     }
   }
 }
