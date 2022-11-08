@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 
 import Loading from "./Loading";
+import Header from  "./Header";
 
 import classes from "./styles.module.scss";
 import classNames from "classnames/bind";
@@ -29,6 +30,7 @@ const Web = () => {
   return (
     <div className={cx("wrap")}>
       {isShowLoading && <Loading percent={percent} />}
+      <Header />
     </div>
   );
 };
