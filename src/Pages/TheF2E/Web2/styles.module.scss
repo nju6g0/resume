@@ -16,6 +16,9 @@ $color_bg_gray: #f1ede9;
   display: flex;
   justify-content: center;
   align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
   > div {
     position: relative;
     img {
@@ -55,4 +58,8 @@ $color_bg_gray: #f1ede9;
       font-weight: 900;
     }
   }
+}
+
+.header {
+  background-color: $color_black;
 }
