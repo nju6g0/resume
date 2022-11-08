@@ -3,7 +3,7 @@ import qs from "qs";
 import { useLocation, useHistory } from "react-router-dom";
 
 import GoHome from "Component/GoHome";
-import Web from "./Web";
+import Web from "./Web2";
 import Sign from "./Sign";
 import Scrum from "./Scrum";
 import classes from "./styles.module.scss";
