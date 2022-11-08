@@ -1,5 +1,6 @@
 // colors
 $color_orange: #cfa575;
+$color_orange_light: #dfc5a7;
 $color_yellow_light: #efe5a4;
 $color_yellow_dark: #d2c67a;
 $color_green: #4e7b57;
@@ -434,6 +435,88 @@ $size_mobile: 480px;
     padding-bottom: 50px;
     .footer {
       display: none;
+    }
+  }
+}
+
+.questions {
+  height: 970px;
+  padding: 10%;
+  background: url("/image/F2E_web/circleWithShadow.png") no-repeat right 80%,
+    linear-gradient(
+      $color_yellow_light 10%,
+      $color_white 10%,
+      $color_white 90%,
+      $color_yellow_light 90%
+    );
+  .dots {
+    display: flex;
+    justify-content: center;
+    > div {
+      @include rectangle(20px, 20px, 50%, $color_gray);
+    }
+    > div + div {
+      margin-left: 30px;
+    }
+    > div.active {
+      background: $color_yellow_dark;
+    }
+  }
+  .cards {
+    display: flex;
+    align-items: center;
+    height: 600px;
+    position: relative;
+    overflow: hidden;
+    > div {
+      width: 30%;
+      color: $color_white;
+      font-weight: 900;
+      font-size: 42px;
+      padding: 24px;
+      border-radius: 20px;
+      position: absolute;
+      top: 600px;
+      transition: 0.5s;
+      text-align: center;
+    }
+    > div:first-child {
+      background-color: $color_orange;
+      box-shadow: 20px 20px 0 $color_orange_light;
+      left: 0;
+    }
+    > div:nth-child(2) {
+      background-color: $color_yellow_dark;
+      box-shadow: 20px 20px 0 $color_yellow_light;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+    > div:nth-child(3) {
+      background-color: $color_green;
+      box-shadow: 20px 20px 0 $color_green_light;
+      right: 20px;
+    }
+    > div:first-child.active {
+      top: 60%;
+    }
+    > div:nth-child(2).active {
+      top: 30%;
+    }
+    > div:nth-child(3).active {
+      top: 0;
+    }
+  }
+  @media screen and (max-width: $size_tablet) {
+    .dots {
+      display: none;
+    }
+    .cards {
+      display: block;
+      > div {
+        width: calc(100% - 20px);
+        left: 0 !important;
+        transform: none !important;
+      }
     }
   }
 }

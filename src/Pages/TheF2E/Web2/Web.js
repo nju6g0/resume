@@ -3,6 +3,7 @@ import React, { useState, useEffect } from "react";
 import Loading from "./Loading";
 import Header from  "./Header";
 import Banner from "./Banner";
+import Questions from "./Questions";
 
 import classes from "./styles.module.scss";
 import classNames from "classnames/bind";
@@ -33,6 +34,7 @@ const Web = () => {
       {isShowLoading && <Loading percent={percent} />}
       <Header />
       <Banner />
+      <Questions />
     </div>
   );
 };
