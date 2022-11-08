@@ -14,4 +14,7 @@
 2. form
 3. The cat API 串接
 4. 動畫互動(canvas, keyframe)
-5. THE F2E 4th
+5. THE F2E 4th(https://github.com/nju6g0/resume/tree/master/src/Pages/TheF2E)
+
+## demo
+https://master.d91po6eifpl24.amplifyapp.com/home
