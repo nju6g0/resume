@@ -7,6 +7,7 @@ $color_green: #4e7b57;
 $color_green_light: #a9c1ae;
 $color_purple: #8a8ea3;
 $color_gray: #cccccc;
+$color_gray_dark: #4b4b4b;
 $color_white: #fff;
 $color_black: #000;
 $color_bg_gray: #f1ede9;
@@ -517,6 +518,70 @@ $size_mobile: 480px;
         left: 0 !important;
         transform: none !important;
       }
+    }
+  }
+}
+
+.topic {
+  height: 2083px;
+  background-image: url("/image/F2E_web/topic_bg.png");
+  padding-top: 100px;
+  position: relative;
+  overflow: hidden;
+  .top {
+    @include rectangle(90vw, 90vw, 50%, $color_bg_gray);
+    margin: 0 auto;
+    p {
+      font-weight: 900;
+      font-size: 80px;
+      padding-top: 150px;
+      color: $color_gray_dark;
+      text-align: center;
+    }
+    > div {
+      height: 50%;
+      background: url("/image/F2E_web/topic_clound.png") no-repeat 10% 50%;
+      background-size: 200px 120px;
+      position: relative;
+      > img {
+        width: 50%;
+        position: absolute;
+        top: 100px;
+      }
+      > img:first-child {
+        left: 15%;
+      }
+      > img:last-child {
+        right: 10%;
+      }
+    }
+  }
+  .bottom {
+    @include rectangle(70vw, 70vw, 50%, $color_orange);
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translateX(-50%);
+    padding-top: 150px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: url("/image/F2E_web/topic_clound.png") no-repeat 90% 46%,
+      url("/image/F2E_web/banner_star.png") no-repeat 16% 20%, $color_orange;
+    background-size: 180px 120px;
+    > p {
+      font-weight: 900;
+      text-align: center;
+    }
+    > p:first-child,
+    > p:nth-child(2) {
+      font-size: 80px;
+    }
+    > p:nth-child(2) {
+      background-color: $color_gray_dark;
+    }
+    > p:last-child {
+      font-size: 40px;
     }
   }
 }
