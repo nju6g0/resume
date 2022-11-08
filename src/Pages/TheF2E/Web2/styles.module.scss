@@ -27,6 +27,8 @@ $size_mobile: 480px;
   left: 0;
   > div {
     position: relative;
+    max-width: 100%;
+    padding: 0 1rem;
     img {
       position: absolute;
     }
@@ -44,6 +46,7 @@ $size_mobile: 480px;
     }
     .progress {
       width: 649px;
+      max-width: 100%;
       height: 25px;
       border-radius: 13px;
       background-color: $color_white;
