@@ -7,9 +7,9 @@
 3. npm start
 
 ## page tour
-> landing page
+* landing page
 
-> PORTFOLIOS
+* PORTFOLIOS
 1. excel 檔案讀取/下載 (xlsx)
 2. form
 3. The cat API 串接
