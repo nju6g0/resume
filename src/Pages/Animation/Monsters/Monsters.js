@@ -7,7 +7,7 @@ const cx = classNames.bind(classes);
 const Monsters = () => {
     return (
         <div  className={cx('wrapper')}>
-
+            test
         </div>
     )
 };
