@@ -6,6 +6,7 @@ import Banner from "./Banner";
 import Questions from "./Questions";
 import Topic from "./Topic";
 import Stage from "./Stage";
+import Sponsor from "./Sponsor";
 
 import classes from "./styles.module.scss";
 import classNames from "classnames/bind";
@@ -42,6 +43,7 @@ const Web = () => {
           <Questions />
           <Topic />
           <Stage />
+          <Sponsor />
         </>
       )}
     </div>

@@ -742,7 +742,7 @@ $size_mobile: 480px;
     position: relative;
     overflow: hidden;
     width: 80%;
-    height: 450px;
+    height: 580px;
     margin: 40px auto;
     > div {
       position: absolute;
@@ -753,7 +753,7 @@ $size_mobile: 480px;
       transition: 0.5s;
       .card {
         padding: 20px 0;
-        opacity: 0.5;
+        opacity: 0.3;
         height: 412px;
         > p {
           font-weight: 600;
@@ -855,6 +855,87 @@ $size_mobile: 480px;
           }
         }
       }
+    }
+  }
+}
+
+.sponsor {
+  padding: 200px 0 140px 0;
+  height: 900px;
+  background-color: $color_bg_gray;
+  position: relative;
+  overflow: hidden;
+  transition: 0.5s;
+  transition-delay: 0.5s;
+  > p {
+    color: $color_orange;
+    font-weight: 900;
+    font-size: 52px;
+    line-height: 100px;
+    text-align: center;
+    transition-delay: 0.5s;
+  }
+  > div {
+    width: 70%;
+    display: flex;
+    justify-content: space-between;
+    position: absolute;
+    left: 50%;
+    top: 100%;
+    transform: translateX(-50%);
+    transition: 0.5s;
+    transition-delay: 1s;
+    .imgBox {
+      width: 400px;
+      border-radius: 20px;
+      background-color: $color_white;
+      padding: 20px;
+      overflow: hidden;
+      > img {
+        width: 100%;
+        object-fit: contain;
+      }
+    }
+    > div + div {
+      margin-left: 80px;
+    }
+  }
+  @media screen and (max-width: $size_tablet) {
+    height: 800px;
+    > div {
+      width: 80%;
+    }
+    > div + div {
+      margin-left: 30px;
+    }
+  }
+  @media screen and (max-width: $size_mobile) {
+    padding: 50px 20px;
+    height: 700px;
+    > p {
+      font-size: 32px;
+      line-height: 50px;
+    }
+    > div {
+      flex-direction: column;
+      .imgBox {
+        width: 50%;
+        margin: 20px auto 0 auto;
+      }
+    }
+  }
+}
+.sponsor.active {
+  background-color: $color_orange;
+  > p {
+    color: $color_white;
+  }
+  > div {
+    top: 400px;
+  }
+  @media screen and (max-width: $size_mobile) {
+    > div {
+      top: 150px;
     }
   }
 }
