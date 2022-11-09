@@ -5,6 +5,7 @@ import Header from "./Header";
 import Banner from "./Banner";
 import Questions from "./Questions";
 import Topic from "./Topic";
+import Stage from "./Stage";
 
 import classes from "./styles.module.scss";
 import classNames from "classnames/bind";
@@ -40,6 +41,7 @@ const Web = () => {
           <Banner />
           <Questions />
           <Topic />
+          <Stage />
         </>
       )}
     </div>

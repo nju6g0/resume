@@ -35,6 +35,17 @@ $size_mobile: 480px;
   -webkit-text-stroke-color: $color;
 }
 
+%Button {
+  color: $color_black;
+  background-color: $color_white;
+  border: 1px solid $color_black;
+  font-weight: 900;
+  transition: 0.3s;
+  &:hover {
+    box-shadow: 5px 5px 0 $color_black;
+  }
+}
+
 .wrap {
 }
 
@@ -409,16 +420,9 @@ $size_mobile: 480px;
   }
   .applyButton {
     display: block;
-    font-weight: 900;
     font-size: 20px;
-    border: 1px solid $color_black;
-    color: $color_black;
-    background-color: $color_white;
     margin: 0 auto;
-    transition: 0.3s;
-    &:hover {
-      box-shadow: 5px 5px 0 $color_black;
-    }
+    @extend %Button;
   }
   .footer {
     max-width: 100%;
@@ -650,6 +654,187 @@ $size_mobile: 480px;
       > p:last-child {
         font-size: 16px;
         width: 80%;
+      }
+    }
+  }
+}
+
+.stage {
+  height: 800px;
+  background-color: $color_bg_gray;
+  padding-top: 80px;
+  cursor: pointer;
+  .week {
+    height: 200px;
+    position: relative;
+    overflow: hidden;
+    &::before,
+    &::after {
+      content: "";
+      width: 90%;
+      height: 1px;
+      background-color: $color_black;
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+    &::before {
+      top: 0;
+    }
+    &::after {
+      bottom: 0;
+    }
+    > div {
+      position: absolute;
+      top: 0;
+      left: calc(50% - 225px);
+      height: 100%;
+      display: flex;
+      transition: 0.5s;
+      > p {
+        font-size: 180px;
+        line-height: 100%;
+        margin-bottom: 0;
+        width: 550px;
+        text-align: center;
+        color: $color_gray_dark;
+        &:hover {
+          font-weight: 700;
+        }
+      }
+      > p + p {
+        margin-left: 150px;
+      }
+      > p.active {
+        font-weight: 700;
+      }
+      > p:first-child.active {
+        color: $color_yellow_dark;
+      }
+      > p:nth-child(2).active {
+        color: $color_orange;
+      }
+      > p:nth-child(3).active {
+        color: $color_green;
+      }
+    }
+  }
+  .info {
+    position: relative;
+    overflow: hidden;
+    width: 80%;
+    height: 450px;
+    margin: 40px auto;
+    > div {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      transition: 0.5s;
+      .card {
+        padding: 20px 0;
+        opacity: 0.5;
+        height: 412px;
+        > p {
+          font-weight: 600;
+          font-size: 24px;
+          line-height: 38px;
+          color: $color_gray_dark;
+          margin-bottom: 0;
+        }
+        > p:first-child {
+          font-weight: 700;
+          font-size: 60px;
+          line-height: 80px;
+          color: $color_black;
+          text-align: center;
+        }
+        > div {
+          height: 76px;
+          display: flex;
+          align-items: center;
+          span {
+            font-weight: 700;
+            font-size: 24px;
+            color: $color_purple;
+          }
+          span + span {
+            margin-left: 16px;
+          }
+        }
+        > button {
+          font-size: 20px;
+          margin-top: 30px;
+          @extend %Button;
+        }
+      }
+      .card.active {
+        opacity: 1;
+      }
+      .card:first-child.active {
+        > div {
+          span {
+            color: $color_yellow_dark;
+          }
+        }
+      }
+      .card:nth-child(2).active {
+        > div {
+          span {
+            color: $color_orange;
+          }
+        }
+      }
+      .card:nth-child(3).active {
+        > div {
+          span {
+            color: $color_green;
+          }
+        }
+      }
+    }
+  }
+  @media screen and (max-width: $size_tablet) {
+    .info {
+      > div {
+        .card {
+          > p:first-child {
+            font-size: 50px;
+          }
+        }
+      }
+    }
+  }
+  @media screen and (max-width: $size_mobile) {
+    height: 700px;
+    .week {
+      height: 100px;
+      > div {
+        > p {
+          font-size: 80px;
+          line-height: 100px;
+        }
+      }
+    }
+    .info {
+      > div {
+        .card {
+          > p {
+            font-size: 16px;
+            line-height: 28px;
+          }
+          > p:first-child {
+            font-size: 30px;
+            line-height: 36px;
+          }
+          > div {
+            height: 50px;
+            span {
+              font-size: 16px;
+            }
+          }
+        }
       }
     }
   }
