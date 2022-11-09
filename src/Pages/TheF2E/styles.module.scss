@@ -6,7 +6,7 @@
     position: absolute;
     top: 0;
     left: 0;
-    background-color: transparent;
+    background-color: rgba(0, 0, 0, 0.1);
     .container {
       max-width: 1280px;
       margin: 0 auto;
@@ -29,7 +29,7 @@
         li.active {
           cursor: auto;
           text-decoration: none;
-          color: #f26666;
+          color: #aaa;
         }
       }
     }
