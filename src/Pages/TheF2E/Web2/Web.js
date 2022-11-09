@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 
 import Loading from "./Loading";
-import Header from  "./Header";
+import Header from "./Header";
 import Banner from "./Banner";
 import Questions from "./Questions";
 import Topic from "./Topic";
@@ -12,7 +12,7 @@ const cx = classNames.bind(classes);
 
 const Web = () => {
   const [percent, setPercent] = useState(0);
-  const [isShowLoading, setIsShowLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     let time = 0;
@@ -22,9 +22,9 @@ const Web = () => {
         setPercent(time);
       } else {
         clearInterval(counter);
-        setTimeout(()=>{
-            setIsShowLoading(false);
-        }, 500)
+        setTimeout(() => {
+          setIsLoading(false);
+        }, 500);
       }
     }
     const counter = setInterval(countDown, 50);
@@ -32,11 +32,16 @@ const Web = () => {
 
   return (
     <div className={cx("wrap")}>
-      {isShowLoading && <Loading percent={percent} />}
-      <Header />
-      <Banner />
-      <Questions />
-      <Topic /> 
+      {isLoading ? (
+        <Loading percent={percent} />
+      ) : (
+        <>
+          <Header />
+          <Banner />
+          <Questions />
+          <Topic />
+        </>
+      )}
     </div>
   );
 };

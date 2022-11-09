@@ -412,6 +412,7 @@ $size_mobile: 480px;
     font-weight: 900;
     font-size: 20px;
     border: 1px solid $color_black;
+    color: $color_black;
     background-color: $color_white;
     margin: 0 auto;
     transition: 0.3s;
@@ -488,7 +489,7 @@ $size_mobile: 480px;
     > div:first-child {
       background-color: $color_orange;
       box-shadow: 20px 20px 0 $color_orange_light;
-      left: 0;
+      right: 20px;
     }
     > div:nth-child(2) {
       background-color: $color_yellow_dark;
@@ -499,16 +500,16 @@ $size_mobile: 480px;
     > div:nth-child(3) {
       background-color: $color_green;
       box-shadow: 20px 20px 0 $color_green_light;
-      right: 20px;
+      left: 0;
     }
     > div:first-child.active {
-      top: 60%;
+      top: 0;
     }
     > div:nth-child(2).active {
       top: 30%;
     }
     > div:nth-child(3).active {
-      top: 0;
+      top: calc(60% - 20px);
     }
   }
   @media screen and (max-width: $size_tablet) {
