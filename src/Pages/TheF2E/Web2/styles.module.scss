@@ -524,6 +524,13 @@ $size_mobile: 480px;
       }
     }
   }
+  @media screen and (max-width: $size_mobile) {
+    .cards {
+      > div {
+        font-size: 28px;
+      }
+    }
+  }
 }
 
 .topic {
