@@ -41,7 +41,9 @@ const Banner = ({percent}) => {
           </div>
           <button className={cx("applyButton")}>點擊立刻報名<BsArrowRightShort /></button>
           <div className={cx("footer")}>
-            {Array.from({length:10},(x,i)=>i).map(el => <><p>THEF2E </p>&nbsp;&nbsp;&nbsp;&nbsp;</>)}
+            <div>
+              {Array.from({length:10},(x,i)=>i).map(el => <><p>THEF2E </p>&nbsp;&nbsp;&nbsp;&nbsp;</>)}
+            </div>
           </div>
     </div>
   );

@@ -425,16 +425,35 @@ $size_mobile: 480px;
     @extend %Button;
   }
   .footer {
-    max-width: 100%;
-    overflow: hidden;
-    display: flex;
-    justify-content: flex-start;
+    position: relative;
     margin-top: 200px;
-    p {
-      font-weight: 900;
-      font-size: 80px;
-      line-height: 80px;
-      color: $color_white;
+    max-width: 100%;
+    height: 80px;
+    overflow: hidden;
+    > div {
+      position: absolute;
+      top: 0;
+      left: 0;
+      display: flex;
+      justify-content: flex-start;
+      animation: marquee 10s infinite linear;
+      p {
+        font-weight: 900;
+        font-size: 80px;
+        line-height: 80px;
+        color: $color_white;
+      }
+    }
+    @keyframes marquee {
+      0% {
+        left: 0;
+      }
+      90% {
+        left: -820px;
+      }
+      100% {
+        left: -820px;
+      }
     }
   }
   @media screen and (max-width: $size_tablet) {
