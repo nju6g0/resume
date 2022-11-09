@@ -14,7 +14,7 @@ const Topic = () => {
   useEffect(() => {
     const offsetTop = blockRef.current?.offsetTop;
     const handleScroll = () => {
-      if(window.scrollY >= offsetTop){
+      if (window.scrollY >= offsetTop) {
         setIsReach(true);
         document.removeEventListener("scroll", handleScroll);
       }
@@ -34,10 +34,14 @@ const Topic = () => {
           <img src={img_design} alt="" />
         </div>
       </div>
-      <div className={cx("bottom")}>
-          <p>年度最強合作</p>
-          <p>三大主題來襲</p>
-          <p>各路廠商強強聯手！<br/>共同設計出接地氣的網頁互動挑戰關卡</p>
+      <div className={cx("bottom", isReach && "active")}>
+        <p>年度最強合作</p>
+        <p>三大主題來襲</p>
+        <p>
+          各路廠商強強聯手！
+          <br />
+          共同設計出接地氣的網頁互動挑戰關卡
+        </p>
       </div>
     </div>
   );

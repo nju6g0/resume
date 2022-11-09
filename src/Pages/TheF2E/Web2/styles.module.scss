@@ -604,7 +604,7 @@ $size_mobile: 480px;
   .bottom {
     @include rectangle(70vw, 70vw, 50%, $color_orange);
     position: absolute;
-    top: 40%;
+    top: 100%;
     left: 50%;
     transform: translateX(-50%);
     padding-top: 150px;
@@ -614,6 +614,8 @@ $size_mobile: 480px;
     background: url("/image/F2E_web/topic_clound.png") no-repeat 90% 46%,
       url("/image/F2E_web/banner_star.png") no-repeat 16% 20%, $color_orange;
     background-size: 180px 120px;
+    transition: 0.5s;
+    transition-delay: 1s;
     > p {
       font-weight: 900;
       text-align: center;
@@ -628,6 +630,9 @@ $size_mobile: 480px;
     > p:last-child {
       font-size: 40px;
     }
+  }
+  .bottom.active {
+    top: 40%;
   }
   @media screen and (max-width: $size_tablet) {
     height: 130vh;
@@ -673,7 +678,6 @@ $size_mobile: 480px;
       }
     }
     .bottom {
-      top: 50%;
       padding-top: 30px;
       background-size: 100px 60px;
       > p:first-child,
@@ -684,6 +688,9 @@ $size_mobile: 480px;
         font-size: 16px;
         width: 80%;
       }
+    }
+    .bottom.active {
+      top: 50%;
     }
   }
 }
