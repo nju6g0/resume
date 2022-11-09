@@ -2,11 +2,13 @@
   background-color: transparent;
   color: #fff;
   header {
+    height: 5px;
     width: 100%;
     position: absolute;
     top: 0;
     left: 0;
-    background-color: rgba(0, 0, 0, 0.1);
+    background-color: transparent;
+    overflow: hidden;
     .container {
       max-width: 1280px;
       margin: 0 auto;
@@ -32,6 +34,10 @@
           color: #aaa;
         }
       }
+    }
+    &:hover {
+      height: 80px;
+      background-color: black;
     }
   }
 }

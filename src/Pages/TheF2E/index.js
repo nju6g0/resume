@@ -34,7 +34,6 @@ const Page = () => {
   const history = useHistory();
   const querys = qs.parse(location.search, { ignoreQueryPrefix: true });
   const [nowTab, setNowTab] = useState("");
-  const [showHeader, setShowHeader] = useState(false);
 
   const handleClickTab = (tab) => {
     if (tab === nowTab) return;
@@ -61,20 +60,8 @@ const Page = () => {
     setNowTab(querys.tab || WEB);
   }, [querys]);
 
-  useEffect(() => {
-    window.scrollTo(0, 1);
-    const handleScroll = (e) => {
-      setShowHeader(window.scrollY <= 0);
-    };
-    document.addEventListener("scroll", handleScroll);
-    return () => {
-      document.removeEventListener("scroll", handleScroll);
-    };
-  }, []);
-
   return (
     <div className={cx("wrapper")}>
-      {showHeader && (
         <header>
           <div className={cx("container")}>
             <h3>The F2E 4th 互動式網頁設計</h3>
@@ -93,7 +80,6 @@ const Page = () => {
             </ul>
           </div>
         </header>
-      )}
       <main>{renderTabContent()}</main>
       <GoHome />
     </div>
