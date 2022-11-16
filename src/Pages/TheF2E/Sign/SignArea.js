@@ -1,12 +1,11 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useEffect, useRef } from "react";
 
 import classes from "./styles.module.scss";
 import classNames from "classnames/bind";
 const cx = classNames.bind(classes);
 
-const SignArea = ({ visible, onConfirm, onClose, onCancel }) => {
+const SignArea = ({ visible, onConfirm, onClose }) => {
   const canvasRef = useRef(null);
-  // const [imgSrc, setImgSrc] = useState("");
 
   const canvas = canvasRef?.current;
   const ctx = canvas?.getContext("2d");
@@ -17,9 +16,7 @@ const SignArea = ({ visible, onConfirm, onClose, onCancel }) => {
   function saveImage() {
     // 圖片儲存的類型選擇 png ，並將值放入 img 的 src
     const newImg = canvas.toDataURL("image/png");
-    // setImgSrc(newImg);
     onConfirm(newImg);
-    localStorage.setItem("img", newImg);
   }
 
   useEffect(() => {
@@ -28,7 +25,7 @@ const SignArea = ({ visible, onConfirm, onClose, onCancel }) => {
 
     if (ctx) {
       canvas.width = 300;
-      canvas.height = 300;
+      canvas.height = 200;
 
       // 設定線條的相關數值
       ctx.lineWidth = 4;
@@ -103,13 +100,14 @@ const SignArea = ({ visible, onConfirm, onClose, onCancel }) => {
 
   return (
     <div className={cx("signArea", !visible && "hide")}>
-      今晚，我想來點點簽
-      <div>
-        <canvas ref={canvasRef}></canvas>
+      <div className={cx("container")}>
+        <button type="button" onClick={onClose}>close</button>
+        <div>
+          <canvas ref={canvasRef}></canvas>
+        </div>
+        <button type="button" onClick={reset}>reset</button>
+        <button type="button" onClick={saveImage}>save</button>
       </div>
-      <button type="button" onClick={reset}>reset</button>
-      <button type="button" onClick={saveImage}>save</button>
-      {/* <img src={imgSrc} alt="" /> */}
     </div>
   );
 };
