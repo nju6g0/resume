@@ -75,7 +75,7 @@ const Sign = () => {
     fabricRef.current.setWidth(pdfImage.width / window.devicePixelRatio);
     fabricRef.current.setHeight(pdfImage.height / window.devicePixelRatio);
 
-    // // 將 PDF 畫面設定為背景
+    // 將 PDF 畫面設定為背景
     fabricRef.current.setBackgroundImage(pdfImage, fabricRef.current.renderAll.bind(fabricRef.current));
   };
 
@@ -101,7 +101,7 @@ const Sign = () => {
   
     // 設定背景在 PDF 中的位置及大小
     const width = pdf.internal.pageSize.width;
-    const height = pdf.internal.pageSize.height;
+    const height = pdf.internal.pageSize.width * fabricRef.current.height / fabricRef.current.width;
     pdf.addImage(image, "png", 0, 0, width, height);
   
     // 將檔案取名並下載
