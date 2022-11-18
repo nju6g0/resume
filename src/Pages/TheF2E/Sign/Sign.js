@@ -1,6 +1,7 @@
 import React, { useState, useRef, useEffect } from "react";
 import { fabric } from "fabric";
 
+import SignArea from './SignArea';
 import classes from "./styles.module.scss";
 import classNames from "classnames/bind";
 const cx = classNames.bind(classes);
@@ -12,6 +13,7 @@ const Base64Prefix = "data:application/pdf;base64,";
 const Sign = () => {
   const canvasRef = useRef(null);
   const fabricRef = useRef(null);
+  const [isOpenSignArea, setIsOpenSignArea] = useState(false);
 
   // 使用原生 FileReader 轉檔
   const readBlob = (blob) => {
@@ -76,6 +78,23 @@ const Sign = () => {
     fabricRef.current.setBackgroundImage(pdfImage, fabricRef.current.renderAll.bind(fabricRef.current));
   };
 
+  const handleSaveSign = (img) => {
+    fabric.Image.fromURL(img, function (image) {
+      // 設定簽名出現的位置及大小，後續可調整
+      image.top = 400;
+      image.scaleX = 0.5;
+      image.scaleY = 0.5;
+      fabricRef.current.add(image);
+    });
+  }
+
+  const handleOpen = () => {
+    setIsOpenSignArea(true);
+  }
+  const handleClose = () => {
+    setIsOpenSignArea(false);
+  }
+
   useEffect(()=>{
     const initFabric = () => {
       fabricRef.current = new fabric.Canvas(canvasRef.current);
@@ -102,9 +121,11 @@ const Sign = () => {
         placeholder="選擇PDF檔案"
         onChange={handleFileChange}
       />
+      <button type='button' onClick={handleOpen}>加入簽名</button>
       <div className={cx("fileContainer")}>
         <canvas ref={canvasRef} />
       </div>
+      <SignArea visible={isOpenSignArea} onSave={handleSaveSign} onClose={handleClose} />
     </div>
   );
 };

@@ -3,7 +3,37 @@
   .fileContainer {
     width: 500px;
     height: 500px;
-    background: black;
+    border: 1px solid #ccc;
     margin: 0 auto;
+  }
+  .signArea {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.5);
+    > div {
+      background-color: #fff;
+      padding: 20px;
+      text-align: right;
+      > canvas {
+        margin-top: 20px;
+        border: 1px solid #ccc;
+      }
+      .buttonsContainer {
+        > button + button {
+          margin-left: 20px;
+        }
+      }
+    }
+  }
+  .signArea.hide {
+    display: none;
+    visibility: 0;
+    opacity: 0;
   }
 }
