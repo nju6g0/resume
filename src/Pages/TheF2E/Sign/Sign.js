@@ -5,6 +5,7 @@ import { BsUpload, BsDownload, BsPencilSquare } from "react-icons/bs";
 
 import SignArea from "./SignArea";
 import Spinner from "./Spinner";
+import Tutorial from "./Tutorial";
 import classes from "./styles.module.scss";
 import classNames from "classnames/bind";
 const cx = classNames.bind(classes);
@@ -20,6 +21,7 @@ const Sign = () => {
   const [hasUploadPdf, setHasUploadPdf] = useState(false);
   const [hasSign, setHasSign] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
+  const [isInitial, setIsInitial] = useState(true);
 
   // 使用原生 FileReader 轉檔
   const readBlob = (blob) => {
@@ -123,6 +125,10 @@ const Sign = () => {
     pdf.save("download.pdf");
   };
 
+  const handleCloseTutorial = () => {
+    setIsInitial(false);
+  }
+
   useEffect(() => {
     const initFabric = () => {
       fabricRef.current = new fabric.Canvas(canvasRef.current);
@@ -140,6 +146,7 @@ const Sign = () => {
   }, []);
 
   return (
+    <>
     <div className={cx("wrapper")}>
       <div className={cx("buttons")}>
         <label>
@@ -179,6 +186,8 @@ const Sign = () => {
         onClose={handleClose}
       />
     </div>
+    {isInitial && <Tutorial onClose={handleCloseTutorial} />}
+    </>
   );
 };
 
