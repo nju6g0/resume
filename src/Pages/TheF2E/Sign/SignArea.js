@@ -1,4 +1,5 @@
 import React, { useRef, useEffect } from "react";
+import { BsPlusLg, BsCheck2Square } from "react-icons/bs";
 
 import classes from "./styles.module.scss";
 import classNames from "classnames/bind";
@@ -20,7 +21,9 @@ const SignArea = ({ visible, onSave, onClose }) => {
 
   useEffect(() => {
     if (canvas) {
-      canvas.width = 400;
+      canvas.width = 500;
+      canvas.height = 250;
+      canvas.borderColor = '#2ac489';
       // 設定線條的相關數值
       ctx.lineWidth = 4;
       ctx.lineCap = "round";
@@ -98,9 +101,9 @@ const SignArea = ({ visible, onSave, onClose }) => {
   return (
     <div className={cx("signArea", !visible && "hide")}>
       <div>
-        <div>
+        <div className={cx("header")}>
           <button type="button" onClick={onClose}>
-            close
+            <BsPlusLg />
           </button>
         </div>
         <canvas ref={canvasRef} />
@@ -109,7 +112,8 @@ const SignArea = ({ visible, onSave, onClose }) => {
             clear
           </button>
           <button type="button" onClick={handleSave}>
-            save
+            <BsCheck2Square />
+            <span> &nbsp;&nbsp;save</span>
           </button>
         </div>
       </div>

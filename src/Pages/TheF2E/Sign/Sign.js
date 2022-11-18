@@ -1,8 +1,10 @@
 import React, { useState, useRef, useEffect } from "react";
 import { fabric } from "fabric";
 import { jsPDF } from "jspdf";
+import { BsUpload, BsDownload, BsPencilSquare } from "react-icons/bs";
 
-import SignArea from './SignArea';
+import SignArea from "./SignArea";
+import Spinner from "./Spinner";
 import classes from "./styles.module.scss";
 import classNames from "classnames/bind";
 const cx = classNames.bind(classes);
@@ -15,6 +17,9 @@ const Sign = () => {
   const canvasRef = useRef(null);
   const fabricRef = useRef(null);
   const [isOpenSignArea, setIsOpenSignArea] = useState(false);
+  const [hasUploadPdf, setHasUploadPdf] = useState(false);
+  const [hasSign, setHasSign] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
   // 使用原生 FileReader 轉檔
   const readBlob = (blob) => {
@@ -24,7 +29,7 @@ const Sign = () => {
       reader.addEventListener("error", reject);
       reader.readAsDataURL(blob);
     });
-  }
+  };
 
   const printPDF = async (pdfData) => {
     // 將檔案處理成 base64
@@ -68,6 +73,7 @@ const Sign = () => {
   };
 
   const handleFileChange = async (e) => {
+    setIsLoading(true);
     const pdfData = await printPDF(e.target.files[0]);
     const pdfImage = await pdfToImage(pdfData);
 
@@ -76,7 +82,13 @@ const Sign = () => {
     fabricRef.current.setHeight(pdfImage.height / window.devicePixelRatio);
 
     // 將 PDF 畫面設定為背景
-    fabricRef.current.setBackgroundImage(pdfImage, fabricRef.current.renderAll.bind(fabricRef.current));
+    fabricRef.current.setBackgroundImage(
+      pdfImage,
+      fabricRef.current.renderAll.bind(fabricRef.current)
+    );
+
+    setHasUploadPdf(true);
+    setIsLoading(false);
   };
 
   const handleSaveSign = (img) => {
@@ -87,28 +99,31 @@ const Sign = () => {
       image.scaleY = 0.5;
       fabricRef.current.add(image);
     });
-  }
+    setHasSign(true);
+  };
 
   const handleOpen = () => {
     setIsOpenSignArea(true);
-  }
+  };
   const handleClose = () => {
     setIsOpenSignArea(false);
-  }
+  };
   const handleSave = () => {
     const image = fabricRef.current.toDataURL("image/png");
     const pdf = new jsPDF();
-  
+
     // 設定背景在 PDF 中的位置及大小
     const width = pdf.internal.pageSize.width;
-    const height = pdf.internal.pageSize.width * fabricRef.current.height / fabricRef.current.width;
+    const height =
+      (pdf.internal.pageSize.width * fabricRef.current.height) /
+      fabricRef.current.width;
     pdf.addImage(image, "png", 0, 0, width, height);
-  
+
     // 將檔案取名並下載
     pdf.save("download.pdf");
-  }
+  };
 
-  useEffect(()=>{
+  useEffect(() => {
     const initFabric = () => {
       fabricRef.current = new fabric.Canvas(canvasRef.current);
     };
@@ -122,24 +137,47 @@ const Sign = () => {
     return () => {
       disposeFabric();
     };
-
-  },[])
+  }, []);
 
   return (
     <div className={cx("wrapper")}>
-      今晚我想來點點簽
-      <input
-        type="file"
-        accept="application/pdf"
-        placeholder="選擇PDF檔案"
-        onChange={handleFileChange}
-      />
-      <button type='button' onClick={handleOpen}>加入簽名</button>
-      <button type='button' onClick={handleSave}>下載檔案</button>
+      <div className={cx("buttons")}>
+        <label>
+          <BsUpload />
+          <span>&nbsp;&nbsp;選擇PDF檔案</span>
+          <input
+            type="file"
+            accept="application/pdf"
+            placeholder="選擇PDF檔案"
+            onChange={handleFileChange}
+          />
+        </label>
+        <button type="button" onClick={handleOpen} disabled={!hasUploadPdf}>
+          <BsPencilSquare />
+          <span>&nbsp;&nbsp;加入簽名</span>
+        </button>
+        <button
+          type="button"
+          onClick={handleSave}
+          disabled={!hasUploadPdf || !hasSign}
+        >
+          <BsDownload />
+          <span>&nbsp;&nbsp;下載檔案</span>
+        </button>
+      </div>
+      {isLoading && (
+        <div className={cx("loading")}>
+          <Spinner />
+        </div>
+      )}
       <div className={cx("fileContainer")}>
         <canvas ref={canvasRef} />
       </div>
-      <SignArea visible={isOpenSignArea} onSave={handleSaveSign} onClose={handleClose} />
+      <SignArea
+        visible={isOpenSignArea}
+        onSave={handleSaveSign}
+        onClose={handleClose}
+      />
     </div>
   );
 };

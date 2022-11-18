@@ -1,12 +1,84 @@
+// size
+$max_width: 1920px;
+$size_tablet: 768px;
+$size_mobile: 480px;
+
+$color_blue: #2d316f;
+$color_green: #2ac489;
+$color_green_light: #a6e4dc;
+$color_yellow: #f5ba09;
+$color_white: #fff;
+$color_cover: rgba(0, 0, 0, 0.3);
+
+%button {
+  display: inline-block;
+  padding: 8px 16px;
+  border-radius: 8px;
+  line-height: 24px;
+  font-weight: 500;
+  border: none;
+  cursor: pointer;
+  transition: 0.3s;
+  color: $color_white;
+  background-color: $color_green;
+  &:hover {
+    background-color: $color_yellow;
+  }
+}
+%button_secondary {
+  color: $color_green;
+  border: 1px solid $color_green;
+  background-color: $color_white;
+  &:hover {
+    color: $color_yellow;
+    border: 1px solid $color_yellow;
+  }
+}
+%button_disabled {
+  background-color: $color_green_light;
+  cursor: not-allowed;
+}
 .wrapper {
   color: #999;
+  background-image: url("/image/f2e_sign.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: top right;
+  min-height: calc(100vh - 50px);
+  canvas {
+    border: 1px solid $color_green;
+  }
+  input[type="file"] {
+    display: none;
+    opacity: 0;
+  }
+  label,
+  button {
+    @extend %button;
+  }
+  .loading {
+    text-align: center;
+  }
+  .buttons {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    padding: 20px 0;
+    background-color: $color_cover;
+    > button:disabled {
+      @extend %button_disabled;
+    }
+    > button {
+      margin-left: 20px;
+    }
+  }
   .fileContainer {
-    width: 500px;
-    height: 500px;
-    border: 1px solid #ccc;
-    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    padding: 20px 0;
   }
   .signArea {
+    overflow: auto;
     position: fixed;
     top: 0;
     left: 0;
@@ -20,11 +92,19 @@
       background-color: #fff;
       padding: 20px;
       text-align: right;
-      > canvas {
-        margin-top: 20px;
-        border: 1px solid #ccc;
+      .header {
+        > button {
+          @extend %button_secondary;
+          margin-bottom: 8px;
+          > svg {
+            transform: rotate(45deg);
+          }
+        }
       }
       .buttonsContainer {
+        > button:first-child {
+          @extend %button_secondary;
+        }
         > button + button {
           margin-left: 20px;
         }
@@ -35,5 +115,97 @@
     display: none;
     visibility: 0;
     opacity: 0;
+  }
+  @media screen and (max-width: $size_mobile) {
+    label,
+    button {
+      > span {
+        display: none;
+      }
+    }
+  }
+}
+.spinner {
+  display: inline-block;
+  position: relative;
+  width: 80px;
+  height: 80px;
+  div {
+    animation: lds-roller 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+    transform-origin: 40px 40px;
+  }
+  div::after {
+    content: " ";
+    display: block;
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: $color_yellow;
+    margin: -4px 0 0 -4px;
+  }
+  div:nth-child(1) {
+    animation-delay: -0.036s;
+  }
+  div:nth-child(1):after {
+    top: 63px;
+    left: 63px;
+  }
+  div:nth-child(2) {
+    animation-delay: -0.072s;
+  }
+  div:nth-child(2):after {
+    top: 68px;
+    left: 56px;
+  }
+  div:nth-child(3) {
+    animation-delay: -0.108s;
+  }
+  div:nth-child(3):after {
+    top: 71px;
+    left: 48px;
+  }
+  div:nth-child(4) {
+    animation-delay: -0.144s;
+  }
+  div:nth-child(4):after {
+    top: 72px;
+    left: 40px;
+  }
+  div:nth-child(5) {
+    animation-delay: -0.18s;
+  }
+  div:nth-child(5):after {
+    top: 71px;
+    left: 32px;
+  }
+  div:nth-child(6) {
+    animation-delay: -0.216s;
+  }
+  div:nth-child(6):after {
+    top: 68px;
+    left: 24px;
+  }
+  div:nth-child(7) {
+    animation-delay: -0.252s;
+  }
+  div:nth-child(7):after {
+    top: 63px;
+    left: 17px;
+  }
+  div:nth-child(8) {
+    animation-delay: -0.288s;
+  }
+  div:nth-child(8):after {
+    top: 56px;
+    left: 12px;
+  }
+  @keyframes lds-roller {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
   }
 }
