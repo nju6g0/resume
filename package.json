@@ -9,6 +9,7 @@
         "axios": "^0.21.4",
         "classnames": "^2.3.2",
         "fabric": "^5.2.4",
+        "jspdf": "^2.5.1",
         "nanoid": "^4.0.0",
         "node-sass": "^5.0.0",
         "pdfjs-dist": "^2.6.347",
