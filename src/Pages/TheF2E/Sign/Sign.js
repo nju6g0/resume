@@ -1,19 +1,19 @@
-import React, { useState, useRef } from "react";
-
+import React, { useState, useRef, useEffect } from "react";
 import { fabric } from "fabric";
-import SignArea from "./SignArea";
 
 import classes from "./styles.module.scss";
 import classNames from "classnames/bind";
 const cx = classNames.bind(classes);
 
-const BASE64PREFIX = "data:application/pdf;base64,";
+const pdfjs = require("pdfjs-dist");
+pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.min.js`;
+const Base64Prefix = "data:application/pdf;base64,";
 
 const Sign = () => {
-  const canvasImgRef = useRef(null);
-  const [isShowPopup, setIsShowPopup] = useState(false);
+  const canvasRef = useRef(null);
+  const fabricRef = useRef(null);
 
-  const canvas = new fabric.Canvas(canvasImgRef.current);
+  // 使用原生 FileReader 轉檔
   const readBlob = (blob) => {
     return new Promise((resolve, reject) => {
       const reader = new FileReader();
@@ -21,74 +21,91 @@ const Sign = () => {
       reader.addEventListener("error", reject);
       reader.readAsDataURL(blob);
     });
-  };
+  }
+
   const printPDF = async (pdfData) => {
     // 將檔案處理成 base64
     pdfData = await readBlob(pdfData);
 
     // 將 base64 中的前綴刪去，並進行解碼
-    const data = atob(pdfData.substring(BASE64PREFIX.length));
-    return data;
+    const data = atob(pdfData.substring(Base64Prefix.length));
+
+    // 利用解碼的檔案，載入 PDF 檔及第一頁
+    const pdfDoc = await pdfjs.getDocument({ data }).promise;
+    const pdfPage = await pdfDoc.getPage(1);
+
+    // 設定尺寸及產生 canvas
+    const viewport = pdfPage.getViewport({ scale: window.devicePixelRatio });
+    const canvas = document.createElement("canvas");
+    const context = canvas.getContext("2d");
+
+    // 設定 PDF 所要顯示的寬高及渲染
+    canvas.height = viewport.height;
+    canvas.width = viewport.width;
+    const renderContext = {
+      canvasContext: context,
+      viewport,
+    };
+    const renderTask = pdfPage.render(renderContext);
+
+    // 回傳做好的 PDF canvas
+    return renderTask.promise.then(() => canvas);
+  };
+
+  const pdfToImage = (pdfData) => {
+    // 設定 PDF 轉為圖片時的比例
+    const scale = 1 / window.devicePixelRatio;
+
+    // 回傳圖片
+    return new fabric.Image(pdfData, {
+      id: "renderPDF",
+      scaleX: scale,
+      scaleY: scale,
+    });
   };
 
   const handleFileChange = async (e) => {
     const pdfData = await printPDF(e.target.files[0]);
+    const pdfImage = await pdfToImage(pdfData);
+
+    // 透過比例設定 canvas 尺寸
+    fabricRef.current.setWidth(pdfImage.width / window.devicePixelRatio);
+    fabricRef.current.setHeight(pdfImage.height / window.devicePixelRatio);
+
+    // // 將 PDF 畫面設定為背景
+    fabricRef.current.setBackgroundImage(pdfImage, fabricRef.current.renderAll.bind(fabricRef.current));
   };
 
-  const handleConfirmSign = (sign) => {
-    fabric.Image.fromURL(sign, function (image) {
-      canvas.setDimensions({ width: 600, height: 600 });
-      // 設定簽名出現的位置及大小，後續可調整
-      const oImg = image.set({
-        left: 0,
-        top: 0,
-      });
-      canvas.add(oImg);
-    });
-    setIsShowPopup(false);
-  };
+  useEffect(()=>{
+    const initFabric = () => {
+      fabricRef.current = new fabric.Canvas(canvasRef.current);
+    };
 
-  const openPopup = () => {
-    setIsShowPopup(true);
-  };
-  const handleClose = () => {
-    setIsShowPopup(false);
-  };
-  const handleSave = () => {
-    console.warn("nothing happen");
-  };
+    const disposeFabric = () => {
+      fabricRef.current.dispose();
+    };
+
+    initFabric();
+
+    return () => {
+      disposeFabric();
+    };
+
+  },[])
 
   return (
-    <>
-      <p style={{color: '#aaa', marginTop: "100px", textAlign: "center"}}>to be continue...</p>
-      <div className={cx("wrapper")}>
-        <div className={cx("buttons")}>
-          <label>
-            選擇檔案
-            <input
-              type="file"
-              accept="application/pdf"
-              placeholder="選擇PDF檔案"
-              onChange={handleFileChange}
-            />
-          </label>
-          <button type="button" onClick={openPopup}>
-            加入簽名
-          </button>
-          <button type="button" onClick={handleSave}>
-            下載檔案
-          </button>
-        </div>
-        <div className={cx("canvasContainer")}>
-          <canvas ref={canvasImgRef}></canvas>
-        </div>
-        <SignArea
-          visible={isShowPopup}
-          onConfirm={handleConfirmSign}
-          onClose={handleClose}
-        />
+    <div className={cx("wrapper")}>
+      今晚我想來點點簽
+      <input
+        type="file"
+        accept="application/pdf"
+        placeholder="選擇PDF檔案"
+        onChange={handleFileChange}
+      />
+      <div className={cx("fileContainer")}>
+        <canvas ref={canvasRef} />
       </div>
-    </>
+    </div>
   );
 };
 
