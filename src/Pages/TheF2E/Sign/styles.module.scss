@@ -1,6 +1,4 @@
 // size
-$max_width: 1920px;
-$size_tablet: 768px;
 $size_mobile: 480px;
 
 $color_blue: #2d316f;
@@ -271,18 +269,28 @@ $color_cover: rgba(0, 0, 0, 0.3);
       background-color: $color_yellow;
     }
   }
-  .progress {
-    border: 1px solid $color_white;
-    width: 40%;
+  .steps {
+    width: 500px;
+    margin-top: 80px;
     display: flex;
     justify-content: space-between;
     align-items: center;
     > div {
+      width: 100px;
+      display: flex;
+      flex-direction: column;
+      text-align: center;
       > div {
-        @include square(24px, 24px, 50%);
+        @include square(36px, 36px, 50%);
         background-color: $color_blue;
         margin: 0 auto;
         position: relative;
+        color: $color_white;
+        display: inline-block;
+        line-height: 34px;
+      }
+      > span {
+        line-height: 36px;
       }
     }
     > div:first-child,
@@ -294,7 +302,7 @@ $color_cover: rgba(0, 0, 0, 0.3);
           top: 50%;
           right: 0;
           transform: translate(100%, -50%);
-          width: 150px;
+          width: 180px;
           height: 5px;
           background-color: $color_blue;
         }
@@ -327,6 +335,19 @@ $color_cover: rgba(0, 0, 0, 0.3);
       transform: translateY(-20px);
       opacity: 1;
       box-shadow: 0 5px 10px $color_white;
+    }
+  }
+  @media screen and (max-width: $size_mobile) {
+    .steps {
+      width: 340px;
+      > div:first-child,
+      > div:nth-child(2) {
+        > div {
+          &::after {
+            width: 100px;
+          }
+        }
+      }
     }
   }
 }

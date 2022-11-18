@@ -1,5 +1,5 @@
 import React from "react";
-import { BsPen } from "react-icons/bs";
+import { BsPen, BsUpload, BsDownload, BsPencilSquare } from "react-icons/bs";
 
 import classes from "./styles.module.scss";
 import classNames from "classnames/bind";
@@ -13,20 +13,26 @@ const Tutorial = ({ onClose }) => {
         Sign easily&nbsp;&nbsp;&nbsp;&nbsp;
         <BsPen />
       </p>
-      {/* <div className={cx("progress")}>
+      <div className={cx("steps")}>
         <div>
-          <div />
+          <div>
+            <BsUpload />
+          </div>
           <span>upload file</span>
         </div>
         <div>
-          <div />
+          <div>
+            <BsPencilSquare />
+          </div>
           <span>sign</span>
         </div>
         <div>
-          <div />
+          <div>
+            <BsDownload />
+          </div>
           <span>download file</span>
         </div>
-      </div> */}
+      </div>
       <button type="button" onClick={onClose}>
         try now
       </button>
