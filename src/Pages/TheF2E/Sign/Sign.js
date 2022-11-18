@@ -1,5 +1,6 @@
 import React, { useState, useRef, useEffect } from "react";
 import { fabric } from "fabric";
+import { jsPDF } from "jspdf";
 
 import SignArea from './SignArea';
 import classes from "./styles.module.scss";
@@ -94,6 +95,18 @@ const Sign = () => {
   const handleClose = () => {
     setIsOpenSignArea(false);
   }
+  const handleSave = () => {
+    const image = fabricRef.current.toDataURL("image/png");
+    const pdf = new jsPDF();
+  
+    // 設定背景在 PDF 中的位置及大小
+    const width = pdf.internal.pageSize.width;
+    const height = pdf.internal.pageSize.height;
+    pdf.addImage(image, "png", 0, 0, width, height);
+  
+    // 將檔案取名並下載
+    pdf.save("download.pdf");
+  }
 
   useEffect(()=>{
     const initFabric = () => {
@@ -122,6 +135,7 @@ const Sign = () => {
         onChange={handleFileChange}
       />
       <button type='button' onClick={handleOpen}>加入簽名</button>
+      <button type='button' onClick={handleSave}>下載檔案</button>
       <div className={cx("fileContainer")}>
         <canvas ref={canvasRef} />
       </div>
