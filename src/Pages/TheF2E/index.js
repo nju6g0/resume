@@ -57,7 +57,7 @@ const Page = () => {
   };
 
   useEffect(() => {
-    setNowTab(querys.tab || SCRUM);
+    setNowTab(querys.tab || WEB);
   }, [querys]);
 
   return (
