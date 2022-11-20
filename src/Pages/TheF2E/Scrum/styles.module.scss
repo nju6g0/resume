@@ -1,19 +1,22 @@
 .wrapper {
-  height: 100vh;
-  padding: 100px 20px 20px 20px;
-  color: black;
-  display: flex;
-  justify-content: space-between;
-  .dropContainer {
-    width: 45%;
-    height: 500px;
-    border: 1px solid green;
-    padding: 20px;
-    border-radius: 20px;
-  }
-  .dragCard {
-    padding: 20px;
-    margin-top: 20px;
-    border: 1px solid #ccc;
+  min-height: 100vh;
+  background: url("/image/F2E_scrum/bg_village.png");
+  // padding: 100px 20px 20px 20px;
+  // color: black;
+  // display: flex;
+  // justify-content: space-between;
+  // .dropContainer {
+  //   width: 45%;
+  //   height: 500px;
+  //   border: 1px solid green;
+  //   padding: 20px;
+  //   border-radius: 20px;
+  // }
+  // .dragCard {
+  //   padding: 20px;
+  //   margin-top: 20px;
+  //   border: 1px solid #ccc;
+  // }
+  .entry {
   }
 }
