@@ -6,6 +6,8 @@ $color_primary_deep: #005656;
 $color_red: #ff0000;
 $color_yellow: #ffc700;
 $color_purple: #ff00f5;
+$color_black: #0a0d14;
+$color_cover: rgba(0, 0, 0, 0.5);
 
 // size
 $max_width: 1920px;
@@ -87,6 +89,22 @@ $size_mobile: 480px;
       box-shadow: none;
     }
   }
+  .dialog {
+    padding: 100px 20px 50px 50px;
+    margin-bottom: 20px;
+    background-color: $color_cover;
+    border: 2px solid $color_primary;
+    box-shadow: 0 0 10px $color_primary;
+    border-radius: 40px;
+    position: relative;
+    .speaker {
+      @include position_ab(24px, -4px);
+      background-color: $color_primary;
+      color: $color_black;
+      font-size: 24px;
+      padding: 8px 20px;
+    }
+  }
   .entry {
     height: 100vh;
     position: relative;
@@ -129,7 +147,7 @@ $size_mobile: 480px;
           content: "";
           @include position_ab(20%, 5%);
           @include star(50px, $color_purple);
-          animation: shine 0.5s infinite alternate;
+          animation: shine 1.2s infinite alternate;
         }
         &::after {
           content: "";
@@ -169,6 +187,14 @@ $size_mobile: 480px;
           @include position_ab(-20%, 100%);
           @include star(40px, $color_purple);
           animation: shine 0.5s infinite alternate;
+        }
+      }
+      .greeting {
+        font-weight: 500;
+        font-size: 24px;
+        text-align: left;
+        > span {
+          color: $color_primary;
         }
       }
     }

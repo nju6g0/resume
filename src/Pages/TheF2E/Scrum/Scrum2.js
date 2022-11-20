@@ -21,7 +21,13 @@ const RETRO = "retro";
 const COMPLETE = "complete";
 
 export const STEPS_KEY = {
-  ENTRY, PRODUCT_BACKLOG, PLANNING, SPRINT_TASK, SPRINT_INTRO, RETRO, COMPLETE
+  ENTRY,
+  PRODUCT_BACKLOG,
+  PLANNING,
+  SPRINT_TASK,
+  SPRINT_INTRO,
+  RETRO,
+  COMPLETE,
 };
 
 const STEPS = {
@@ -31,8 +37,10 @@ const STEPS = {
   [STEPS_KEY.SPRINT_TASK]: <SprintTask />,
   [STEPS_KEY.SPRINT_INTRO]: <SprintIntro />,
   [STEPS_KEY.RETRO]: <Retro />,
-  [STEPS_KEY.COMPLETE]: <Complete />
+  [STEPS_KEY.COMPLETE]: <Complete />,
 };
+
+export const Context = React.createContext();
 
 const Scrum = () => {
   const [nowStep, setNowStep] = useState(STEPS_KEY.ENTRY);
@@ -41,6 +49,10 @@ const Scrum = () => {
     return STEPS[nowStep];
   };
 
-  return <div className={cx("wrapper")}>{renderComponent()}</div>;
+  return (
+    <Context.Provider value={{goStep: (step)=>{setNowStep(step)}}}>
+      <div className={cx("wrapper")}>{renderComponent()}</div>
+    </Context.Provider>
+  );
 };
 export default Scrum;
