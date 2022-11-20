@@ -215,8 +215,10 @@ $size_mobile: 480px;
     }
     @media screen and (max-width: $size_mobile) {
       .info {
+        width: 90%;
         .logoBox {
           width: 300px;
+          margin: 0 auto;
         }
         .logoBox,
         .buttonContainer,
@@ -225,6 +227,9 @@ $size_mobile: 480px;
           &::before {
             display: none;
           }
+        }
+        .greeting {
+          font-size: 16px;
         }
       }
     }
