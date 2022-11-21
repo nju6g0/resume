@@ -7,6 +7,10 @@ const cx = classNames.bind(classes);
 
 const DEFAULT = "default";
 const OUTLINE = "outline";
+export const BUTTON_TYPES = {
+  DEFAULT,
+  OUTLINE
+}
 
 const Button = ({ type, text, onClick, disabled }) => {
   return (
