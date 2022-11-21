@@ -1,13 +1,16 @@
 // colors
 $color_white: #fff;
 $color_primary: #00ffe0;
+$color_primary_cover: rgba(0, 255, 224, 0.3);
 $color_primary_dark: #008d96;
 $color_primary_deep: #005656;
 $color_red: #ff0000;
 $color_yellow: #ffc700;
+$color_yellow_cover: rgba(255, 122, 0, 0.4);
+$color_brown: #933500;
 $color_purple: #ff00f5;
 $color_black: #0a0d14;
-$color_cover: rgba(0, 0, 0, 0.5);
+$color_cover: rgba(2, 1, 1, 0.5);
 
 // size
 $max_width: 1920px;
@@ -156,6 +159,59 @@ $size_mobile: 480px;
       opacity: 1;
     }
   }
+  .list {
+    width: 500px;
+    max-width: 100%;
+    border-radius: 20px;
+    overflow: hidden;
+    .header {
+      background-color: $color_primary;
+      text-align: center;
+      padding: 16px 0;
+      > p {
+        margin: 0;
+        font-weight: 700;
+      }
+      > p:first-child {
+        color: $color_black;
+        font-size: 32px;
+      }
+      > p:nth-child(2) {
+        color: $color_primary_dark;
+        font-size: 16px;
+      }
+    }
+    .body {
+      background: $color_primary_cover;
+      backdrop-filter: blur(5px);
+      padding: 32px 32px 12px 32px;
+    }
+  }
+  .list.yellow {
+    .header {
+      background-color: $color_yellow;
+      > p:nth-child(2) {
+        color: $color_brown;
+      }
+    }
+    .body {
+      background-color: $color_yellow_cover;
+    }
+  }
+  .listItem {
+    padding: 30px 24px;
+    margin-bottom: 20px;
+    min-height: 80px;
+    border: 2px solid $color_primary;
+    border-radius: 20px;
+    background-color: $color_cover;
+  }
+  .listItem.yellow {
+    border: 2px solid $color_yellow;
+  }
+  .listItem.dashed {
+    border-style: dashed;
+  }
 }
 
 .entry {
@@ -299,6 +355,13 @@ $size_mobile: 480px;
   > div:first-child {
     display: flex;
     > img {
+      width: 30%;
+    }
+  }
+  .demo {
+    display: flex;
+    justify-content: space-between;
+    > div {
       width: 30%;
     }
   }
