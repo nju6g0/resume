@@ -7,19 +7,21 @@ const cx = classNames.bind(classes);
 
 export const Context = React.createContext();
 
-const Dialog = ({ speaker, children }) => (
-  <div className={cx("dialog")}>
-    <div className={cx("speaker")}>{speaker}</div>
+const Dialog = ({ speaker, children, color }) => (
+  <div className={cx("dialog")} style={{ borderColor: color, boxShadow: `0 0 10px ${color}`}}>
+    <div className={cx("speaker")} style={{backgroundColor: color}}>{speaker}</div>
     {children}
   </div>
 );
 
 Dialog.defaultProps = {
-  children: ''
+  children: '',
+  color: null
 };
 Dialog.propType = {
   speaker: PropTyps.string.isRequired,
-  children: PropTyps.any
+  children: PropTyps.any,
+  color: PropTyps.string
 };
 
 export default Dialog;
