@@ -5,32 +5,33 @@ import classes from "./styles.module.scss";
 import classNames from "classnames/bind";
 const cx = classNames.bind(classes);
 
-export const Context = React.createContext();
+const GREEN = "green";
+const PURPLE = "purple";
+const RED = "red";
+const YELLOW = "yellow";
+export const DIALOG_THEMES = {
+  GREEN,
+  PURPLE,
+  RED,
+  YELLOW,
+};
 
-const Dialog = ({ speaker, children, color }) => (
-  <div
-    className={cx("dialog")}
-    style={{ borderColor: color, boxShadow: `0 0 10px ${color}` }}
-  >
-    <div className={cx("speaker")} style={{ backgroundColor: color }}>
-      {speaker}
-    </div>
+const Dialog = ({ speaker, children, theme }) => (
+  <div className={cx("dialog", theme)}>
+    <div className={cx("speaker")}>{speaker}</div>
     {children}
-    <div
-      className={cx("triangle")}
-      style={{ backgroundColor: color, borderTop: `20px solid ${color}` }}
-    />
+    <div className={cx("triangle")} />
   </div>
 );
 
 Dialog.defaultProps = {
   children: "",
-  color: null,
+  theme: GREEN,
 };
 Dialog.propTypes = {
   speaker: PropTypes.string.isRequired,
   children: PropTypes.any,
-  color: PropTypes.string,
+  theme: PropTypes.oneOf([GREEN, PURPLE, RED, YELLOW]),
 };
 
 export default Dialog;

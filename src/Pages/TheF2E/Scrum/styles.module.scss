@@ -69,7 +69,7 @@ $size_mobile: 480px;
   .button.outline {
     background: transparent;
     color: $color_primary;
-    border: 1px solid $color_primary;
+    border: 2px solid $color_primary;
     &:hover {
       box-shadow: 0 5px 5px $color_primary;
     }
@@ -114,6 +114,36 @@ $size_mobile: 480px;
       border-left: 12px solid transparent;
       border-top: 18px solid $color_primary;
       animation: jumping 0.5s infinite alternate;
+    }
+  }
+  .dialog.purple {
+    border: 2px solid $color_purple;
+    box-shadow: 0 0 10px $color_purple;
+    .speaker {
+      background-color: $color_purple;
+    }
+    .triangle {
+      border-top: 18px solid $color_purple;
+    }
+  }
+  .dialog.red {
+    border: 2px solid $color_red;
+    box-shadow: 0 0 10px $color_red;
+    .speaker {
+      background-color: $color_red;
+    }
+    .triangle {
+      border-top: 18px solid $color_red;
+    }
+  }
+  .dialog.yellow {
+    border: 2px solid $color_yellow;
+    box-shadow: 0 0 10px $color_yellow;
+    .speaker {
+      background-color: $color_yellow;
+    }
+    .triangle {
+      border-top: 18px solid $color_yellow;
     }
   }
   @keyframes jumping {
@@ -258,4 +288,18 @@ $size_mobile: 480px;
   }
 }
 .productBacklog {
+  padding: 20px;
+  p {
+    font-weight: 500;
+    font-size: 24px;
+    > span {
+      color: $color_primary;
+    }
+  }
+  > div:first-child {
+    display: flex;
+    > img {
+      width: 30%;
+    }
+  }
 }
