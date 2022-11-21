@@ -1,5 +1,5 @@
 import React from "react";
-import PropTyps from "prop-types";
+import PropTypes from "prop-types";
 
 import classes from "./styles.module.scss";
 import classNames from "classnames/bind";
@@ -27,10 +27,10 @@ Dialog.defaultProps = {
   children: "",
   color: null,
 };
-Dialog.propType = {
-  speaker: PropTyps.string.isRequired,
-  children: PropTyps.any,
-  color: PropTyps.string,
+Dialog.propTypes = {
+  speaker: PropTypes.string.isRequired,
+  children: PropTypes.any,
+  color: PropTypes.string,
 };
 
 export default Dialog;
