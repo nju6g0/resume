@@ -1,7 +1,7 @@
 // colors
 $color_white: #fff;
 $color_primary: #00ffe0;
-$color_primary_cover: rgba(0, 255, 224, 0.3);
+$color_primary_cover: rgba(0, 255, 224, 0.4);
 $color_primary_dark: #008d96;
 $color_primary_deep: #005656;
 $color_red: #ff0000;
@@ -164,6 +164,8 @@ $size_mobile: 480px;
     max-width: 100%;
     border-radius: 20px;
     overflow: hidden;
+    box-shadow: 10px 10px 0 rgba(0, 255, 224, 0.2),
+      20px 20px 0 rgba(0, 255, 224, 0.1);
     .header {
       background-color: $color_primary;
       text-align: center;
@@ -188,6 +190,8 @@ $size_mobile: 480px;
     }
   }
   .list.yellow {
+    box-shadow: 10px 10px 0 rgba(255, 122, 0, 0.3),
+      20px 20px 0 rgba(255, 122, 0, 0.1);
     .header {
       background-color: $color_yellow;
       > p:nth-child(2) {
@@ -357,12 +361,52 @@ $size_mobile: 480px;
     > img {
       width: 30%;
     }
+    > div {
+      flex-grow: 1;
+    }
   }
   .demo {
     display: flex;
     justify-content: space-between;
+    position: relative;
     > div {
       width: 30%;
+    }
+    > div:first-child,
+    > div:last-child {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      > div {
+        width: 80%;
+      }
+      .left {
+        transform: translateX(30%);
+      }
+      .right {
+        transform: translate(-30%, 100%);
+      }
+      .disabled {
+        opacity: 0.5;
+      }
+    }
+    > div:last-child {
+      align-items: flex-end;
+      .dragTarget {
+        transform: translate(-30%, 100%);
+        animation: dragToList 2s infinite;
+      }
+    }
+    @keyframes dragToList {
+      0% {
+        transform: translate(-30%, 100%);
+      }
+      70% {
+        transform: translate(-160%, -140%);
+      }
+      100% {
+        transform: translate(-160%, -140%);
+      }
     }
   }
 }
