@@ -16,22 +16,24 @@ export const DIALOG_THEMES = {
   YELLOW,
 };
 
-const Dialog = ({ speaker, children, theme }) => (
+const Dialog = ({ speaker, children, theme, isShowTriangle }) => (
   <div className={cx("dialog", theme)}>
     <div className={cx("speaker")}>{speaker}</div>
     {children}
-    <div className={cx("triangle")} />
+    {isShowTriangle && <div className={cx("triangle")} />}
   </div>
 );
 
 Dialog.defaultProps = {
   children: "",
   theme: GREEN,
+  isShowTriangle: false
 };
 Dialog.propTypes = {
   speaker: PropTypes.string.isRequired,
   children: PropTypes.any,
   theme: PropTypes.oneOf([GREEN, PURPLE, RED, YELLOW]),
+  isShowTriangle: PropTypes.bool
 };
 
 export default Dialog;
