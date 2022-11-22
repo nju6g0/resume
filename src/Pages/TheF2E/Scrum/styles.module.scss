@@ -362,7 +362,7 @@ $size_mobile: 480px;
       color: $color_primary;
     }
   }
-  > div:first-child {
+  .top {
     display: flex;
     > img {
       width: 30%;
@@ -371,8 +371,12 @@ $size_mobile: 480px;
       flex-grow: 1;
     }
   }
+  .content {
+    min-height: calc(100vh - 300px);
+  }
   .demo,
   .practical {
+    width: 100%;
     display: flex;
     justify-content: space-between;
     position: relative;
@@ -428,5 +432,11 @@ $size_mobile: 480px;
         transform: translate(-160%, -140%);
       }
     }
+  }
+  .buttonRight {
+    text-align: right;
+  }
+  .buttonCenter {
+    text-align: center;
   }
 }

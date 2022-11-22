@@ -59,7 +59,7 @@ const ProductBacklog = () => {
     left: [
       {
         title: "應徵者的線上履歷編輯器",
-        id: nanoid()
+        id: nanoid(),
       },
       {
         title: "後台職缺管理功能（資訊上架、下架、顯示應徵者資料）",
@@ -74,7 +74,7 @@ const ProductBacklog = () => {
       },
       {
         title: "前台職缺列表、應徵",
-        id: nanoid()
+        id: nanoid(),
       },
     ],
   });
@@ -132,9 +132,17 @@ const ProductBacklog = () => {
   const renderContent = () => {
     switch (nowScene) {
       case INTRO:
-        return <Button type={BUTTON_TYPES.OUTLINE} text="點擊畫面任意處繼續" />;
+        return (
+          <div className={cx("buttonCenter")}>
+            <Button type={BUTTON_TYPES.OUTLINE} text="點擊畫面任意處繼續" />
+          </div>
+        );
       case READY:
-        return <Button text="準備好了" onClick={handleClickReady} />;
+        return (
+          <div className={cx("buttonCenter")}>
+            <Button text="準備好了" onClick={handleClickReady} />
+          </div>
+        );
       case DEMO:
         return (
           <div className={cx("demo")}>
@@ -260,11 +268,21 @@ const ProductBacklog = () => {
                 </Droppable>
               </DragDropContext>
             </div>
-            <Button text="我完成了" disabled={listItems.center.length !== 4} onClick={handleClickFinished} />
+            <div className={cx("buttonRight")}>
+              <Button
+                text="我完成了"
+                disabled={listItems.center.length !== 4}
+                onClick={handleClickFinished}
+              />
+            </div>
           </>
         );
       case FINISHED:
-        return <Button type={BUTTON_TYPES.OUTLINE} text="點擊畫面任意處繼續" />;
+        return (
+          <div className={cx("buttonCenter")}>
+            <Button type={BUTTON_TYPES.OUTLINE} text="點擊畫面任意處繼續" />
+          </div>
+        );
       default:
         return null;
     }
@@ -272,7 +290,7 @@ const ProductBacklog = () => {
 
   return (
     <div className={cx("productBacklog")} onClick={handleClickContinue}>
-      <div>
+      <div className={cx("top")}>
         <Role name={ROLE_NAMES.PO} />
         <div>
           <Dialog
@@ -284,7 +302,7 @@ const ProductBacklog = () => {
           />
         </div>
       </div>
-      <div>{renderContent()}</div>
+      <div className={cx("content")}>{renderContent()}</div>
     </div>
   );
 };
