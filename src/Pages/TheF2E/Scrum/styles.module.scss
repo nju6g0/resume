@@ -4,7 +4,7 @@ $color_primary: #00ffe0;
 $color_primary_cover: rgba(0, 255, 224, 0.4);
 $color_primary_dark: #008d96;
 $color_primary_deep: #005656;
-$color_red: #ff0000;
+$color_red: #ff5c00;
 $color_yellow: #ffc700;
 $color_yellow_cover: rgba(255, 122, 0, 0.4);
 $color_brown: #933500;
@@ -35,6 +35,11 @@ $size_mobile: 480px;
   top: $top;
   left: $left;
 }
+@mixin circle($w) {
+  width: $w;
+  height: $w;
+  border-radius: 50%;
+}
 
 .wrapper {
   min-height: 100vh;
@@ -56,6 +61,10 @@ $size_mobile: 480px;
   //   margin-top: 20px;
   //   border: 1px solid #ccc;
   // }
+  p {
+    margin: 0;
+    padding: 0;
+  }
   .button {
     padding: 12px 48px;
     line-height: 40px;
@@ -215,6 +224,14 @@ $size_mobile: 480px;
       // backdrop-filter: blur(5px);
       padding: 32px 32px 12px 32px;
       border-radius: 0 0 20px 20px;
+      .listItem {
+        padding: 30px 24px;
+        margin-bottom: 20px;
+        min-height: 80px;
+        border: 2px solid $color_primary;
+        border-radius: 20px;
+        background-color: $color_cover;
+      }
     }
   }
   .list.yellow {
@@ -227,7 +244,14 @@ $size_mobile: 480px;
       }
     }
     .body {
-      background-color: $color_yellow_cover;
+      background: radial-gradient(
+        ellipse at center,
+        $color_white 0%,
+        $color_yellow_cover 77%
+      );
+      .listItem {
+        border: 2px solid $color_yellow;
+      }
     }
   }
   .listItem {
@@ -242,7 +266,7 @@ $size_mobile: 480px;
     border: 2px solid $color_yellow;
   }
   .listItem.dashed {
-    border-style: dashed;
+    border-style: dashed !important;
   }
 }
 
@@ -492,9 +516,7 @@ $size_mobile: 480px;
       @extend %flex_center;
       padding: 20px 0;
       > div {
-        width: 40vw;
-        height: 40vw;
-        border-radius: 50%;
+        @include circle(40vw);
         @extend %flex_center;
         > img {
           object-fit: contain;
@@ -536,9 +558,7 @@ $size_mobile: 480px;
           position: absolute;
           top: 0;
           left: 0;
-          width: 100%;
-          height: 100%;
-          border-radius: 50%;
+          @include circle(100%);
           background-color: rgba(2, 1, 1, 0.2);
         }
       }
@@ -582,10 +602,8 @@ $size_mobile: 480px;
         position: relative;
         > span {
           display: inline-block;
-          width: 80px;
-          height: 80px;
+          @include circle(80px);
           font-size: 40px;
-          border-radius: 50%;
           line-height: 80px;
           text-align: center;
           background-color: $color_primary_cover;
@@ -609,5 +627,69 @@ $size_mobile: 480px;
     .ending {
       @extend %flex_center;
     }
+  }
+}
+.sprintTask {
+  padding: 20px;
+  .upper {
+    display: flex;
+    justify-content: space-between;
+    > img {
+      width: 450px;
+    }
+    > div {
+      flex-grow: 1;
+    }
+  }
+  .content {
+    display: flex;
+    position: relative;
+    > div + div {
+      margin-left: 80px;
+    }
+    .listItems {
+      min-height: 600px;
+      font-weight: 500;
+      font-size: 20px;
+      .item {
+        display: flex;
+        align-items: center;
+        span {
+          @include circle(50px);
+          flex-shrink: 0;
+          display: inline-block;
+          background-color: $color_primary_dark;
+          line-height: 50px;
+          text-align: center;
+          margin-right: 20px;
+        }
+      }
+    }
+    .listItems.sprintBacklog {
+      .item {
+        span {
+          background-color: $color_yellow;
+        }
+      }
+    }
+    .complete {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: calc(100% + 40px);
+      height: calc(100% + 40px);
+      background-color: $color_cover;
+      margin-left: -20px;
+      display: none;
+    }
+    .complete.show {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+  }
+  .buttonContainer {
+    margin-top: 50px;
+    text-align: right;
   }
 }
