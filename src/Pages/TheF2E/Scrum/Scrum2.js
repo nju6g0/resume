@@ -43,7 +43,7 @@ const STEPS = {
 export const Context = React.createContext();
 
 const Scrum = () => {
-  const [nowStep, setNowStep] = useState(STEPS_KEY.PLANNING);
+  const [nowStep, setNowStep] = useState(STEPS_KEY.ENTRY);
 
   const renderComponent = () => {
     return STEPS[nowStep];
