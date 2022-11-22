@@ -6,10 +6,10 @@ import img_role_mm from "image/F2E_scrum/Role_mm.png";
 import img_role_ee from "image/F2E_scrum/Role_ee.png";
 import img_role_gg from "image/F2E_scrum/Role_gg.png";
 
-const PO = "product owner";
-const MM = "scrum master";
-const EE = "ee";
-const GG = "gg";
+const PO = "PO"; // product owner
+const MM = "SM"; // scrum master"
+const EE = "EE";
+const GG = "GG";
 export const ROLE_NAMES = {
   PO,
   MM,

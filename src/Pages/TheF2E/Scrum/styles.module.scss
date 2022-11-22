@@ -9,6 +9,7 @@ $color_yellow: #ffc700;
 $color_yellow_cover: rgba(255, 122, 0, 0.4);
 $color_brown: #933500;
 $color_purple: #ff00f5;
+$color_purple_cover: rgba(255, 0, 245, 0.35);
 $color_black: #0a0d14;
 $color_cover: rgba(2, 1, 1, 0.5);
 
@@ -17,6 +18,11 @@ $max_width: 1920px;
 $size_tablet: 768px;
 $size_mobile: 480px;
 
+%flex_center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 @mixin star($w, $color) {
   width: $w;
   height: $w;
@@ -119,6 +125,13 @@ $size_mobile: 480px;
       border-top: 18px solid $color_primary;
       animation: jumping 0.5s infinite alternate;
     }
+    p {
+      font-weight: 500;
+      font-size: 24px;
+      > span {
+        color: $color_primary;
+      }
+    }
   }
   .dialog.purple {
     border: 2px solid $color_purple;
@@ -128,6 +141,9 @@ $size_mobile: 480px;
     }
     .triangle {
       border-top: 18px solid $color_purple;
+    }
+    span {
+      color: $color_purple;
     }
   }
   .dialog.red {
@@ -139,6 +155,9 @@ $size_mobile: 480px;
     .triangle {
       border-top: 18px solid $color_red;
     }
+    span {
+      color: $color_red;
+    }
   }
   .dialog.yellow {
     border: 2px solid $color_yellow;
@@ -148,6 +167,9 @@ $size_mobile: 480px;
     }
     .triangle {
       border-top: 18px solid $color_yellow;
+    }
+    span {
+      color: $color_yellow;
     }
   }
   @keyframes jumping {
@@ -355,20 +377,16 @@ $size_mobile: 480px;
 }
 .productBacklog {
   padding: 20px;
-  p {
-    font-weight: 500;
-    font-size: 24px;
-    > span {
-      color: $color_primary;
-    }
-  }
   .top {
     display: flex;
-    > img {
-      width: 30%;
+    > div:first-child {
+      width: 450px;
+      > img {
+        width: 100%;
+      }
     }
-    > div {
-      flex-grow: 1;
+    > div:last-child {
+      width: 70%;
     }
   }
   .content {
@@ -438,5 +456,158 @@ $size_mobile: 480px;
   }
   .buttonCenter {
     text-align: center;
+  }
+}
+.planning {
+  padding: 20px;
+  .header,
+  .footer {
+    display: flex;
+    justify-content: space-between;
+    .role {
+      width: 450px;
+      flex-grow: 0;
+      > img {
+        width: 100%;
+      }
+    }
+    .paragraph {
+      width: 70%;
+    }
+  }
+  .header.reverse,
+  .footer {
+    flex-direction: row-reverse;
+  }
+  .footer {
+    align-items: flex-end;
+  }
+  .body {
+    > div {
+      min-height: 500px;
+    }
+    .opening,
+    .introSM,
+    .introRD {
+      @extend %flex_center;
+      padding: 20px 0;
+      > div {
+        width: 40vw;
+        height: 40vw;
+        border-radius: 50%;
+        @extend %flex_center;
+        > img {
+          object-fit: contain;
+        }
+      }
+    }
+    .opening {
+      > div {
+        background: radial-gradient(
+          ellipse at center,
+          $color_white 0%,
+          $color_primary_cover 60%
+        );
+        box-shadow: 10px 10px 10px rgba(0, 255, 224, 0.2),
+          -10px -10px 10px rgba(0, 255, 224, 0.1);
+        > img {
+          width: 80%;
+        }
+      }
+    }
+    .introSM,
+    .introRD {
+      margin-top: -300px;
+      > div {
+        position: relative;
+        background: radial-gradient(
+          ellipse at center,
+          $color_white 0%,
+          $color_purple 50%,
+          $color_purple_cover 70%
+        );
+        box-shadow: 10px 10px 10px $color_purple_cover,
+          -10px -10px 10px $color_purple_cover;
+        > img {
+          width: 100%;
+        }
+        &::after {
+          content: "";
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          border-radius: 50%;
+          background-color: rgba(2, 1, 1, 0.2);
+        }
+      }
+    }
+    .introRD {
+      justify-content: flex-start;
+      > div {
+        margin-left: 10vw;
+        > img {
+          width: 60%;
+        }
+      }
+    }
+    .storyPoint,
+    .fibonacci {
+      @extend %flex_center;
+      flex-wrap: wrap;
+      margin: 50px auto;
+      width: 1200px;
+      max-width: 100%;
+    }
+    .storyPoint {
+      > div:first-child {
+        margin-left: -120px;
+        margin-top: -100px;
+      }
+      > div {
+        width: 195px;
+        margin: 40px;
+        > img {
+          width: 100%;
+        }
+      }
+    }
+    .fibonacci {
+      > div {
+        background: url("/image/F2E_scrum/book.png");
+        width: 195px;
+        height: 185px;
+        margin: 40px;
+        position: relative;
+        > span {
+          display: inline-block;
+          width: 80px;
+          height: 80px;
+          font-size: 40px;
+          border-radius: 50%;
+          line-height: 80px;
+          text-align: center;
+          background-color: $color_primary_cover;
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-30%, -50%);
+        }
+      }
+      .warning {
+        > span {
+          background-color: $color_yellow;
+        }
+      }
+      .error {
+        > span {
+          background-color: $color_red;
+        }
+      }
+    }
+    .ending {
+      @extend %flex_center;
+    }
   }
 }

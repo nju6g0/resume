@@ -91,10 +91,7 @@ const ProductBacklog = () => {
         });
         setIsDemoActive(true);
       } else {
-        window.scrollTo({
-          top: 0,
-          behavior: "smooth",
-        });
+        window.scrollTo({top: 0});
         setNowScene(PRACTICAL);
       }
     }
@@ -106,6 +103,7 @@ const ProductBacklog = () => {
     setNowScene(DEMO);
   };
   const handleClickFinished = () => {
+    window.scrollTo({top: 0});
     setNowScene(FINISHED);
   };
   const handleDragEnd = (event) => {
@@ -291,10 +289,12 @@ const ProductBacklog = () => {
   return (
     <div className={cx("productBacklog")} onClick={handleClickContinue}>
       <div className={cx("top")}>
-        <Role name={ROLE_NAMES.PO} />
+        <div>
+          <Role name={ROLE_NAMES.PO} />
+        </div>
         <div>
           <Dialog
-            speaker="PO"
+            speaker={ROLE_NAMES.PO}
             isShowTriangle={
               nowScene === INTRO || nowScene === DEMO || nowScene === FINISHED
             }
