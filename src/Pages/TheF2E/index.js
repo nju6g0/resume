@@ -58,33 +58,34 @@ const Page = () => {
   };
 
   useEffect(() => {
-    if(!tab){
+    if (!tab) {
       handleClickTab(SCRUM);
-    }else{
+    } else {
       setNowTab(tab);
     }
   }, [tab]);
 
+
   return (
     <div className={cx("wrapper")}>
-        <header>
-          <div className={cx("container")}>
-            <h3>The F2E 4th 互動式網頁設計</h3>
-            <ul className={cx("tabs")}>
-              {TABS.map((tab) => (
-                <li
-                  key={`tab_${tab.key}`}
-                  {...(nowTab === tab.key && { className: cx("active") })}
-                  onClick={() => {
-                    handleClickTab(tab.key);
-                  }}
-                >
-                  {tab.text}
-                </li>
-              ))}
-            </ul>
-          </div>
-        </header>
+      <header>
+        <div className={cx("container")}>
+          <h3>The F2E 4th 互動式網頁設計</h3>
+          <ul className={cx("tabs")}>
+            {TABS.map((tab) => (
+              <li
+                key={`tab_${tab.key}`}
+                {...(nowTab === tab.key && { className: cx("active") })}
+                onClick={() => {
+                  handleClickTab(tab.key);
+                }}
+              >
+                {tab.text}
+              </li>
+            ))}
+          </ul>
+        </div>
+      </header>
       <main>{renderTabContent()}</main>
       <GoHome />
     </div>

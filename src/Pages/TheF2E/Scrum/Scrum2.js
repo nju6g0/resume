@@ -10,10 +10,20 @@ import SprintIntro from "./SprintIntro";
 import Retro from "./Retro";
 import Complete from "./Complete";
 import Progress from "./Progress";
+import NotAvailable from "./NotAvailable";
 
 import classes from "./styles.module.scss";
 import classNames from "classnames/bind";
 const cx = classNames.bind(classes);
+
+function isMobile() {
+  try {
+    document.createEvent("TouchEvent");
+    return true;
+  } catch (e) {
+    return false;
+  }
+}
 
 const ENTRY = "Precursor";
 const PRODUCT_BACKLOG = "Product Backlog";
@@ -63,9 +73,9 @@ const Scrum = () => {
   };
 
   useEffect(() => {
-    if(!step){
-      handleChangeStep(ENTRY)
-    }else{
+    if (!step) {
+      handleChangeStep(ENTRY);
+    } else {
       setNowStep(step);
     }
   }, [step]);
@@ -77,8 +87,14 @@ const Scrum = () => {
       }}
     >
       <div className={cx("wrapper")}>
-        <Progress nowStep={nowStep} />
-        {renderComponent()}
+        {isMobile() ? (
+          <NotAvailable />
+        ) : (
+          <>
+            <Progress nowStep={nowStep} />
+            {renderComponent()}
+          </>
+        )}
       </div>
     </Context.Provider>
   );
