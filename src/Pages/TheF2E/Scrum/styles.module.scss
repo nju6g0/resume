@@ -693,3 +693,180 @@ $size_mobile: 480px;
     text-align: right;
   }
 }
+.sprintIntro {
+  padding: 20px;
+  .upper {
+    display: flex;
+    > img {
+      width: 450px;
+    }
+    > div {
+      flex-grow: 1;
+    }
+  }
+  .content {
+    .intro {
+      display: flex;
+      justify-content: space-between;
+      > div {
+        width: 30%;
+        overflow: hidden;
+        ul {
+          padding: 20px 0;
+          font-weight: 500;
+          font-size: 20px;
+          line-height: 36px;
+          transform: translateY(100%);
+          opacity: 0;
+          transition: 0.3s;
+          li {
+            margin-left: 20px;
+          }
+        }
+      }
+      > div.show {
+        ul {
+          transform: translateY(0);
+          opacity: 1;
+        }
+      }
+    }
+    .process {
+      width: 100%;
+      height: 710px;
+      background: url("/image/F2E_scrum/sprint_process.png") no-repeat top left;
+      position: relative;
+      display: flex;
+      justify-content: space-between;
+      > .listContainer {
+        width: 400px;
+        padding-left: 50px;
+        > .card + .card {
+          margin-top: 20px;
+        }
+      }
+      .position_ab {
+        position: absolute;
+      }
+      .position_ab.review,
+      .position_ab.daily,
+      .position_ab.retro {
+        width: 300px;
+        transition: 5s;
+      }
+      .position_ab.review {
+        bottom: 240px;
+        left: 520px;
+      }
+      .position_ab.daily {
+        bottom: 40px;
+        left: 420px;
+      }
+      .position_ab.retro {
+        bottom: 40px;
+        left: 780px;
+      }
+      .emptyCard {
+        width: 300px;
+      }
+      .emptyCard.review {
+        &::before {
+          content: "";
+          display: block;
+          width: 42px;
+          height: 8px;
+          background-color: $color_yellow;
+          transform: translate(-42px, 42px);
+        }
+      }
+      .emptyCard.daily,
+      .emptyCard.retro {
+        bottom: 40px;
+        &::before {
+          content: "";
+          display: block;
+          width: 8px;
+          height: 42px;
+          background-color: $color_yellow;
+          transform: translate(150px, 120px);
+        }
+      }
+    }
+    .card {
+      position: relative;
+      text-align: center;
+      padding: 8px 20px;
+      border-radius: 20px;
+      background-color: $color_cover;
+      > p {
+        font-weight: 700;
+        font-size: 32px;
+      }
+      > span {
+        font-weight: 700;
+        font-size: 16px;
+      }
+    }
+    .card.yellow {
+      border: 2px solid $color_yellow;
+      > p {
+        color: $color_yellow;
+      }
+      > span {
+        color: $color_primary;
+      }
+    }
+    .card.green {
+      border: 2px solid $color_primary;
+      > p {
+        color: $color_primary;
+      }
+      > span {
+        color: $color_primary_cover;
+      }
+    }
+    .card.left {
+      &::before {
+        content: "";
+        width: 48px;
+        height: 10px;
+        background-color: $color_primary;
+        position: absolute;
+        top: 50%;
+        left: -48px;
+        transform: translateY(-50%);
+      }
+    }
+    .card.up {
+      position: absolute;
+      left: 250px;
+      bottom: 150px;
+    }
+    .card.hide {
+      > p,
+      > span {
+        opacity: 0;
+      }
+    }
+    .card.jumping {
+      > p,
+      > span {
+        opacity: 0;
+        animation: jumping 1s 1s both;
+      }
+    }
+    @keyframes jumping {
+      0% {
+        transform: translateY(80%);
+        opacity: 0;
+      }
+      100% {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
+    .buttonConatiner {
+      text-align: center;
+    }
+  }
+}
