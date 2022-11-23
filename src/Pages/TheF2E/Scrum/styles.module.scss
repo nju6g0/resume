@@ -925,9 +925,6 @@ $size_mobile: 480px;
                 width: 100%;
               }
             }
-            .role.reverse {
-              transform: rotate(180deg);
-            }
             .role.SM {
               animation: rise 1s 1s both;
             }
@@ -971,6 +968,145 @@ $size_mobile: 480px;
           width: 100%;
         }
       }
+    }
+  }
+}
+.complete {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  .roles {
+    display: flex;
+    > div {
+      position: relative;
+      transition: 0.5s;
+      overflow: hidden;
+      width: 205px;
+      height: 200px;
+      position: relative;
+      img {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        top: 100%;
+        left: 0;
+      }
+      > p {
+        position: absolute;
+        top: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        font-weight: 700;
+        font-size: 20px;
+        visibility: hidden;
+      }
+      &:hover {
+        transform: scale(1.05) rotate(-5deg);
+        > p {
+          visibility: visible;
+        }
+      }
+    }
+    > div:first-child {
+      color: $color_red;
+      > img {
+        animation: rise 0.5s 2s both;
+      }
+    }
+    > div:nth-child(2) {
+      color: $color_yellow;
+      > img {
+        animation: rise 0.5s 2.5s both;
+      }
+    }
+    > div:nth-child(3) {
+      color: $color_purple;
+      > img {
+        animation: rise 0.5s 3s both;
+      }
+    }
+    > div:nth-child(4) {
+      color: $color_primary;
+      > img {
+        animation: rise 0.5s 3.5s both;
+      }
+    }
+    @keyframes rise {
+      0% {
+        top: 100%;
+      }
+      100% {
+        top: 0;
+      }
+    }
+  }
+  > p,
+  > h3 {
+    font-weight: 700;
+    font-size: 32px;
+    line-height: 48px;
+    animation: appear 1s 1s both;
+  }
+  > h3 {
+    padding: 32px 100px;
+    color: $color_primary;
+    border: 2px solid $color_primary;
+    background-color: $color_cover;
+    border-radius: 40px;
+    margin: 20px 0;
+    box-shadow: 0 0 10px $color_primary;
+  }
+  > span {
+    font-weight: 700;
+    font-size: 16px;
+    color: $color_primary;
+    cursor: pointer;
+    opacity: 0;
+    &:hover {
+      text-decoration: underline;
+    }
+    animation: appear 1s 4s both;
+  }
+  @keyframes appear {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+  .star {
+    position: absolute;
+    animation: twinkle 2s infinite both;
+  }
+  @for $i from 1 through 10 {
+    .star#{$i} {
+      $positionX: random() * 80%;
+      $positionY: random() * 80%;
+      top: $positionY;
+      left: $positionX;
+      animation-delay: $i * -0.1s;
+      $remainder: $i % 4;
+      @if $remainder == 0 {
+        @include star(30px, $color_primary);
+      } @else if $remainder == 1 {
+        @include star(30px, $color_red);
+      } @else if $remainder == 2 {
+        @include star(30px, $color_yellow);
+      } @else if $remainder == 3 {
+        @include star(30px, $color_purple);
+      }
+    }
+  }
+  @keyframes twinkle {
+    0%,
+    100% {
+      opacity: 0;
+    }
+    70% {
+      opacity: 1;
     }
   }
 }

@@ -2,7 +2,7 @@ import React, { useState, useContext, useEffect } from "react";
 import { BiCheck } from "react-icons/bi";
 
 import Dialog from "./Dialog";
-import Role, { ROLE_NAMES } from "./Role";
+import Role, { ROLE_NAMES, ROLE_DIRECTIONS } from "./Role";
 import List, { LIST_THEME } from "./List";
 import { Context, STEPS_KEY } from "./Scrum2";
 
@@ -82,18 +82,14 @@ const Retro = () => {
                 </div>
                 <div>
                   <div
-                    className={cx(
-                      "reverse",
-                      "role",
-                      exampleStep >= 1 && ROLE_NAMES.PO
-                    )}
+                    className={cx("role", exampleStep >= 1 && ROLE_NAMES.PO)}
                   >
-                    <Role name={ROLE_NAMES.PO} />
+                    <Role name={ROLE_NAMES.PO} direction={ROLE_DIRECTIONS.UP} />
                   </div>
                   <List.Item>
                     大家在開發上都會互相 cover ， 讓任務都有準在時間內完成 。
                   </List.Item>
-                  <div className={cx("checked", exampleStep >=2 && "show")}>
+                  <div className={cx("checked", exampleStep >= 2 && "show")}>
                     <BiCheck />
                   </div>
                 </div>
@@ -104,30 +100,22 @@ const Retro = () => {
               <div>
                 <div>
                   <div
-                    className={cx(
-                      "reverse",
-                      "role",
-                      exampleStep >= 1 && ROLE_NAMES.EE
-                    )}
+                    className={cx("role", exampleStep >= 1 && ROLE_NAMES.EE)}
                   >
-                    <Role name={ROLE_NAMES.EE} />
+                    <Role name={ROLE_NAMES.EE} direction={ROLE_DIRECTIONS.UP} />
                   </div>
                   <List.Item theme={LIST_THEME.YELLOW}>
                     可以記錄這次的開發時間 ， 讓預估團隊點數可以更精準 。
                   </List.Item>
-                  <div className={cx("checked", exampleStep >=3 && "show")}>
+                  <div className={cx("checked", exampleStep >= 3 && "show")}>
                     <BiCheck />
                   </div>
                 </div>
                 <div>
                   <div
-                    className={cx(
-                      "reverse",
-                      "role",
-                      exampleStep >= 1 && ROLE_NAMES.GG
-                    )}
+                    className={cx("role", exampleStep >= 1 && ROLE_NAMES.GG)}
                   >
-                    <Role name={ROLE_NAMES.GG} />
+                    <Role name={ROLE_NAMES.GG} direction={ROLE_DIRECTIONS.UP} />
                   </div>
                   <List.Item theme={LIST_THEME.RED}>
                     開發時間預估不準確 ， 請後端下次改進 ， 避免 delay 到我 。
