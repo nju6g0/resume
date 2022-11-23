@@ -45,22 +45,6 @@ $size_mobile: 480px;
   min-height: 100vh;
   background: url("/image/F2E_scrum/bg_village.png");
   background-size: cover;
-  // padding: 100px 20px 20px 20px;
-  // color: black;
-  // display: flex;
-  // justify-content: space-between;
-  // .dropContainer {
-  //   width: 45%;
-  //   height: 500px;
-  //   border: 1px solid green;
-  //   padding: 20px;
-  //   border-radius: 20px;
-  // }
-  // .dragCard {
-  //   padding: 20px;
-  //   margin-top: 20px;
-  //   border: 1px solid #ccc;
-  // }
   p {
     margin: 0;
     padding: 0;
@@ -275,6 +259,59 @@ $size_mobile: 480px;
   }
   .listItem.dashed {
     border-style: dashed !important;
+  }
+}
+.progress {
+  width: 100%;
+  height: 16px;
+  background: $color_primary_cover;
+  position: relative;
+  z-index: 5;
+  > div {
+    display: flex;
+    justify-content: space-between;
+    .dot {
+      z-index: 6;
+      @include circle(20px);
+      cursor: pointer;
+      transition: 0.5s;
+      border: 1px solid $color_primary;
+      position: relative;
+      &:hover {
+        background-color: $color_yellow;
+        > span {
+          opacity: 1;
+        }
+      }
+      > span {
+        background-color: $color_cover;
+        display: block;
+        padding: 8px 16px;
+        border-radius: 4px;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        transform: translateY(100%);
+        opacity: 0;
+      }
+    }
+    .dot.goaled {
+      background-color: $color_primary_deep;
+    }
+    .dot.lastest {
+      > span {
+        transform: translate(-90%, 100%);
+      }
+    }
+  }
+  .rate {
+    position: absolute;
+    top: 0;
+    left: 0;
+    transition: 0.5s;
+    height: 100%;
+    background: $color_primary;
+    border-radius: 0 10px 10px 0;
   }
 }
 

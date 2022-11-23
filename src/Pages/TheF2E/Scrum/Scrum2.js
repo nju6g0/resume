@@ -7,18 +7,19 @@ import SprintTask from "./SprintTask";
 import SprintIntro from "./SprintIntro";
 import Retro from "./Retro";
 import Complete from "./Complete";
+import Progress from "./Progress";
 
 import classes from "./styles.module.scss";
 import classNames from "classnames/bind";
 const cx = classNames.bind(classes);
 
-const ENTRY = "entry";
-const PRODUCT_BACKLOG = "productBacklog";
-const PLANNING = "planning";
-const SPRINT_TASK = "sprintTask ";
-const SPRINT_INTRO = "sprintIntro";
-const RETRO = "retro";
-const COMPLETE = "complete";
+const ENTRY = "Precursor";
+const PRODUCT_BACKLOG = "Product Backlog";
+const PLANNING = "Planning";
+const SPRINT_TASK = "SprintTask ";
+const SPRINT_INTRO = "Sprint Intro";
+const RETRO = "Retro";
+const COMPLETE = "Complete";
 
 export const STEPS_KEY = {
   ENTRY,
@@ -50,8 +51,17 @@ const Scrum = () => {
   };
 
   return (
-    <Context.Provider value={{goStep: (step)=>{setNowStep(step)}}}>
-      <div className={cx("wrapper")}>{renderComponent()}</div>
+    <Context.Provider
+      value={{
+        goStep: (step) => {
+          setNowStep(step);
+        },
+      }}
+    >
+      <div className={cx("wrapper")}>
+        <Progress nowStep={nowStep}   />
+        {renderComponent()}
+      </div>
     </Context.Provider>
   );
 };
