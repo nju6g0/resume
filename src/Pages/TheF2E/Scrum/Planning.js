@@ -223,6 +223,7 @@ const Planning = () => {
   const handleChangeScene = () => {
     if (nowScene === SCENES_ORDER[SCENES_ORDER.length - 1]) {
       context.goStep(STEPS_KEY.SPRINT_TASK);
+      return;
     };
 
     if([INTRO_RD, STORY_POINT, FIBONACCI, ENDING].includes(nowScene)){

@@ -33,6 +33,7 @@ const Page = () => {
   const location = useLocation();
   const history = useHistory();
   const querys = qs.parse(location.search, { ignoreQueryPrefix: true });
+  const { tab } = querys;
   const [nowTab, setNowTab] = useState("");
 
   const handleClickTab = (tab) => {
@@ -57,8 +58,12 @@ const Page = () => {
   };
 
   useEffect(() => {
-    setNowTab(querys.tab || SCRUM);
-  }, [querys]);
+    if(!tab){
+      handleClickTab(SCRUM);
+    }else{
+      setNowTab(tab);
+    }
+  }, [tab]);
 
   return (
     <div className={cx("wrapper")}>
