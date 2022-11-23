@@ -17,6 +17,16 @@ const Complete = () => {
 
   return (
     <div className={cx("complete")}>
+      <div className={cx("star", "star1")}/>
+      <div className={cx("star", "star2")}/>
+      <div className={cx("star", "star3")}/>
+      <div className={cx("star", "star4")}/>
+      <div className={cx("star", "star5")}/>
+      <div className={cx("star", "star6")}/>
+      <div className={cx("star", "star7")}/>
+      <div className={cx("star", "star8")}/>
+      <div className={cx("star", "star9")}/>
+      <div className={cx("star", "star10")}/>
       <img src={img_logo} alt="logo" />
       <p>恭喜你通過</p>
       <h3>《 敏捷任務 - 最初の試煉 》</h3>
@@ -39,16 +49,6 @@ const Complete = () => {
           <Role name={ROLE_NAMES.PO} direction={ROLE_DIRECTIONS.UP} />
         </div>
       </div>
-      <div className={cx("star", "star1")}/>
-      <div className={cx("star", "star2")}/>
-      <div className={cx("star", "star3")}/>
-      <div className={cx("star", "star4")}/>
-      <div className={cx("star", "star5")}/>
-      <div className={cx("star", "star6")}/>
-      <div className={cx("star", "star7")}/>
-      <div className={cx("star", "star8")}/>
-      <div className={cx("star", "star9")}/>
-      <div className={cx("star", "star10")}/>
     </div>
   );
 };

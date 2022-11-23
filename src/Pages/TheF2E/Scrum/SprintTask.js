@@ -69,7 +69,6 @@ const SprintTask = () => {
       return;
     }
 
-    console.log(destination);
     let draggedItems = { ...listItems };
     const [dragTarget] = draggedItems[source.droppableId].list.splice(
       source.index,

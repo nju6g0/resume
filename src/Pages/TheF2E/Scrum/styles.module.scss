@@ -881,6 +881,7 @@ $size_mobile: 480px;
 }
 .retro {
   padding: 20px;
+  overflow: hidden;
   .upper {
     display: flex;
     justify-content: space-between;
@@ -892,6 +893,7 @@ $size_mobile: 480px;
     }
   }
   .content {
+    min-height: calc(100vh - 400px);
     .example {
       display: flex;
       justify-content: space-between;
@@ -913,30 +915,34 @@ $size_mobile: 480px;
           line-height: 58px;
         }
         > div {
+          width: 100%;
           display: flex;
           justify-content: space-between;
           > div {
-            width: 45%;
+            width: 360px;
             position: relative;
             .role {
               width: 0;
-              height: 260px;
+              height: 355px;
               img {
                 width: 100%;
               }
             }
             .role.SM {
-              animation: rise 1s 1s both;
+              animation: showing 1s 1s both;
             }
             .role.PO {
-              animation: rise 1s 2s both;
+              animation: showing 1s 2s both;
             }
             .role.EE {
-              animation: rise 1s 3s both;
+              animation: showing 1s 3s both;
             }
             .role.GG {
-              animation: rise 1s 4s both;
+              animation: showing 1s 4s both;
             }
+          }
+          > div + div {
+            margin-left: 20px;
           }
         }
         .checked {
@@ -960,7 +966,7 @@ $size_mobile: 480px;
         }
       }
 
-      @keyframes rise {
+      @keyframes showing {
         0% {
           width: 0;
         }
