@@ -261,9 +261,17 @@ $size_mobile: 480px;
     border: 2px solid $color_primary;
     border-radius: 20px;
     background-color: $color_cover;
+    font-weight: 500;
+    font-size: 20px;
   }
   .listItem.yellow {
     border: 2px solid $color_yellow;
+  }
+  .listItem.purple {
+    border: 2px solid $color_purple;
+  }
+  .listItem.red {
+    border: 2px solid $color_red;
   }
   .listItem.dashed {
     border-style: dashed !important;
@@ -705,6 +713,7 @@ $size_mobile: 480px;
     }
   }
   .content {
+    min-height: calc(100vh - 400px);
     .intro {
       display: flex;
       justify-content: space-between;
@@ -867,6 +876,101 @@ $size_mobile: 480px;
     }
     .buttonConatiner {
       text-align: center;
+    }
+  }
+}
+.retro {
+  padding: 20px;
+  .upper {
+    display: flex;
+    justify-content: space-between;
+    > img {
+      width: 450px;
+    }
+    > div {
+      flex-grow: 1;
+    }
+  }
+  .content {
+    .example {
+      display: flex;
+      justify-content: space-between;
+      .card {
+        width: 45%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        box-shadow: 0 0 10px $color_cover;
+        padding: 20px;
+        > p {
+          background-color: $color_primary;
+          font-weight: 700;
+          font-size: 32px;
+          color: $color_black;
+          text-align: center;
+          display: inline-block;
+          padding: 0 20px;
+          line-height: 58px;
+        }
+        > div {
+          display: flex;
+          justify-content: space-between;
+          > div {
+            width: 45%;
+            position: relative;
+            .role {
+              width: 0;
+              height: 260px;
+              img {
+                width: 100%;
+              }
+            }
+            .role.reverse {
+              transform: rotate(180deg);
+            }
+            .role.SM {
+              animation: rise 1s 1s both;
+            }
+            .role.PO {
+              animation: rise 1s 2s both;
+            }
+            .role.EE {
+              animation: rise 1s 3s both;
+            }
+            .role.GG {
+              animation: rise 1s 4s both;
+            }
+          }
+        }
+        .checked {
+          position: absolute;
+          right: 0;
+          bottom: 0;
+          @include circle(100px);
+          color: $color_white;
+          background-color: $color_primary_cover;
+          transition: 1s;
+          transform: scale(5);
+          visibility: hidden;
+          > svg {
+            width: 100%;
+            height: 100%;
+          }
+        }
+        .checked.show {
+          transform: scale(1);
+          visibility: visible;
+        }
+      }
+
+      @keyframes rise {
+        0% {
+          width: 0;
+        }
+        100% {
+          width: 100%;
+        }
+      }
     }
   }
 }

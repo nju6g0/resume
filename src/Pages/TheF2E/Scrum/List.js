@@ -7,9 +7,13 @@ const cx = classNames.bind(classes);
 
 const GREEN = "green";
 const YELLOW = "yellow";
+const PURPLE = "purple";
+const RED = "red";
 export const LIST_THEME = {
   GREEN,
   YELLOW,
+  PURPLE,
+  RED
 };
 const SOLID = "solid";
 const DASHED = "dashed";
@@ -41,7 +45,7 @@ List.propTypes = {
   title: PropTypes.string.isRequired,
   subtitle: PropTypes.string,
   children: PropTypes.any,
-  theme: PropTypes.oneOf([GREEN, YELLOW]),
+  theme: PropTypes.oneOf([GREEN, YELLOW, PURPLE, RED]),
 };
 
 List.Item = Item;
