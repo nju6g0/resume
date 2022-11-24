@@ -318,6 +318,7 @@ $size_mobile: 480px;
 .entry {
   height: 100vh;
   position: relative;
+  overflow: hidden;
   > img {
     position: absolute;
     max-width: 100%;
