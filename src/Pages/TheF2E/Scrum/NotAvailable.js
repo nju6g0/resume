@@ -11,7 +11,7 @@ const NotAvailable = () => {
   return (
     <div className={cx("notAvailable")}>
       <img src={img_planning_team} alt="" />
-      <p>抱歉，此版本僅能使用電腦操作…<br/>，請使用電腦開啟頁面。</p>
+      <p>唉呀！此版本僅能使用電腦操作…<br/>，請使用電腦開啟頁面。</p>
     </div>
   );
 };

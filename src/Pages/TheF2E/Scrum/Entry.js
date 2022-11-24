@@ -26,10 +26,26 @@ const Entry = () => {
 
   return (
     <div className={cx("entry")}>
-      <img src={img_leaf_top} alt="" />
-      <img src={img_leaf_right} alt="" />
-      <img src={img_leaf_bottom} alt="" />
-      <img src={img_leaf_left} alt="" />
+      <img
+        src={img_leaf_top}
+        alt=""
+        {...(!isDefaultScene && { className: cx("back") })}
+      />
+      <img
+        src={img_leaf_right}
+        alt=""
+        {...(!isDefaultScene && { className: cx("back") })}
+      />
+      <img
+        src={img_leaf_bottom}
+        alt=""
+        {...(!isDefaultScene && { className: cx("back") })}
+      />
+      <img
+        src={img_leaf_left}
+        alt=""
+        {...(!isDefaultScene && { className: cx("back") })}
+      />
       {isDefaultScene ? (
         <>
           <div className={cx("info")}>
@@ -55,13 +71,15 @@ const Entry = () => {
               speaker="（謎之音）"
               children={
                 <>
-                <p className={cx("greeting")}>
-                  呦呼，歡迎進入 <span>「SCRUM 新手村」</span>，在正式加入專案開發之前 ，需要請你先了解 Scrum 的流程與精神！
-                  請接受挑戰任務，成功通過 Scrum 新手村的挑戰任務吧～
-                </p>
-                <p className={cx("greeting")}>
-                  請接受挑戰任務，成功通過 Scrum 新手村的挑戰任務吧～
-                </p>
+                  <p className={cx("greeting")}>
+                    呦呼，歡迎進入 <span>「SCRUM 新手村」</span>
+                    ，在正式加入專案開發之前 ，需要請你先了解 Scrum
+                    的流程與精神！ 請接受挑戰任務，成功通過 Scrum
+                    新手村的挑戰任務吧～
+                  </p>
+                  <p className={cx("greeting")}>
+                    請接受挑戰任務，成功通過 Scrum 新手村的挑戰任務吧～
+                  </p>
                 </>
               }
             />

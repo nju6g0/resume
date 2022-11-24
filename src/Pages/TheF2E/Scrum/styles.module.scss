@@ -321,6 +321,7 @@ $size_mobile: 480px;
   > img {
     position: absolute;
     max-width: 100%;
+    transition: 0.5s;
   }
   > img:first-child {
     top: 0;
@@ -336,9 +337,21 @@ $size_mobile: 480px;
     left: 0;
     min-width: 60vw;
   }
-  > img:last-child {
+  > img:nth-child(4) {
     top: 0;
     left: 0;
+  }
+  > img:first-child.back {
+    transform: translate(-50%, -30%);
+  }
+  > img:nth-child(2).back {
+    transform: translateX(50%);
+  }
+  > img:nth-child(3).back {
+    transform: translateY(30%);
+  }
+  > img:nth-child(4).back {
+    transform: translateX(-30%);
   }
   .info {
     text-align: center;
