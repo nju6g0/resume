@@ -2,13 +2,13 @@ import React, { useState, useContext } from "react";
 import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
 import { nanoid } from "nanoid";
 
-import Dialog from "./Dialog";
-import Role, { ROLE_NAMES } from "./Role";
-import Button, { BUTTON_TYPES } from "./Button";
-import List, { LIST_THEME } from "./List";
-import { Context, STEPS_KEY } from "./Scrum2";
+import Dialog from "../Components/Dialog";
+import Role, { ROLE_NAMES } from "../Components/Role";
+import Button, { BUTTON_TYPES } from "../Components/Button";
+import List, { LIST_THEME } from "../Components/List";
+import { Context, STEPS_KEY } from "../Scrum2";
 
-import classes from "./styles.module.scss";
+import classes from "../styles.module.scss";
 import classNames from "classnames/bind";
 const cx = classNames.bind(classes);
 

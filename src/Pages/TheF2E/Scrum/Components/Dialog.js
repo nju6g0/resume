@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 
 import { ROLE_NAMES } from "./Role";
-import classes from "./styles.module.scss";
+import classes from "../styles.module.scss";
 import classNames from "classnames/bind";
 const cx = classNames.bind(classes);
 

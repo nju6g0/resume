@@ -3,13 +3,13 @@ import React, { useEffect, useState, useContext } from "react";
 import img_daily from "image/F2E_scrum/sprint_daily.png";
 import img_review from "image/F2E_scrum/sprint_review.png";
 import img_retro from "image/F2E_scrum/sprint_retro.png";
-import Dialog from "./Dialog";
-import Role, { ROLE_NAMES } from "./Role";
-import List, { LIST_ITEM_TYPE, LIST_THEME } from "./List";
-import Button, { BUTTON_TYPES } from "./Button";
-import { Context, STEPS_KEY } from "./Scrum2";
+import Dialog from "../Components/Dialog";
+import Role, { ROLE_NAMES } from "../Components/Role";
+import List, { LIST_ITEM_TYPE, LIST_THEME } from "../Components/List";
+import Button, { BUTTON_TYPES } from "../Components/Button";
+import { Context, STEPS_KEY } from "../Scrum2";
 
-import classes from "./styles.module.scss";
+import classes from "../styles.module.scss";
 import classNames from "classnames/bind";
 const cx = classNames.bind(classes);
 

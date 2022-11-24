@@ -1,12 +1,12 @@
 import React, { useState, useContext, useEffect } from "react";
 import { BiCheck } from "react-icons/bi";
 
-import Dialog from "./Dialog";
-import Role, { ROLE_NAMES, ROLE_DIRECTIONS } from "./Role";
-import List, { LIST_THEME } from "./List";
-import { Context, STEPS_KEY } from "./Scrum2";
+import Dialog from "../Components/Dialog";
+import Role, { ROLE_NAMES, ROLE_DIRECTIONS } from "../Components/Role";
+import List, { LIST_THEME } from "../Components/List";
+import { Context, STEPS_KEY } from "../Scrum2";
 
-import classes from "./styles.module.scss";
+import classes from "../styles.module.scss";
 import classNames from "classnames/bind";
 const cx = classNames.bind(classes);
 

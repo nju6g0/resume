@@ -1,8 +1,8 @@
 import React, { useContext, useEffect, useState } from "react";
 import PropTypes from "prop-types";
 
-import { Context, STEPS_KEY } from "./Scrum2";
-import classes from "./styles.module.scss";
+import { Context, STEPS_KEY } from "../Scrum2";
+import classes from "../styles.module.scss";
 import classNames from "classnames/bind";
 const cx = classNames.bind(classes);
 

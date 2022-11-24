@@ -3,15 +3,15 @@ import qs from "qs";
 import { useLocation, useHistory } from "react-router-dom";
 import { Helmet } from "react-helmet";
 
-import Entry from "./Entry";
-import ProductBacklog from "./ProductBacklog";
-import Planning from "./Planning";
-import SprintTask from "./SprintTask";
-import SprintIntro from "./SprintIntro";
-import Retro from "./Retro";
-import Complete from "./Complete";
-import Progress from "./Progress";
-import NotAvailable from "./NotAvailable";
+import Entry from "./Scenes/Entry";
+import ProductBacklog from "./Scenes/ProductBacklog";
+import Planning from "./Scenes/Planning";
+import SprintTask from "./Scenes/SprintTask";
+import SprintIntro from "./Scenes/SprintIntro";
+import Retro from "./Scenes/Retro";
+import Complete from "./Scenes/Complete";
+import Progress from "./Components/Progress";
+import NotAvailable from "./Scenes/NotAvailable";
 
 import classes from "./styles.module.scss";
 import classNames from "classnames/bind";

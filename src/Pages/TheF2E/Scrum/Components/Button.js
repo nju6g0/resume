@@ -1,7 +1,7 @@
 import React from "react";
 import PropTyps from "prop-types";
 
-import classes from "./styles.module.scss";
+import classes from "../styles.module.scss";
 import classNames from "classnames/bind";
 const cx = classNames.bind(classes);
 

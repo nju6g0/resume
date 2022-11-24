@@ -1,22 +1,22 @@
 import React, { useState, useContext } from "react";
 
-import Dialog from "./Dialog";
-import Role, { ROLE_NAMES } from "./Role";
-import Button from "./Button";
-import { Context, STEPS_KEY } from "./Scrum2";
 import img_jira from "image/F2E_scrum/jira_logo.png";
 import img_sprint from "image/F2E_scrum/sprint.png";
 import img_planning_team from "image/F2E_scrum/planning_team.png";
 import img_sprint_plan from "image/F2E_scrum/sprintPlan.png";
 import img_clock from "image/F2E_scrum/clock.png";
 import img_book from "image/F2E_scrum/book.png";
+import Dialog from "../Components/Dialog";
+import Role, { ROLE_NAMES } from "../Components/Role";
+import Button from "../Components/Button";
+import { Context, STEPS_KEY } from "../Scrum2";
 
-import classes from "./styles.module.scss";
+import classes from "../styles.module.scss";
 import classNames from "classnames/bind";
 const cx = classNames.bind(classes);
 
-const NUMBERS = [1, 2, 3, 5, 8, 13, 21];
-const MAX = 13;
+const STORY_POINTS = [1, 2, 3, 5, 8, 13, 21];
+const LARGEST_POINT = 13;
 const OPENING = "opening";
 const INTRO_SM = "introScrumMaster";
 const INTRO_RD = "introDeveloper";
@@ -150,11 +150,11 @@ const SCENES = {
     body: {
       render: (
         <div className={cx("fibonacci")}>
-          {NUMBERS.map((item) => (
+          {STORY_POINTS.map((item) => (
             <div
               key={`story_${item}`}
-              {...(item === MAX && { className: cx("warning") })}
-              {...(item > MAX && { className: cx("error") })}
+              {...(item === LARGEST_POINT && { className: cx("warning") })}
+              {...(item > LARGEST_POINT && { className: cx("error") })}
             >
               <span>{item}</span>
             </div>

@@ -3,13 +3,13 @@ import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
 import { nanoid } from "nanoid";
 
 import img_jira from "image/F2E_scrum/jira_logo.png";
-import Button, { BUTTON_TYPES } from "./Button";
-import Dialog from "./Dialog";
-import Role, { ROLE_NAMES } from "./Role";
-import { Context, STEPS_KEY } from "./Scrum2";
-import List, { LIST_ITEM_TYPE } from "./List";
+import Button, { BUTTON_TYPES } from "../Components/Button";
+import Dialog from "../Components/Dialog";
+import Role, { ROLE_NAMES } from "../Components/Role";
+import List, { LIST_ITEM_TYPE } from "../Components/List";
+import { Context, STEPS_KEY } from "../Scrum2";
 
-import classes from "./styles.module.scss";
+import classes from "../styles.module.scss";
 import classNames from "classnames/bind";
 const cx = classNames.bind(classes);
 
