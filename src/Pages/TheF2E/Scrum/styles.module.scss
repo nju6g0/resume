@@ -770,6 +770,8 @@ $size_mobile: 480px;
       > div {
         width: 30%;
         overflow: hidden;
+        display: flex;
+        flex-direction: column;
         ul {
           padding: 20px 0;
           font-weight: 500;
