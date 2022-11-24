@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { Helmet } from "react-helmet";
 
 import Loading from "./Loading";
 import Header from "./Header";
@@ -34,6 +35,12 @@ const Web = () => {
 
   return (
     <div className={cx("wrap")}>
+      <Helmet>
+        <title>The F2E 活動網站設計</title>
+        <meta name="description" content="The F2E 4th week 1" />
+        <meta property="og:title" content="The F2E 活動網站設計" />
+        <meta property="og:image" content="https://images.thef2e.com/2022/works/12061549261454740005_2022-11-07T02:25:15.840Z.png" />
+      </Helmet>
       {isLoading ? (
         <Loading percent={percent} />
       ) : (

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import qs from "qs";
 import { useLocation, useHistory } from "react-router-dom";
+import { Helmet } from "react-helmet";
 
 import Entry from "./Entry";
 import ProductBacklog from "./ProductBacklog";
@@ -81,22 +82,30 @@ const Scrum = () => {
   }, [step]);
 
   return (
-    <Context.Provider
-      value={{
-        goStep: handleChangeStep,
-      }}
-    >
-      <div className={cx("wrapper")}>
-        {isMobile() ? (
-          <NotAvailable />
-        ) : (
-          <>
-            <Progress nowStep={nowStep} />
-            {renderComponent()}
-          </>
-        )}
-      </div>
-    </Context.Provider>
+    <div>
+      <Helmet>
+        <title>Scrum 新手村</title>
+        <meta name="description" content="The F2E 4th week 3" />
+        <meta property="og:title" content="Scrum 新手村" />
+        <meta property="og:image" content="https://images.thef2e.com/2022/works/12061549261454740203_2022-11-20T04:05:05.694Z.png" />
+      </Helmet>
+      <Context.Provider
+        value={{
+          goStep: handleChangeStep,
+        }}
+      >
+        <div className={cx("wrapper")}>
+          {isMobile() ? (
+            <NotAvailable />
+          ) : (
+            <>
+              <Progress nowStep={nowStep} />
+              {renderComponent()}
+            </>
+          )}
+        </div>
+      </Context.Provider>
+    </div>
   );
 };
 export default Scrum;

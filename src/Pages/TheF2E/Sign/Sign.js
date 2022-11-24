@@ -2,6 +2,7 @@ import React, { useState, useRef, useEffect } from "react";
 import { fabric } from "fabric";
 import { jsPDF } from "jspdf";
 import { BsUpload, BsDownload, BsPencilSquare } from "react-icons/bs";
+import { Helmet } from "react-helmet";
 
 import SignArea from "./SignArea";
 import Spinner from "./Spinner";
@@ -127,7 +128,7 @@ const Sign = () => {
 
   const handleCloseTutorial = () => {
     setIsInitial(false);
-  }
+  };
 
   useEffect(() => {
     const initFabric = () => {
@@ -147,46 +148,52 @@ const Sign = () => {
 
   return (
     <>
-    <div className={cx("wrapper")}>
-      <div className={cx("buttons")}>
-        <label>
-          <BsUpload />
-          <span>&nbsp;&nbsp;選擇PDF檔案</span>
-          <input
-            type="file"
-            accept="application/pdf"
-            placeholder="選擇PDF檔案"
-            onChange={handleFileChange}
-          />
-        </label>
-        <button type="button" onClick={handleOpen} disabled={!hasUploadPdf}>
-          <BsPencilSquare />
-          <span>&nbsp;&nbsp;加入簽名</span>
-        </button>
-        <button
-          type="button"
-          onClick={handleSave}
-          disabled={!hasUploadPdf || !hasSign}
-        >
-          <BsDownload />
-          <span>&nbsp;&nbsp;下載檔案</span>
-        </button>
-      </div>
-      {isLoading && (
-        <div className={cx("loading")}>
-          <Spinner />
+      <div className={cx("wrapper")}>
+        <Helmet>
+          <title>Dotted Sign</title>
+          <meta name="description" content="The F2E 4th week 2" />
+          <meta property="og:title" content="今晚我想來點點簽" />
+          <meta property="og:image" content="https://2022.thef2e.com/_nuxt/img/week2.1fad838.png" />
+        </Helmet>
+        <div className={cx("buttons")}>
+          <label>
+            <BsUpload />
+            <span>&nbsp;&nbsp;選擇PDF檔案</span>
+            <input
+              type="file"
+              accept="application/pdf"
+              placeholder="選擇PDF檔案"
+              onChange={handleFileChange}
+            />
+          </label>
+          <button type="button" onClick={handleOpen} disabled={!hasUploadPdf}>
+            <BsPencilSquare />
+            <span>&nbsp;&nbsp;加入簽名</span>
+          </button>
+          <button
+            type="button"
+            onClick={handleSave}
+            disabled={!hasUploadPdf || !hasSign}
+          >
+            <BsDownload />
+            <span>&nbsp;&nbsp;下載檔案</span>
+          </button>
         </div>
-      )}
-      <div className={cx("fileContainer")}>
-        <canvas ref={canvasRef} />
+        {isLoading && (
+          <div className={cx("loading")}>
+            <Spinner />
+          </div>
+        )}
+        <div className={cx("fileContainer")}>
+          <canvas ref={canvasRef} />
+        </div>
+        <SignArea
+          visible={isOpenSignArea}
+          onSave={handleSaveSign}
+          onClose={handleClose}
+        />
       </div>
-      <SignArea
-        visible={isOpenSignArea}
-        onSave={handleSaveSign}
-        onClose={handleClose}
-      />
-    </div>
-    {isInitial && <Tutorial onClose={handleCloseTutorial} />}
+      {isInitial && <Tutorial onClose={handleCloseTutorial} />}
     </>
   );
 };
