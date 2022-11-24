@@ -1,11 +1,12 @@
 import React, { Fragment } from 'react';
 import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom';
-import {Helmet} from "react-helmet";
+import { Helmet } from "react-helmet";
 
 import { routes } from 'Config/routes';
 import { withPopWindowProvider } from 'Context/PopWindow';
 import { withAuthProvider } from 'Context/Auth';
 import PopWidnow from 'Component/PopWindow';
+import Footer from 'Component/Footer';
 
 function App() {
     return (
@@ -31,9 +32,9 @@ function App() {
                         ))}
                         <Route render={() => <Redirect to="/home" />} />
                     </Switch>
+                    <Footer />
                 </BrowserRouter>
             </main>
-            <footer style={{ textAlign: 'center' }}>◎ 2022 YiShan, Su / Thank you for coming.</footer>
             <PopWidnow />
         </Fragment>
     );
