@@ -11,7 +11,7 @@ import totoro_cry from 'image/home_ghibli_totoro_cry.jpg';
 import totoro_bus from 'image/home_ghibli_totoro_bus.jpg';
 
 export const portfolios = [
-    { id: 'thef2e', title: 'The F2E 4th', description: 'coming soon...', image: thef2e },
+    { id: 'thef2e', title: 'The F2E 4th', description: '前端 修練(爆)精神(肝)時光屋', image: thef2e },
     { id: 'animation', title: 'animation 金促咪', description: 'HAHOW 動畫互動網頁特效入門 課程練習', image: animation },
     { id: 'excel', title: '親愛的，show出你的口袋書單！', description: 'excel檔案讀取/下載', image: form },
     {
