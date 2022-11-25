@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useRef } from "react";
 
 import img_jira from "image/F2E_scrum/jira_logo.png";
 import img_sprint from "image/F2E_scrum/sprint.png";
@@ -214,6 +214,7 @@ const SCENES_ORDER = [
 const defaultScene = SCENES_ORDER[0];
 
 const Planning = () => {
+  const footerRef = useRef(null);
   const context = useContext(Context);
   const [nowScene, setNowScene] = useState(defaultScene);
 
@@ -230,7 +231,7 @@ const Planning = () => {
       window.scrollTo({top: 0});
     }
     if([OPENING].includes(nowScene)){
-      window.scrollTo({top: 500});
+      window.scrollTo({top: footerRef.current.offsetTop});
     }
 
     const index = SCENES_ORDER.findIndex((scene) => scene === nowScene);
@@ -259,7 +260,7 @@ const Planning = () => {
       )}
       <div className={cx("body")}>{body.render}</div>
       {footer && (
-        <div className={cx("footer")}>
+        <div ref={footerRef} className={cx("footer")}>
           {footer.roles.map((role) => (
             <div key={role} className={cx("role")}>
               <Role name={role} />

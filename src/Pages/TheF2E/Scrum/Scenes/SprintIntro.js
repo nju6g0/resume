@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useContext } from "react";
+import React, { useEffect, useState, useContext, useRef } from "react";
 
 import img_daily from "image/F2E_scrum/sprint_daily.png";
 import img_review from "image/F2E_scrum/sprint_review.png";
@@ -78,7 +78,7 @@ const INTRO_STEPS = {
     imgSrc: img_retro,
     title: "短衝自省會議",
     subtitle: "Sprint Retrospective",
-    className: "retro",
+    className: "retrospective",
     content: (
       <ul>
         團隊在自省會議裡 , 會共同回顧該短衝歷程發生的事情
@@ -106,13 +106,14 @@ const LIST_ITEMS = [
 ];
 
 const SprintIntro = () => {
+  const upperRef = useRef(null);
   const context = useContext(Context);
   const [nowScene, setNowScene] = useState(OPENING);
   const [introStep, setIntroStep] = useState(0);
   const [processStep, setProcessStep] = useState(0);
 
   const handleChangeScene = () => {
-    switch(nowScene){
+    switch (nowScene) {
       case OPENING:
         setNowScene(INTRO);
         break;
@@ -120,6 +121,10 @@ const SprintIntro = () => {
         if (introStep >= Object.keys(INTRO_STEPS).length) {
           setNowScene(PROCESS);
         } else {
+          if (introStep === 0) {
+            console.log(upperRef.current.offsetHeight);
+            window.scrollTo({ top: upperRef.current.offsetHeight });
+          }
           setIntroStep(introStep + 1);
         }
         break;
@@ -128,7 +133,7 @@ const SprintIntro = () => {
           setNowScene(END);
           return;
         }
-        window.scrollTo({ top: 400 });
+        window.scrollTo({ top: upperRef.current.offsetHeight });
         setProcessStep(processStep + 1);
         break;
       case END:
@@ -207,7 +212,7 @@ const SprintIntro = () => {
                 theme={LIST_THEME.YELLOW}
               ></List.Item>
             </div>
-            <div className={cx("position_ab", "emptyCard", "retro")}>
+            <div className={cx("position_ab", "emptyCard", "retrospective")}>
               <List.Item
                 type={LIST_ITEM_TYPE.DASHED}
                 theme={LIST_THEME.YELLOW}
@@ -248,7 +253,7 @@ const SprintIntro = () => {
 
   return (
     <div className={cx("sprintIntro")} onClick={handleChangeScene}>
-      <div className={cx("upper")}>
+      <div ref={upperRef} className={cx("upper")}>
         <div>
           <Dialog
             speaker={ROLE_NAMES.EE}

@@ -47,7 +47,7 @@ const Experience = () => {
                 </li>
             </ul>
             <div className={cx('goResume')}>
-                <a href="https://www.cakeresume.com/nicole-su-359cbf" target="_blank" rel="noreferrer">
+                <a href="https://www.cakeresume.com/nicole-su-359cbf-d5bd81" target="_blank" rel="noreferrer">
                     Cake Resume
                 </a>
                 <br />
