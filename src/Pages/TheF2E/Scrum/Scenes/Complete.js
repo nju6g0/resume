@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 
-import img_logo from "image/F2E_scrum/logo_txt.png";
+import {img_logo} from "../Assets";
 import { Context, STEPS_KEY } from "../Scrum2";
 import Role, { ROLE_NAMES, ROLE_DIRECTIONS } from "../Components/Role";
 

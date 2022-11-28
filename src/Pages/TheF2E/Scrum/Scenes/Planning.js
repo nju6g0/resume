@@ -1,11 +1,13 @@
 import React, { useState, useContext, useRef } from "react";
 
-import img_jira from "image/F2E_scrum/jira_logo.png";
-import img_sprint from "image/F2E_scrum/sprint.png";
-import img_planning_team from "image/F2E_scrum/planning_team.png";
-import img_sprint_plan from "image/F2E_scrum/sprintPlan.png";
-import img_clock from "image/F2E_scrum/clock.png";
-import img_book from "image/F2E_scrum/book.png";
+import {
+  img_jira,
+  img_sprint,
+  img_planning_team,
+  img_sprint_plan,
+  img_clock,
+  img_book,
+} from "../Assets";
 import Dialog from "../Components/Dialog";
 import Role, { ROLE_NAMES } from "../Components/Role";
 import Button from "../Components/Button";
@@ -225,13 +227,13 @@ const Planning = () => {
     if (nowScene === SCENES_ORDER[SCENES_ORDER.length - 1]) {
       context.goStep(STEPS_KEY.SPRINT_TASK);
       return;
-    };
-
-    if([INTRO_RD, STORY_POINT, FIBONACCI, ENDING].includes(nowScene)){
-      window.scrollTo({top: 0});
     }
-    if([OPENING].includes(nowScene)){
-      window.scrollTo({top: footerRef.current.offsetTop});
+
+    if ([INTRO_RD, STORY_POINT, FIBONACCI, ENDING].includes(nowScene)) {
+      window.scrollTo({ top: 0 });
+    }
+    if ([OPENING].includes(nowScene)) {
+      window.scrollTo({ top: footerRef.current.offsetTop });
     }
 
     const index = SCENES_ORDER.findIndex((scene) => scene === nowScene);

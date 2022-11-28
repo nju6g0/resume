@@ -44,7 +44,7 @@ export const STEPS_KEY = {
   COMPLETE,
 };
 
-const STEPS = {
+const SCENE = {
   [STEPS_KEY.ENTRY]: <Entry />,
   [STEPS_KEY.PRODUCT_BACKLOG]: <ProductBacklog />,
   [STEPS_KEY.PLANNING]: <Planning />,
@@ -70,7 +70,7 @@ const Scrum = () => {
     });
   };
   const renderComponent = () => {
-    return STEPS[nowStep];
+    return SCENE[nowStep];
   };
 
   useEffect(() => {

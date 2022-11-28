@@ -2,7 +2,7 @@ import React, { useState, useContext } from "react";
 import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
 import { nanoid } from "nanoid";
 
-import img_jira from "image/F2E_scrum/jira_logo.png";
+import { img_jira } from "../Assets";
 import Button, { BUTTON_TYPES } from "../Components/Button";
 import Dialog from "../Components/Dialog";
 import Role, { ROLE_NAMES } from "../Components/Role";

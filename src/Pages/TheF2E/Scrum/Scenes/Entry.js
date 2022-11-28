@@ -1,11 +1,13 @@
 import React, { useState, useContext } from "react";
 
 import { Context, STEPS_KEY } from "../Scrum2";
-import img_logo from "image/F2E_scrum/logo_txt.png";
-import img_leaf_top from "image/F2E_scrum/bg_leafTint_3_t.png";
-import img_leaf_right from "image/F2E_scrum/bg_leafTint_4_rb.png";
-import img_leaf_bottom from "image/F2E_scrum/bg_leafTint_2_lb.png";
-import img_leaf_left from "image/F2E_scrum/bg_leafTint_1_lt.png";
+import {
+  img_logo,
+  img_leaf_top,
+  img_leaf_right,
+  img_leaf_bottom,
+  img_leaf_left,
+} from "../Assets";
 import Button from "../Components/Button";
 import Dialog from "../Components/Dialog";
 

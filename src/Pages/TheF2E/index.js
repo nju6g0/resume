@@ -10,9 +10,9 @@ import classes from "./styles.module.scss";
 import classNames from "classnames/bind";
 const cx = classNames.bind(classes);
 
-const WEB = "web";
-const SIGN = "sign";
-const SCRUM = "scrum";
+export const WEB = "web";
+export const SIGN = "sign";
+export const SCRUM = "scrum";
 
 const TABS = [
   {

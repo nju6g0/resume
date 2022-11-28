@@ -1,8 +1,6 @@
 import React, { useEffect, useState, useContext, useRef } from "react";
 
-import img_daily from "image/F2E_scrum/sprint_daily.png";
-import img_review from "image/F2E_scrum/sprint_review.png";
-import img_retro from "image/F2E_scrum/sprint_retro.png";
+import { img_daily, img_review, img_retro } from "../Assets";
 import Dialog from "../Components/Dialog";
 import Role, { ROLE_NAMES } from "../Components/Role";
 import List, { LIST_ITEM_TYPE, LIST_THEME } from "../Components/List";
@@ -122,7 +120,6 @@ const SprintIntro = () => {
           setNowScene(PROCESS);
         } else {
           if (introStep === 0) {
-            console.log(upperRef.current.offsetHeight);
             window.scrollTo({ top: upperRef.current.offsetHeight });
           }
           setIntroStep(introStep + 1);

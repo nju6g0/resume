@@ -1,10 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-import img_role_po from "image/F2E_scrum/Role_po.png";
-import img_role_mm from "image/F2E_scrum/Role_mm.png";
-import img_role_ee from "image/F2E_scrum/Role_ee.png";
-import img_role_gg from "image/F2E_scrum/Role_gg.png";
+import { img_role_po, img_role_mm, img_role_ee, img_role_gg } from "../Assets";
 
 const PO = "PO"; // product owner
 const MM = "SM"; // scrum master"
