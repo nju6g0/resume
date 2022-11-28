@@ -12,10 +12,10 @@ import img_book from "./images/book.png";
 import img_daily from "./images/sprint_daily.png";
 import img_review from "./images/sprint_review.png";
 import img_retro from "./images/sprint_retro.png";
-import img_role_po from "image/F2E_scrum/Role_po.png";
-import img_role_mm from "image/F2E_scrum/Role_mm.png";
-import img_role_ee from "image/F2E_scrum/Role_ee.png";
-import img_role_gg from "image/F2E_scrum/Role_gg.png";
+import img_role_po from "./images/F2E_scrum/Role_po.png";
+import img_role_mm from "./images/F2E_scrum/Role_mm.png";
+import img_role_ee from "./images/F2E_scrum/Role_ee.png";
+import img_role_gg from "./images/F2E_scrum/Role_gg.png";
 
 export {
     img_logo,
