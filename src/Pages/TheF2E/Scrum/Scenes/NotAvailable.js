@@ -1,6 +1,6 @@
 import React from "react";
 
-import img_planning_team from "image/F2E_scrum/planning_team.png";
+import {img_planning_team} from "../Assets";
 import classes from "../styles.module.scss";
 import classNames from "classnames/bind";
 const cx = classNames.bind(classes);
