@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
+import { Helmet } from "react-helmet";
 
 import GoHome from "Component/GoHome";
 import SunAndMoon from "./SunAndMoon";
@@ -52,6 +53,9 @@ const MainPage = () => {
 
   return (
     <>
+      <Helmet>
+        <title>YiShan's Resume - 動畫互動特效</title>
+      </Helmet>
       {CONTENT_LIST.map((content) => content.component)}
       <Menu
         index={nowIndex}
