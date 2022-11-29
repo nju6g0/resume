@@ -13,13 +13,15 @@ import classes from "../styles.module.scss";
 import classNames from "classnames/bind";
 const cx = classNames.bind(classes);
 
-const INTRO = "intro";
-const READY = "ready";
-const DEMO = "demo";
-const PRACTICAL = "practical";
-const FINISHED = "finished";
-const DIALOG_CONTENT = {
-  [INTRO]: (
+const SCENES = {
+  INTRO: "intro",
+  READY: "ready",
+  DEMO: "demo",
+  PRACTICAL: "practical",
+  FINISHED: "finished",
+};
+const PARAGRAPH = {
+  [SCENES.INTRO]: (
     <p>
       <span>\ 碰 / </span>我是短衝小精靈，開發 A 組的 PO 。
       <span>PO 也就是產品負責人（Product Owner）</span>
@@ -27,14 +29,14 @@ const DIALOG_CONTENT = {
       ， 對齊產品目標 。 最後排出產品待辦清單 （Product Backlog） 唷 ！
     </p>
   ),
-  [READY]: (
+  [SCENES.READY]: (
     <p>
       剛好我最近手邊有一個 「 人才招募系統 」 的案子 ， 我才剛列出了{" "}
       <span>「 產品需求清單 」 </span>。 既然你都來了 ， 來試試看調整產品優先度
       ， 排出產品待辦清單吧 ！
     </p>
   ),
-  [DEMO]: (
+  [SCENES.DEMO]: (
     <p>
       在這階段我們要把需求放進產品待辦清單 ， 並調整其優先順序 。對了 ！
       我們公司也推薦使用
@@ -42,18 +44,18 @@ const DIALOG_CONTENT = {
       來做任務的管理呢 ！
     </p>
   ),
-  [PRACTICAL]: (
+  [SCENES.PRACTICAL]: (
     <>
       <p>換你來試試看吧 ！</p>
       <p>提示 ： 請把需求拖移至產品待辦清單 ， 並調整其優先順序 。</p>
     </>
   ),
-  [FINISHED]: <p>哇喔完成惹 ， 尼太棒ㄌ！ 我們繼續吧 ！</p>,
+  [SCENES.FINISHED]: <p>哇喔完成惹 ， 尼太棒ㄌ！ 我們繼續吧 ！</p>,
 };
 
 const ProductBacklog = () => {
   const context = useContext(Context);
-  const [nowScene, setNowScene] = useState(INTRO);
+  const [nowScene, setNowScene] = useState(SCENES.INTRO);
   const [isDemoActive, setIsDemoActive] = useState(false);
   const [listItems, setListItems] = useState({
     left: [
@@ -80,10 +82,10 @@ const ProductBacklog = () => {
   });
 
   const handleClickContinue = () => {
-    if (nowScene === INTRO) {
-      setNowScene(READY);
+    if (nowScene === SCENES.INTRO) {
+      setNowScene(SCENES.READY);
     }
-    if (nowScene === DEMO) {
+    if (nowScene === SCENES.DEMO) {
       if (!isDemoActive) {
         window.scrollTo({
           top: 500,
@@ -91,20 +93,20 @@ const ProductBacklog = () => {
         });
         setIsDemoActive(true);
       } else {
-        window.scrollTo({top: 0});
-        setNowScene(PRACTICAL);
+        window.scrollTo({ top: 0 });
+        setNowScene(SCENES.PRACTICAL);
       }
     }
-    if (nowScene === FINISHED) {
+    if (nowScene === SCENES.FINISHED) {
       context.goStep(STEPS_KEY.PLANNING);
     }
   };
   const handleClickReady = () => {
-    setNowScene(DEMO);
+    setNowScene(SCENES.DEMO);
   };
   const handleClickFinished = () => {
-    window.scrollTo({top: 0});
-    setNowScene(FINISHED);
+    window.scrollTo({ top: 0 });
+    setNowScene(SCENES.FINISHED);
   };
   const handleDragEnd = (event) => {
     const { source, destination } = event;
@@ -129,19 +131,19 @@ const ProductBacklog = () => {
 
   const renderContent = () => {
     switch (nowScene) {
-      case INTRO:
+      case SCENES.INTRO:
         return (
           <div className={cx("buttonCenter")}>
             <Button type={BUTTON_TYPES.OUTLINE} text="點擊畫面任意處繼續" />
           </div>
         );
-      case READY:
+      case SCENES.READY:
         return (
           <div className={cx("buttonCenter")}>
             <Button text="準備好了" onClick={handleClickReady} />
           </div>
         );
-      case DEMO:
+      case SCENES.DEMO:
         return (
           <div className={cx("demo")}>
             <div>
@@ -170,7 +172,7 @@ const ProductBacklog = () => {
             </div>
           </div>
         );
-      case PRACTICAL:
+      case SCENES.PRACTICAL:
         return (
           <>
             <div className={cx("practical")}>
@@ -275,7 +277,7 @@ const ProductBacklog = () => {
             </div>
           </>
         );
-      case FINISHED:
+      case SCENES.FINISHED:
         return (
           <div className={cx("buttonCenter")}>
             <Button type={BUTTON_TYPES.OUTLINE} text="點擊畫面任意處繼續" />
@@ -296,9 +298,9 @@ const ProductBacklog = () => {
           <Dialog
             speaker={ROLE_NAMES.PO}
             isShowTriangle={
-              nowScene === INTRO || nowScene === DEMO || nowScene === FINISHED
+              nowScene === SCENES.INTRO || nowScene === SCENES.DEMO || nowScene === SCENES.FINISHED
             }
-            children={DIALOG_CONTENT[nowScene]}
+            children={PARAGRAPH[nowScene]}
           />
         </div>
       </div>
