@@ -17,26 +17,22 @@ $color_dark_gold: gold;
 
 .wrapper {
   @include square(100%, 100vh);
-  background: linear-gradient(
-    180deg,
-    rgb(1, 1, 51),
-    rgb(48, 50, 143),
-    rgb(205, 205, 228),
-    white 70%
-  );
-  background-size: 100% 400%;
+  background: linear-gradient(90deg, rgb(1, 1, 51) 50%, white 75%);
+  background-size: 400% 100%;
   overflow: hidden;
   position: relative;
   transition: 2s;
   cursor: pointer;
 
-  .moon,
-  .sun {
+  .moon {
     transition: 1s;
+  }
+  .sun {
+    transition: left 2s, top 1s;
   }
   .moon {
     @include square(60px, 60px, 50%);
-    @include position_ab(30vw, -60px);
+    @include position_ab(-60px, 30vh);
     animation: moonShow 2s 4s both;
   }
   .moon.show {
@@ -53,13 +49,13 @@ $color_dark_gold: gold;
 
   .sun {
     @include square(60px, 60px, 50%);
-    @include position_ab(20vw, 70vh);
+    @include position_ab(100vw, 40vh);
     background-color: $color_dark_gold;
     box-shadow: 0 0 10px $color_dark_gold;
     opacity: 0;
   }
   .sun.show {
-    @include position_ab(20vw, 20vh);
+    @include position_ab(30vw, 20vh);
     opacity: 1;
   }
 
@@ -102,5 +98,5 @@ $color_dark_gold: gold;
   }
 }
 .wrapper.sun {
-  background-position: 0 100%;
+  background-position: 100% 0;
 }

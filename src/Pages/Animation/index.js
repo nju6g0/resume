@@ -6,7 +6,7 @@ import Monsters from "./Monsters";
 import Loading from "./Loading";
 import Menu from "./Menu";
 
-const contentList = [
+const CONTENT_LIST = [
   {
     key: "sunandmoon",
     label: "日夜轉換",
@@ -52,10 +52,10 @@ const MainPage = () => {
 
   return (
     <>
-      {contentList.map((content) => content.component)}
+      {CONTENT_LIST.map((content) => content.component)}
       <Menu
         index={nowIndex}
-        list={contentList.map(({ key, label }) => ({ key, label }))}
+        list={CONTENT_LIST.map(({ key, label }) => ({ key, label }))}
         onClick={handleClickMenu}
       />
       <GoHome />
