@@ -31,9 +31,9 @@ const SunAndMoon = () => {
 
   return (
     <div className={cx("wrapper", nowScene)} onMouseUp={toggleScene}>
-      <h2 style={{ color: "red", position: "absolute", top: 0, left: 0 }}>
+      {/* <h2 style={{ color: "red", position: "absolute", top: 0, left: 0 }}>
         {counter}/{getSize(0)}/{getSize(2)}/{getSize(4)}
-      </h2>
+      </h2> */}
       <div className={cx("starsContainer", nowScene === MOON && "show")}>
         {Array.from({ length: 30 }, (x) => x).map((star, idx) => (
           <div key={`star${idx}`} className={`star${idx + 1}`} />
