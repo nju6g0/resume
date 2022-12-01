@@ -119,11 +119,12 @@ $color_dark_gold: gold;
     bottom: 230px;
     transition: 1s;
     transition-delay: 0.5s;
+    transform: translateX(-40%);
     > div {
       position: relative;
       width: 80px;
       height: 80px;
-      transform: rotate(15deg) translate(-40%, 16%);
+      transform: rotate(15deg) translateY(10%);
       transition: 2s;
       overflow: hidden;
       > div {
@@ -160,7 +161,7 @@ $color_dark_gold: gold;
   }
   .flower.night {
     > div {
-      transform: rotate(15deg) translate(-40%, 30%);
+      transform: rotate(15deg) translateY(30%);
       opacity: 0.7;
       > div:nth-child(2) {
         transform: translateY(-50%) rotate(115deg);
