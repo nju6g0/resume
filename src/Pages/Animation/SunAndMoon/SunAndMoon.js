@@ -42,6 +42,29 @@ const SunAndMoon = () => {
       <div className={cx("moon", nowScene === MOON && "show")} />
       <div className={cx("sun", nowScene === SUN && "show")} />
       <div
+        className={cx("flower", nowScene === MOON && "night")}
+        style={{
+          bottom: `${
+            ((getSize(0) +
+              getSize(MIN_GROW_STEP) +
+              getSize(Math.pow(MIN_GROW_STEP, 2))) /
+              7) *
+            4
+          }px`,
+        }}
+      >
+        <div
+          style={{
+            height: `${counter >= 10 ? "80px" : 0}`,
+            width: `${counter >= 10 ? "80px" : 0}`,
+          }}
+        >
+          <div />
+          <div />
+          <div />
+        </div>
+      </div>
+      <div
         className={cx("seed", nowScene === MOON ? "night" : "day")}
         style={{
           width: `${getSize(0)}px`,
@@ -55,8 +78,10 @@ const SunAndMoon = () => {
         style={{
           width: `${getSize(MIN_GROW_STEP)}px`,
           height: `${getSize(MIN_GROW_STEP)}px`,
-          bottom: `${counter >= MIN_GROW_STEP+1 ? (getSize(0) / 7) * 4 : 0}px`,
-          opacity: `${counter >= MIN_GROW_STEP+1 ? 1 : 0}`,
+          bottom: `${
+            counter >= MIN_GROW_STEP + 1 ? (getSize(0) / 7) * 4 : 0
+          }px`,
+          opacity: `${counter >= MIN_GROW_STEP + 1 ? 1 : 0}`,
         }}
       >
         <RiSeedlingFill />
@@ -68,8 +93,8 @@ const SunAndMoon = () => {
           height: `${getSize(Math.pow(MIN_GROW_STEP, 2))}px`,
           bottom: `${
             counter >= Math.pow(MIN_GROW_STEP, 2) + 1
-              ? (getSize(0) + getSize(MIN_GROW_STEP)) / 7 * 4
-              : getSize(0) / 7 * 4
+              ? ((getSize(0) + getSize(MIN_GROW_STEP)) / 7) * 4
+              : (getSize(0) / 7) * 4
           }px`,
           opacity: `${counter >= 5 ? 1 : 0}`,
         }}
