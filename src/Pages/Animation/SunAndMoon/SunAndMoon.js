@@ -55,8 +55,8 @@ const SunAndMoon = () => {
       >
         <div
           style={{
-            height: `${counter >= 10 ? "80px" : 0}`,
-            width: `${counter >= 10 ? "80px" : 0}`,
+            height: `${counter >= MAX_COUNT ? "80px" : 0}`,
+            width: `${counter >= MAX_COUNT ? "80px" : 0}`,
           }}
         >
           <div />
