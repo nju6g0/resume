@@ -21,7 +21,7 @@ const Monsters = () => {
     let isReverseY = false;
     const moveBall = () => {
       setBallPosition((prev) => {
-        if (prev.x >= window.innerWidth - BALL_SIZE * 1.6) {
+        if (prev.x >= window.innerWidth - BALL_SIZE) {
           isReverseX = true;
         }
         if (prev.x < 0) {
