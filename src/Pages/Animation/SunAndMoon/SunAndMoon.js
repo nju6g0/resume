@@ -8,7 +8,7 @@ const cx = classNames.bind(classes);
 const SUN = "sun";
 const MOON = "moon";
 const BASE_SIZE = 40;
-const MAX_COUNT = 10;
+const MAX_COUNT = 8;
 const GROW_RANGE = 20;
 const MIN_GROW_STEP = 2;
 
@@ -41,29 +41,6 @@ const SunAndMoon = () => {
       </div>
       <div className={cx("moon", nowScene === MOON && "show")} />
       <div className={cx("sun", nowScene === SUN && "show")} />
-      <div
-        className={cx("flower", nowScene === MOON && "night")}
-        style={{
-          bottom: `${
-            ((getSize(0) +
-              getSize(MIN_GROW_STEP) +
-              getSize(Math.pow(MIN_GROW_STEP, 2))) /
-              7) *
-            4
-          }px`,
-        }}
-      >
-        <div
-          style={{
-            height: `${counter >= MAX_COUNT ? "80px" : 0}`,
-            width: `${counter >= MAX_COUNT ? "80px" : 0}`,
-          }}
-        >
-          <div />
-          <div />
-          <div />
-        </div>
-      </div>
       <div
         className={cx("seed", nowScene === MOON ? "night" : "day")}
         style={{
