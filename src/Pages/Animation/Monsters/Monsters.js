@@ -40,7 +40,7 @@ const Monsters = () => {
         };
       });
     };
-    const ballAnimation = setInterval(moveBall, 30)
+    const ballAnimation = setInterval(moveBall, 30);
 
     return () => {
       clearInterval(ballAnimation);
@@ -50,7 +50,14 @@ const Monsters = () => {
   return (
     <div className={cx("wrapper")}>
       <div
-        className={cx("ball")}
+        className={cx(
+          "ball",
+          (ballPosition.x <= 0 ||
+            ballPosition.y <= 0 ||
+            ballPosition.x >= window.innerWidth - BALL_SIZE ||
+            ballPosition.y >= window.innerHeight - BALL_SIZE) &&
+            "sticky"
+        )}
         style={{ top: `${ballPosition.y}px`, left: `${ballPosition.x}px` }}
       />
     </div>
