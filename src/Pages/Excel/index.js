@@ -80,7 +80,7 @@ const Excel = ({ popWindowData }) => {
 
     return (
         <div className={cx('excel')}>
-            <div className="container">
+            <div className={cx('container')}>
                 <div>
                     <span>檔案名稱：{fileName}</span>
                     <button
