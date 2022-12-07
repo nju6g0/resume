@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import qs from "qs";
 import { useLocation, useHistory } from "react-router-dom";
+import { AiOutlineMenu } from "react-icons/ai";
 
 import GoHome from "Component/GoHome";
 import Web from "./Web2";
@@ -65,27 +66,27 @@ const Page = () => {
     }
   }, [tab]);
 
-
   return (
     <div className={cx("wrapper")}>
-      <header>
-        <div className={cx("container")}>
-          <h3>The F2E 4th 互動式網頁設計</h3>
-          <ul className={cx("tabs")}>
-            {TABS.map((tab) => (
-              <li
-                key={`tab_${tab.key}`}
-                {...(nowTab === tab.key && { className: cx("active") })}
-                onClick={() => {
-                  handleClickTab(tab.key);
-                }}
-              >
-                {tab.text}
-              </li>
-            ))}
-          </ul>
+      <div className={cx("menu")}>
+        <div className={cx("iconContainer")}>
+          <AiOutlineMenu />
         </div>
-      </header>
+        <h3>The F2E 4th 互動式網頁設計</h3>
+        <ul>
+          {TABS.map((tab) => (
+            <li
+              key={`tab_${tab.key}`}
+              {...(nowTab === tab.key && { className: cx("active") })}
+              onClick={() => {
+                handleClickTab(tab.key);
+              }}
+            >
+              {tab.text}
+            </li>
+          ))}
+        </ul>
+      </div>
       <main>{renderTabContent()}</main>
       <GoHome />
     </div>
