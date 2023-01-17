@@ -16,7 +16,7 @@ const Home = () => {
   return (
     <div className={cx("home")}>
       <Helmet>
-        <title>YiShan's Resume</title>
+        <title>YiShan's CV</title>
       </Helmet>
       <Main />
       <AboutMe />

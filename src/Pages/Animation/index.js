@@ -54,7 +54,7 @@ const MainPage = () => {
   return (
     <>
       <Helmet>
-        <title>YiShan's Resume - 動畫互動特效</title>
+        <title>YiShan's CV - 動畫互動特效</title>
       </Helmet>
       {CONTENT_LIST.map((content) => content.component)}
       <Menu
