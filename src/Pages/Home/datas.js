@@ -3,6 +3,7 @@ import form from 'image/home_portfolios_form.jpg';
 import KittyGallery from 'image/home_portfolios_kittyGarelly.jpg';
 import animation from 'image/home_protfolios_animation_2.jpg';
 import thef2e from 'image/home_protfolios_animation.jpg';
+import games from 'image/home_dominik.jpg';
 import totoro from 'image/home_ghibli_totoro.jpg';
 import totoro_busStation from 'image/home_ghibli_totoro_busStation.jpg';
 import totoro_face from 'image/home_ghibli_totoro_face.jpg';
@@ -21,7 +22,7 @@ export const portfolios = [
         image: message_borad,
     },
     { id: 'kittyGallery', title: '奴才們，快來吸貓吧！', description: 'The Cat Api 串接', image: KittyGallery },
-    { id: 'comingsoon', title: '還沒想到要做什麼', description: '還沒想到要做什麼', image: null },
+    { id: 'games', title: '小遊戲樂無窮', description: '', image: games },
 ];
 
 export const slideData = [
