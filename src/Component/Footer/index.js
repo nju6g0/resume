@@ -31,7 +31,7 @@ const Footer = () => {
   return (
     <div className={cx("footer")}>
       <GiCherish />
-      2022 YiShan, Su /&nbsp;
+      2023 YiShan, Su /&nbsp;
       {hasDesigner && (
         <>
           <a
