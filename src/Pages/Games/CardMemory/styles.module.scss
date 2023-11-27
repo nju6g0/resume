@@ -1,3 +1,29 @@
 .wrap {
-    height: calc(100vh - 50px);
+    .outer {
+        width: 860px;
+        height: 1000px;
+        // background-color: aquamarine;
+        margin: 0 auto;
+    }
+    .inner {
+        box-sizing: border-box;
+        width: 880px;
+        display: flex;
+        flex-wrap: wrap;
+        margin: 0 -10px;
+    }
+}
+
+.card {
+    box-sizing: border-box;
+    // border: 1px solid red;
+    width: 220px;
+    .inner {
+        width: 200px;
+        height: 250px;
+        background-color: rgb(88, 88, 29);
+        margin: 10px;
+        border-radius: 10px;
+        overflow: hidden;
+    }
 }
