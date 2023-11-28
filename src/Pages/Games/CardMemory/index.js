@@ -44,7 +44,6 @@ const CardMemory = () => {
   const [secondChoice, setSecondChoice] = useState(null);
 
   const handleClick = (card) => {
-    console.log(card);
     firstChoice ? setSecondChoice(card) : setfirstChoice(card);
   };
 
@@ -60,8 +59,27 @@ const CardMemory = () => {
   }, []);
 
   useEffect(() => {
-    if (firstChoice?.name === secondChoice?.name) {
-      console.log("matched");
+    const clearChoice = () => {
+      window.setTimeout(() => {
+        setfirstChoice(null);
+        setSecondChoice(null);
+      }, 500);
+    };
+    if (
+      firstChoice &&
+      secondChoice &&
+      firstChoice?.name === secondChoice?.name
+    ) {
+      const matchedArray = cards.map((card) => ({
+        ...card,
+        matched: card.matched || card.name === firstChoice?.name,
+      }));
+      setCards(matchedArray)
+      clearChoice();
+      return;
+    }
+    if (secondChoice && firstChoice?.name !== secondChoice?.name) {
+      clearChoice();
     }
   }, [firstChoice, secondChoice]);
 
@@ -70,9 +88,10 @@ const CardMemory = () => {
       <div className={cx("outer")}>
         <div className={cx("inner")}>
           {cards.map((card) => {
-            const { id, imgUrl, matched } = card;
+            const { id, imgUrl, matched, name } = card;
             const beChoiced =
               matched || firstChoice?.id === id || secondChoice?.id === id;
+            console.log(name, beChoiced);
             return (
               <div
                 key={id}
@@ -82,7 +101,11 @@ const CardMemory = () => {
                 }}
               >
                 <div className={cx("inner")}>
-                  <img className={cx("front", !beChoiced ? "show" : "hide")} src={CARD_BG} alt="card" />
+                  <img
+                    className={cx("front", !beChoiced ? "show" : "hide")}
+                    src={CARD_BG}
+                    alt="card"
+                  />
                   <img
                     className={cx("back", beChoiced ? "show" : "hide")}
                     src={imgUrl}
