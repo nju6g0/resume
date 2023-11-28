@@ -2,7 +2,6 @@
     .outer {
         width: 860px;
         height: 1000px;
-        // background-color: aquamarine;
         margin: 0 auto;
     }
     .inner {
@@ -16,14 +15,27 @@
 
 .card {
     box-sizing: border-box;
-    // border: 1px solid red;
     width: 220px;
     .inner {
+        position: relative;
         width: 200px;
         height: 250px;
-        background-color: rgb(88, 88, 29);
         margin: 10px;
         border-radius: 10px;
         overflow: hidden;
+        img {
+            transition: .3s;
+        }
+        img.back {
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+        img.show {
+            transform: rotateY(0deg);
+        }
+        img.hide {
+            transform: rotateY(90deg);
+        }
     }
 }
