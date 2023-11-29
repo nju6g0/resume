@@ -6,7 +6,7 @@ import CARD3 from "../../../image/games/card3.jpeg";
 import CARD4 from "../../../image/games/card4.jpg";
 import CARD5 from "../../../image/games/card5.jpg";
 import CARD6 from "../../../image/games/card6.jpg";
-import CARD_BG from "../../../image/games/card_bg.jpeg";
+import CARD_BG from "../../../image/games/card_bg.jpg";
 import classes from "./styles.module.scss";
 import classNames from "classnames/bind";
 const cx = classNames.bind(classes);
@@ -47,15 +47,19 @@ const CardMemory = () => {
     firstChoice ? setSecondChoice(card) : setfirstChoice(card);
   };
 
-  useEffect(() => {
+  const handleReset = () => {
     const shuffledCards = [...CARD_IMAGES, ...CARD_IMAGES]
-      .sort(() => Math.random() - 0.5)
-      .map((card) => ({
-        ...card,
-        id: `card_${Math.floor(Math.random() * 1000)}`,
-        matched: false,
-      }));
+    .sort(() => Math.random() - 0.5)
+    .map((card) => ({
+      ...card,
+      id: `card_${Math.floor(Math.random() * 1000)}`,
+      matched: false,
+    }));
     setCards(shuffledCards);
+  }
+
+  useEffect(() => {
+    handleReset();
   }, []);
 
   useEffect(() => {
@@ -85,13 +89,13 @@ const CardMemory = () => {
 
   return (
     <div className={cx("wrap")}>
+      <button type="button" onClick={handleReset}>Restart</button>
       <div className={cx("outer")}>
         <div className={cx("inner")}>
           {cards.map((card) => {
             const { id, imgUrl, matched, name } = card;
             const beChoiced =
               matched || firstChoice?.id === id || secondChoice?.id === id;
-            console.log(name, beChoiced);
             return (
               <div
                 key={id}
