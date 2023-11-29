@@ -52,6 +52,12 @@ const CardMemory = () => {
     firstChoice ? setSecondChoice(card) : setfirstChoice(card);
   };
 
+  const clearChoice = () => {
+    setfirstChoice(null);
+    setSecondChoice(null);
+    setDisabled(false);
+  }
+
   const handleRestart = () => {
     const shuffledCards = [...CARD_IMAGES, ...CARD_IMAGES]
     .sort(() => Math.random() - 0.5)
@@ -61,9 +67,7 @@ const CardMemory = () => {
       matched: false,
     }));
     setCards(shuffledCards);
-    setfirstChoice(null);
-    setSecondChoice(null);
-    setDisabled(false);
+    clearChoice();
   }
 
   useEffect(() => {
@@ -71,28 +75,21 @@ const CardMemory = () => {
   }, []);
 
   useEffect(() => {
-    const clearChoice = () => {
-      window.setTimeout(() => {
-        setfirstChoice(null);
-        setSecondChoice(null);
-        setDisabled(false);
-      }, 1000);
-    };
     const handleMatch = () => {
       const matchedArray = cards.map((card) => ({
         ...card,
         matched: card.matched || card.name === firstChoice?.name,
       }));
       setCards(matchedArray)
-      clearChoice();
     }
     if (firstChoice && secondChoice) {
       setDisabled(true);
       if (firstChoice?.name === secondChoice?.name) {
         handleMatch();
-      } else {
-        clearChoice();
       }
+      window.setTimeout(() => {
+        clearChoice();
+      }, 700);
     }
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [firstChoice, secondChoice]);
