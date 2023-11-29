@@ -42,14 +42,17 @@ const CardMemory = () => {
   const [cards, setCards] = useState([]);
   const [firstChoice, setfirstChoice] = useState(null);
   const [secondChoice, setSecondChoice] = useState(null);
+  const [disabled, setDisabled] = useState(false);
 
   const handleClick = (card) => {
+    if (disabled) return;
     if (firstChoice && firstChoice.id === card.id) return;
+    if (card.matched) return;
 
     firstChoice ? setSecondChoice(card) : setfirstChoice(card);
   };
 
-  const handleReset = () => {
+  const handleRestart = () => {
     const shuffledCards = [...CARD_IMAGES, ...CARD_IMAGES]
     .sort(() => Math.random() - 0.5)
     .map((card) => ({
@@ -58,10 +61,13 @@ const CardMemory = () => {
       matched: false,
     }));
     setCards(shuffledCards);
+    setfirstChoice(null);
+    setSecondChoice(null);
+    setDisabled(false);
   }
 
   useEffect(() => {
-    handleReset();
+    handleRestart();
   }, []);
 
   useEffect(() => {
@@ -69,33 +75,35 @@ const CardMemory = () => {
       window.setTimeout(() => {
         setfirstChoice(null);
         setSecondChoice(null);
-      }, 500);
+        setDisabled(false);
+      }, 1000);
     };
-    if (
-      firstChoice &&
-      secondChoice &&
-      firstChoice?.name === secondChoice?.name
-    ) {
+    const handleMatch = () => {
       const matchedArray = cards.map((card) => ({
         ...card,
         matched: card.matched || card.name === firstChoice?.name,
       }));
       setCards(matchedArray)
       clearChoice();
-      return;
     }
-    if (secondChoice && firstChoice?.name !== secondChoice?.name) {
-      clearChoice();
+    if (firstChoice && secondChoice) {
+      setDisabled(true);
+      if (firstChoice?.name === secondChoice?.name) {
+        handleMatch();
+      } else {
+        clearChoice();
+      }
     }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [firstChoice, secondChoice]);
 
   return (
     <div className={cx("wrap")}>
-      <button type="button" onClick={handleReset}>Restart</button>
+      <button type="button" onClick={handleRestart}>Restart</button>
       <div className={cx("outer")}>
         <div className={cx("inner")}>
           {cards.map((card) => {
-            const { id, imgUrl, matched, name } = card;
+            const { id, imgUrl, matched } = card;
             const beChoiced =
               matched || firstChoice?.id === id || secondChoice?.id === id;
             return (
