@@ -44,6 +44,8 @@ const CardMemory = () => {
   const [secondChoice, setSecondChoice] = useState(null);
 
   const handleClick = (card) => {
+    if (firstChoice && firstChoice.id === card.id) return;
+
     firstChoice ? setSecondChoice(card) : setfirstChoice(card);
   };
 
