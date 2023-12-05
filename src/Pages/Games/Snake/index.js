@@ -5,10 +5,10 @@ import classNames from "classnames/bind";
 const cx = classNames.bind(classes);
 
 const COLUM = 20;
-const RIGHT = 'right';
-const LEFT = 'left';
-const UP = 'up';
-const DOWN = 'down';
+const RIGHT = 'ArrowRight';
+const LEFT = 'ArrowLeft';
+const UP = 'ArrowUp';
+const DOWN = 'ArrowDown';
 
 const Snake = () => {
   const [snake, setSnake] = useState([{ x: 3, y: 5 },{ x: 3, y: 4 },{ x: 3, y: 3 }]);
@@ -18,7 +18,7 @@ const Snake = () => {
   useEffect(() => {
     const timer = setInterval(() => {
         let head = {...snake[0]};
-        if(head.x >= COLUM || head.x <=0 || head.y >= COLUM || head.y <=0) return;
+        if(head.x >= COLUM || head.x <= 1 || head.y >= COLUM || head.y <= 1) return;
         if(direction === RIGHT){
             head.y += 1
         }
@@ -34,12 +34,23 @@ const Snake = () => {
         const snakeCopy = [head, ...snake];
         snakeCopy.pop();
         setSnake(snakeCopy)
-    }, 300);
+    }, 200);
 
     return () => {
         clearInterval(timer);
     }
-  }, [snake])//snake, direction
+  }, [snake, direction])
+
+  useEffect(() => {
+    const handleChangeDirection = (e) => {
+        setDirection(e.key)
+    }
+    window.addEventListener('keydown', handleChangeDirection);
+
+    return () => {
+        window.removeEventListener('keydown', handleChangeDirection);
+    }
+  },[])
 
 
   return (
