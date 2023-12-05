@@ -35,16 +35,20 @@ const Snake = () => {
         head.x += 1;
       }
 
-      if (head.x > COLUM || head.x < 1 || head.y > COLUM || head.y < 1)
-      return;
+      if (
+        head.x > COLUM ||
+        head.x < 1 ||
+        head.y > COLUM ||
+        head.y < 1 ||
+        snake.some((item) => item.x === head.x && item.y === head.y)
+      )
+        return;
       const snakeCopy = [head, ...snake];
       if (head.x === fruit.x && head.y === fruit.y) {
-        const newFruit = {
+        setFruit({
             x: Math.floor(Math.random() * 20) + 1,
             y: Math.floor(Math.random() * 20) + 1,
-          }
-          console.log(newFruit)
-        setFruit(newFruit);
+          });
       } else {
         snakeCopy.pop();
       }
