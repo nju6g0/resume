@@ -10,6 +10,11 @@ const LEFT = "ArrowLeft";
 const UP = "ArrowUp";
 const DOWN = "ArrowDown";
 
+const generateFruit = () => ({
+  x: Math.floor(Math.random() * 20) + 1,
+  y: Math.floor(Math.random() * 20) + 1,
+});
+
 const Snake = () => {
   const [snake, setSnake] = useState([
     { x: 3, y: 5 },
@@ -45,10 +50,12 @@ const Snake = () => {
         return;
       const snakeCopy = [head, ...snake];
       if (head.x === fruit.x && head.y === fruit.y) {
-        setFruit({
-            x: Math.floor(Math.random() * 20) + 1,
-            y: Math.floor(Math.random() * 20) + 1,
-          });
+        let newFruit = generateFruit();
+        // eslint-disable-next-line no-loop-func
+        while (snake.some((el) => el.x === newFruit.x && el.y === newFruit.y)) {
+          newFruit = generateFruit();
+        }
+        setFruit(newFruit);
       } else {
         snakeCopy.pop();
       }
