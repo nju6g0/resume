@@ -1,3 +1,27 @@
-.wrap {
-    height: calc(100vh - 50px);
+.container {
+    min-height: calc(100vh - 50px);
+    background-color: #101010;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    >div {
+        padding: 10px;
+        border: 1px solid #353535;
+    }
+    .row {
+        display: flex;
+    }
+    .colum {
+        width: 26px;
+        height: 26px;
+        background-color: rgb(42, 43, 43);
+        border: 1px solid #101010;
+    }
+    .snake {
+        background-color: aqua;
+    }
+    .fruit {
+        background-color: red;
+        border-radius: 50%;
+    }
 }
