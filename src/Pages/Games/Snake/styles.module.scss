@@ -1,27 +1,46 @@
 .container {
-    min-height: calc(100vh - 50px);
-    background-color: #101010;
+  min-height: calc(100vh - 50px);
+  background-color: #101010;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  > div {
+    padding: 10px;
+    border: 1px solid #353535;
+  }
+  .row {
     display: flex;
+  }
+  .colum {
+    width: 26px;
+    height: 26px;
+    background-color: rgb(42, 43, 43);
+    border: 1px solid #101010;
+  }
+  .snake {
+    background-color: aqua;
+  }
+  .fruit {
+    background-color: red;
+    border-radius: 50%;
+  }
+  .alert {
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
-    >div {
-        padding: 10px;
-        border: 1px solid #353535;
+    > p {
+      font-size: 48px;
+      font-family: fantasy;
+      font-weight: bolder;
+      text-align: center;
+      color: #fff;
     }
-    .row {
-        display: flex;
-    }
-    .colum {
-        width: 26px;
-        height: 26px;
-        background-color: rgb(42, 43, 43);
-        border: 1px solid #101010;
-    }
-    .snake {
-        background-color: aqua;
-    }
-    .fruit {
-        background-color: red;
-        border-radius: 50%;
-    }
+  }
 }

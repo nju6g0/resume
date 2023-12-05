@@ -5,6 +5,13 @@ import classNames from "classnames/bind";
 const cx = classNames.bind(classes);
 
 const COLUM = 20;
+const STEP = 10;
+const INITIAL_SPEED = 200;
+const INITIAL_SNAKE = [
+  { x: 3, y: 5 },
+  { x: 3, y: 4 },
+  { x: 3, y: 3 },
+];
 const RIGHT = "ArrowRight";
 const LEFT = "ArrowLeft";
 const UP = "ArrowUp";
@@ -16,16 +23,23 @@ const generateFruit = () => ({
 });
 
 const Snake = () => {
-  const [snake, setSnake] = useState([
-    { x: 3, y: 5 },
-    { x: 3, y: 4 },
-    { x: 3, y: 3 },
-  ]);
-  const [fruit, setFruit] = useState({ x: 9, y: 12 });
+  const [snake, setSnake] = useState(INITIAL_SNAKE);
+  const [fruit, setFruit] = useState(generateFruit());
   const [direction, setDirection] = useState(RIGHT);
+  const [speed, setSpeed] = useState(INITIAL_SPEED);
+  const [stop, setStop] = useState(false);
+
+  const handleRestart = () => {
+    setSnake(INITIAL_SNAKE);
+    setFruit(generateFruit());
+    setDirection(RIGHT);
+    setSpeed(INITIAL_SPEED);
+    setStop(false);
+  };
 
   useEffect(() => {
     const timer = setInterval(() => {
+      if(stop) return;
       let head = { ...snake[0] };
       if (direction === RIGHT) {
         head.y += 1;
@@ -46,8 +60,10 @@ const Snake = () => {
         head.y > COLUM ||
         head.y < 1 ||
         snake.some((item) => item.x === head.x && item.y === head.y)
-      )
+      ) {
+        setStop(true);
         return;
+      }
       const snakeCopy = [head, ...snake];
       if (head.x === fruit.x && head.y === fruit.y) {
         let newFruit = generateFruit();
@@ -56,16 +72,22 @@ const Snake = () => {
           newFruit = generateFruit();
         }
         setFruit(newFruit);
+        if (snake.length > 5) {
+          setSpeed((prevSpeed) =>
+            prevSpeed <= STEP ? STEP : prevSpeed - STEP
+          );
+        }
       } else {
         snakeCopy.pop();
       }
       setSnake(snakeCopy);
-    }, 200);
+    }, speed);
 
     return () => {
       clearInterval(timer);
     };
-  }, [snake, direction, fruit]);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [snake, direction, fruit, speed]);
 
   useEffect(() => {
     const handleChangeDirection = ({ key }) => {
@@ -73,7 +95,8 @@ const Snake = () => {
         (key === LEFT && direction === RIGHT) ||
         (key === RIGHT && direction === LEFT) ||
         (key === UP && direction === DOWN) ||
-        (key === DOWN && direction === UP)
+        (key === DOWN && direction === UP) ||
+        stop
       )
         return;
       setDirection(key);
@@ -83,6 +106,7 @@ const Snake = () => {
     return () => {
       window.removeEventListener("keydown", handleChangeDirection);
     };
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [direction]);
 
   return (
@@ -102,6 +126,14 @@ const Snake = () => {
           </div>
         ))}
       </div>
+      {stop && (
+        <div className={cx("alert")}>
+          <p>BOOM!</p>
+          <button type="button" onClick={handleRestart}>
+            Restart
+          </button>
+        </div>
+      )}
     </div>
   );
 };
