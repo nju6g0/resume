@@ -1,20 +1,53 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 import classes from "./styles.module.scss";
 import classNames from "classnames/bind";
 const cx = classNames.bind(classes);
 
-const getRandomKey = () => Math.floor(Math.random() * 10000);
+const COLUM = 20;
+const RIGHT = 'right';
+const LEFT = 'left';
+const UP = 'up';
+const DOWN = 'down';
 
 const Snake = () => {
   const [snake, setSnake] = useState([{ x: 3, y: 5 },{ x: 3, y: 4 },{ x: 3, y: 3 }]);
-  const [fruit, setFruit] = useState({x: 9, y: 12})
+  const [fruit, setFruit] = useState({x: 9, y: 12});
+  const [direction, setDirection] = useState(RIGHT);
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+        let head = {...snake[0]};
+        if(head.x >= COLUM || head.x <=0 || head.y >= COLUM || head.y <=0) return;
+        if(direction === RIGHT){
+            head.y += 1
+        }
+        if(direction === LEFT){
+            head.y -= 1
+        }
+        if(direction === UP){
+            head.x -= 1
+        }
+        if(direction === DOWN){
+            head.x += 1
+        }
+        const snakeCopy = [head, ...snake];
+        snakeCopy.pop();
+        setSnake(snakeCopy)
+    }, 300);
+
+    return () => {
+        clearInterval(timer);
+    }
+  }, [snake])//snake, direction
+
+
   return (
     <div className={cx("container")}>
       <div>
-        {Array.from({ length: 20 }, (_, i) => i + 1).map((colX) => (
-          <div key={getRandomKey()} className={cx("row")}>
-            {Array.from({ length: 20 }, (_, i) => i + 1).map((colY) => {
+        {Array.from({ length: COLUM }, (_, i) => i + 1).map((colX) => (
+          <div key={`x_${colX}`} className={cx("row")}>
+            {Array.from({ length: COLUM }, (_, i) => i + 1).map((colY) => {
                 let type;
                 if(snake.some(el => el.x === colX && el.y === colY)){
                     type = 'snake';
@@ -22,7 +55,7 @@ const Snake = () => {
                     type = 'fruit';
                 }
                 return(
-              <div key={getRandomKey()} className={cx("colum", type)} />
+              <div key={`y_${colY}`} className={cx("colum", type)} />
             )})}
           </div>
         ))}
