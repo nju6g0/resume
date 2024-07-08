@@ -8,6 +8,7 @@ import GarellyList from 'Pages/KittyGallery/List';
 import Sample from 'Pages/emptyPage';
 import Animation from 'Pages/Animation';
 import TheF2E from 'Pages/TheF2E';
+import Games from 'Pages/Games';
 
 export const routes = [
     {
@@ -47,10 +48,10 @@ export const routes = [
         component: Animation,
     },
     {
-        key: 'comingsoon',
-        path: '/comingsoon',
+        key: 'games',
+        path: '/games',
         exact: false,
-        component: Sample,
+        component: Games,
     },
 ];
 

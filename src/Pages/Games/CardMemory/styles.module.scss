@@ -1,0 +1,43 @@
+.wrap {
+    .outer {
+        width: 860px;
+        height: 1000px;
+        margin: 0 auto;
+    }
+    .inner {
+        box-sizing: border-box;
+        width: 880px;
+        display: flex;
+        flex-wrap: wrap;
+        margin: 0 -10px;
+    }
+}
+
+.card {
+    box-sizing: border-box;
+    width: 220px;
+    .inner {
+        position: relative;
+        width: 200px;
+        height: 250px;
+        margin: 10px;
+        border-radius: 10px;
+        overflow: hidden;
+        img {
+            transition: .3s;
+            width: 100%;
+            height: 100%;
+        }
+        img.back {
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+        img.show {
+            transform: rotateY(0deg);
+        }
+        img.hide {
+            transform: rotateY(90deg);
+        }
+    }
+}

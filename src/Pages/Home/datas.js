@@ -3,6 +3,7 @@ import form from 'image/home_portfolios_form.jpg';
 import KittyGallery from 'image/home_portfolios_kittyGarelly.jpg';
 import animation from 'image/home_protfolios_animation_2.jpg';
 import thef2e from 'image/home_protfolios_animation.jpg';
+import games from 'image/home_games.jpeg';
 import totoro from 'image/home_ghibli_totoro.jpg';
 import totoro_busStation from 'image/home_ghibli_totoro_busStation.jpg';
 import totoro_face from 'image/home_ghibli_totoro_face.jpg';
@@ -14,6 +15,7 @@ export const portfolios = [
     { id: 'thef2e', title: 'The F2E 4th', description: '前端 修練(爆)精神(肝)時光屋', image: thef2e },
     { id: 'animation', title: 'animation 金促咪', description: 'HAHOW 動畫互動網頁特效入門 課程練習', image: animation },
     { id: 'excel', title: '親愛的，show出你的口袋書單！', description: 'excel檔案讀取/下載', image: form },
+    { id: 'games', title: '小遊戲樂無窮', description: '', image: games },
     {
         id: 'drinkorder',
         title: '夥伴們，飲料訂起來！',
@@ -21,7 +23,6 @@ export const portfolios = [
         image: message_borad,
     },
     { id: 'kittyGallery', title: '奴才們，快來吸貓吧！', description: 'The Cat Api 串接', image: KittyGallery },
-    { id: 'comingsoon', title: '還沒想到要做什麼', description: '還沒想到要做什麼', image: null },
 ];
 
 export const slideData = [
