@@ -35,7 +35,7 @@ const Games = () => {
   const history = useHistory();
   const querys = qs.parse(location.search, { ignoreQueryPrefix: true });
   const { tab } = querys;
-  const [nowTab, setNowTab] = useState("");
+  const [nowTab, setNowTab] = useState(CARD_MEMORY);
   const handleClickTab = (tab) => {
     if (tab === nowTab) return;
 
@@ -65,7 +65,7 @@ const Games = () => {
 
   return (
     <div className={cx("wrap")}>
-      <ul>
+      {/* <ul>
         {TABS.map(({ key, title }) => (
           <li
             key={key}
@@ -76,7 +76,7 @@ const Games = () => {
             {title}
           </li>
         ))}
-      </ul>
+      </ul> */}
       {renderTabContent()}
       <GoHome />
     </div>
