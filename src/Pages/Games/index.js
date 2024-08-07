@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import qs from "qs";
 import { useLocation, useHistory } from "react-router-dom";
+import { SiRobotframework } from "react-icons/si";
 
 import GoHome from "Component/GoHome";
 import CardMemory from "./CardMemory";
@@ -65,19 +66,26 @@ const Games = () => {
 
   return (
     <div className={cx("wrap")}>
-      {/* <ul>
+      <ul>
         {TABS.map(({ key, title }) => (
           <li
             key={key}
+            className={nowTab === key && cx("active")}
             onClick={() => {
               handleClickTab(key);
             }}
           >
+            {nowTab === key && (
+              <span className={cx("iconBox")}>
+                <SiRobotframework width={50} height={50} />
+              </span>
+            )}
+
             {title}
           </li>
         ))}
-      </ul> */}
-      {renderTabContent()}
+      </ul>
+      <div>{renderTabContent()}</div>
       <GoHome />
     </div>
   );

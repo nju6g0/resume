@@ -96,10 +96,10 @@ const CardMemory = () => {
 
   return (
     <div className={cx("wrap")}>
-      <button type="button" onClick={handleRestart}>
-        Restart
-      </button>
       <div className={cx("outer")}>
+        <button type="button" className={cx("restart")} onClick={handleRestart}>
+          Restart
+        </button>
         <div className={cx("inner")}>
           {cards.map((card) => {
             const { id, imgUrl, matched } = card;

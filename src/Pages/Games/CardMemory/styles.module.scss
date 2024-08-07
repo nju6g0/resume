@@ -1,7 +1,7 @@
 .wrap {
     .outer {
         width: 860px;
-        height: 1000px;
+        height: 900px;
         margin: 0 auto;
     }
     .inner {
@@ -10,6 +10,23 @@
         display: flex;
         flex-wrap: wrap;
         margin: 0 -10px;
+    }
+    button.restart {
+        background-color: #000;
+        border: 1px solid #ccc;
+        padding: 0 30px;
+        height: 50px;
+        margin: 20px auto;
+        border-radius: 25px;
+        color: #fff;
+        font-weight: 600;
+        transition: box-shadow .3s;
+        &:hover {
+            box-shadow: 2px 5px 5px rgba(0,0,0, 0.3);
+            border: 1px solid #000;
+            background-color: #fff;
+            color: #000;
+        }
     }
 }
 

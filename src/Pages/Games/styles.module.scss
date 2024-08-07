@@ -1,3 +1,37 @@
 .wrap {
-
+    display: flex;
+    max-width: 1280px;
+    margin: 0 auto;
+    color: rgb(63, 63, 63);
+    ul {
+        width: 300px;
+        padding: 20px 0;
+        list-style: none;
+        li {
+            padding: 10px 30px 10px 10px;
+            font-size: 20px;
+            width: 200px;
+            cursor: pointer;
+            &:hover {
+                text-decoration: underline;
+            }
+        }
+        li.active{
+            color: #015059;
+            background-color: #cae7ea;
+            border-radius: 0 40px 10px 0;
+            font-weight: 600;
+            text-decoration: underline;
+        }
+    }
+    .iconBox{
+        >svg{
+            width: 24px;
+            height: 24px;
+        }
+        padding-right: 10px;
+    }
+    >div {
+        flex-grow: 1;
+    }
 }
