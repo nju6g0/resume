@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 
 import CARD1 from "../../../image/games/card1.jpg";
 import CARD2 from "../../../image/games/card2.jpg";
-import CARD3 from "../../../image/games/card3.jpeg";
+import CARD3 from "../../../image/games/card3.jpg";
 import CARD4 from "../../../image/games/card4.jpg";
 import CARD5 from "../../../image/games/card5.jpg";
 import CARD6 from "../../../image/games/card6.jpg";
@@ -56,19 +56,19 @@ const CardMemory = () => {
     setfirstChoice(null);
     setSecondChoice(null);
     setDisabled(false);
-  }
+  };
 
   const handleRestart = () => {
     const shuffledCards = [...CARD_IMAGES, ...CARD_IMAGES]
-    .sort(() => Math.random() - 0.5)
-    .map((card) => ({
-      ...card,
-      id: `card_${Math.floor(Math.random() * 1000)}`,
-      matched: false,
-    }));
+      .sort(() => Math.random() - 0.5)
+      .map((card) => ({
+        ...card,
+        id: `card_${Math.floor(Math.random() * 1000)}`,
+        matched: false,
+      }));
     setCards(shuffledCards);
     clearChoice();
-  }
+  };
 
   useEffect(() => {
     handleRestart();
@@ -80,8 +80,8 @@ const CardMemory = () => {
         ...card,
         matched: card.matched || card.name === firstChoice?.name,
       }));
-      setCards(matchedArray)
-    }
+      setCards(matchedArray);
+    };
     if (firstChoice && secondChoice) {
       setDisabled(true);
       if (firstChoice?.name === secondChoice?.name) {
@@ -91,18 +91,19 @@ const CardMemory = () => {
         clearChoice();
       }, 700);
     }
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [firstChoice, secondChoice]);
 
   return (
     <div className={cx("wrap")}>
-      <button type="button" onClick={handleRestart}>Restart</button>
+      <button type="button" onClick={handleRestart}>
+        Restart
+      </button>
       <div className={cx("outer")}>
         <div className={cx("inner")}>
           {cards.map((card) => {
             const { id, imgUrl, matched } = card;
-            const beChoiced =
-              matched || firstChoice?.id === id || secondChoice?.id === id;
+            const beChoiced = matched || firstChoice?.id === id || secondChoice?.id === id;
             return (
               <div
                 key={id}
@@ -112,16 +113,8 @@ const CardMemory = () => {
                 }}
               >
                 <div className={cx("inner")}>
-                  <img
-                    className={cx("front", !beChoiced ? "show" : "hide")}
-                    src={CARD_BG}
-                    alt="card"
-                  />
-                  <img
-                    className={cx("back", beChoiced ? "show" : "hide")}
-                    src={imgUrl}
-                    alt="card"
-                  />
+                  <img className={cx("front", !beChoiced ? "show" : "hide")} src={CARD_BG} alt="card" />
+                  <img className={cx("back", beChoiced ? "show" : "hide")} src={imgUrl} alt="card" />
                 </div>
               </div>
             );
