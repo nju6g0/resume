@@ -16,7 +16,7 @@ const Main = () => {
       window.removeEventListener("scroll", scrollHandler);
     };
   }, []);
-  
+
   return (
     <section className={cx("taiwanIcon")}>
       <ul className={cx(isShrink ? "shrink" : "")}>
@@ -29,7 +29,7 @@ const Main = () => {
         </li>
       </ul>
       <div className={cx("description", isShrink ? "shrink" : "")}>
-        <h1>Welcome YiShan's CV</h1>
+        <h1>Welcome YiShan's Resume</h1>
         <i className="twicon-main-island"></i>
         <i className="twicon-black-bear"></i>
         <i className="twicon-electric-pot"></i>
