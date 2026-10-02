@@ -79,6 +79,7 @@ const Scrum = () => {
     } else {
       setNowStep(step);
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [step]);
 
   return (

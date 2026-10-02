@@ -1,4 +1,3 @@
-import GalleryList from  './GalleryList';
-import MasonryLayout from  './MasonryLayout';
+import MasonryLayout from "./MasonryLayout";
 
 export default MasonryLayout;

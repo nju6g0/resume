@@ -23,7 +23,7 @@ const SignArea = ({ visible, onSave, onClose }) => {
     if (canvas) {
       canvas.width = 500;
       canvas.height = 250;
-      canvas.borderColor = '#2ac489';
+      canvas.borderColor = "#2ac489";
       // 設定線條的相關數值
       ctx.lineWidth = 4;
       ctx.lineCap = "round";
@@ -96,6 +96,7 @@ const SignArea = ({ visible, onSave, onClose }) => {
         canvas.removeEventListener("touchmove", draw);
       };
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [canvas]);
 
   return (

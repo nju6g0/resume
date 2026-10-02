@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect } from "react";
 import { Helmet } from "react-helmet";
 
 import GoHome from "Component/GoHome";
@@ -45,6 +45,7 @@ const MainPage = () => {
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [nowIndex]);
 
   useEffect(() => {
@@ -57,11 +58,7 @@ const MainPage = () => {
         <title>YiShan's CV - 動畫互動特效</title>
       </Helmet>
       {CONTENT_LIST.map((content) => content.component)}
-      <Menu
-        index={nowIndex}
-        list={CONTENT_LIST.map(({ key, label }) => ({ key, label }))}
-        onClick={handleClickMenu}
-      />
+      <Menu index={nowIndex} list={CONTENT_LIST.map(({ key, label }) => ({ key, label }))} onClick={handleClickMenu} />
       <GoHome />
       <Loading />
     </>

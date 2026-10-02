@@ -64,6 +64,7 @@ const Page = () => {
     } else {
       setNowTab(tab);
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [tab]);
 
   return (
