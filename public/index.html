@@ -41,6 +41,24 @@
       gtag("js", new Date());
       gtag("config", "G-YRWD9LEV99");
     </script>
+    <script>
+      (function (l) {
+        if (l.search[1] === "/") {
+          var decoded = l.search
+            .slice(1)
+            .split("&")
+            .map(function (s) {
+              return s.replace(/~and~/g, "&");
+            })
+            .join("?");
+          window.history.replaceState(
+            null,
+            null,
+            l.pathname.slice(0, -1) + decoded + l.hash,
+          );
+        }
+      })(window.location);
+    </script>
   </head>
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
@@ -50,31 +68,5 @@
       integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf"
       crossorigin="anonymous"
     ></script>
-    <script>
-      (function () {
-        var l = window.location;
-        if (l.search[1] === "/") {
-          var decoded = l.search
-            .slice(1)
-            .split("&")
-            .map(function (s) {
-              return s.replace(/~and~/g, "&");
-            });
-          var route = decoded[0].slice(1);
-          var query = decoded.slice(1).find(function (s) {
-            return s.indexOf("q=") === 0;
-          });
-          // 使用 History API 替換網址
-          window.history.replaceState(
-            null,
-            null,
-            l.pathname.slice(0, -1) +
-              route +
-              (query ? "?" + query.slice(2) : "") +
-              l.hash,
-          );
-        }
-      })();
-    </script>
   </body>
 </html>

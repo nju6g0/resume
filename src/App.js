@@ -23,7 +23,7 @@ function App() {
         <meta property="og:image" content="https://i.imgur.com/D9cZHL7.png" />
       </Helmet>
       <main>
-        <BrowserRouter basename="/resume">
+        <BrowserRouter>
           <Switch>
             {routes.map((route) => (
               <Route key={`route_${route.key}`} path={route.path} exact={route.exact} render={(routeProps) => <route.component />} />
